@@ -24,11 +24,18 @@ class CreateTeachersTable extends Migration
             $table->string("t_link_youtube");
             $table->integer("t_rate_sum");
             $table->integer("t_rate_count");
-            $table->unsignedBigInteger('u_id');
+            $table->unsignedBigInteger('user_id');
 
-            $table->foreign('u_id')->references('id')->on('users')->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')
+                                    ->on('users')
+                                    ->onUpdate('cascade')
+                                    ->onDelete('cascade');
+                                   
+
+
+
+
+
         });
     }
 
