@@ -37,12 +37,15 @@
                             </aside>
                             <article class="row col-md-8 col-sm-12">
                                 <div class="col-md-12" id="contentbody">
-                                    <h2>Teacher name</h2>
+                                    @foreach($data as $item)
+                                    <h2>{{$item["id"]}}</h2>
+
                                     <div class="details">
                                         <p>
-                                            Teacher Describtion about himself
+                                            {{$item["description"]}}
                                         </p>
                                     </div>
+                                    @endforeach
                                 </div>
                                 <div class="col-md-12" id="courses">
                                     <h2>Courses</h2>

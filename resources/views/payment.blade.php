@@ -1,9 +1,12 @@
 @extends('layouts.general')
 
+
+
 @section('special-header')
 
 @endsection
 
+@can('isStudent')
 @section('main-body')
     <main>
         <div class="container panel panel-default mb-4 border" style=" margin-top:7em ;margin-bottom:7em ">
@@ -143,6 +146,15 @@
     </main>
 @endsection
 
+@elsecan('isTeacher')
+<div class="mt-5">
+<h1 class="text-danger text-center mt-5">Sorry you are not authorized !!</h1>
+</div>
+@endcan
+
 @section('special-end-page')
+
+
+
 
 @endsection

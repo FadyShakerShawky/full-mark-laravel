@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TeacherProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('index' , ["title" => "Home"]);
@@ -28,9 +31,8 @@ Route::get('/course-info', function () {
 Route::get('/privacy&policy', function () {
     return view('privacy&policy' , ["title" => "Privacy&policy"]);
 });
-Route::get('/teacher-profile', function () {
-    return view('teacher-profile' , ["title" => "Teacher profile"]);
-});
+Route::get('/teacher-profile', [TeacherProfileController::class, 'index']);
+
 Route::get('/search-courses', function () {
     return view('search-courses' , ["title" => "Search courses"]);
 });
@@ -40,13 +42,13 @@ Route::get('/search-courses', function () {
 // Route::get('/sign-up', function () {
 //     return view('sign-up' , ["title" => "Sign up"]);
 // });
-Route::get('/payment', function () {
-    return view('payment' , ["title" => "payment"]);
-});
+
+Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth');
+
 Route::get('/lecture-live', function () {
     return view('lecture-live' , ["title" => "Lecture live"]);
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
