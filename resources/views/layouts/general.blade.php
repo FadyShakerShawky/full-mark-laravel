@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $title }}</title>
+    <title></title>
     <link rel="stylesheet" href="./style/common.css" />    
     <link rel="stylesheet" href="./style/home.css" />
     <link rel="stylesheet" href="./style/slider.css" />
@@ -32,10 +32,6 @@
                         Search
                     </button>
                 </form>
-                <span id="sign-anc-spn" class="order-lg-1 d-flex flex-nowrap">
-                    <a class="btn btn-success mx-1" href="{{url('/sign-in')}}">Sign in</a>
-                    <a class="btn btn-success mx-1" href="{{url('/sign-up')}}">Sign up</a>
-                </span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                     aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -67,14 +63,50 @@
                         </li>
 
                     </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+                            
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
             </nav>
         </div>
     </header>
     <!-- end of header -->
     <!-- start of content -->
-    
-    @yield('main-body')
+    <main style="min-height: 100vh;">
+        @yield('main-body')
+    </main>
+ 
     
     <!-- end of content -->
     <!-- start of footer -->

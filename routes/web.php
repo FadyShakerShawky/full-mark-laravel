@@ -34,15 +34,19 @@ Route::get('/teacher-profile', function () {
 Route::get('/search-courses', function () {
     return view('search-courses' , ["title" => "Search courses"]);
 });
-Route::get('/sign-in', function () {
-    return view('sign-in' , ["title" => "Sign in"]);
-});
-Route::get('/sign-up', function () {
-    return view('sign-up' , ["title" => "Sign up"]);
-});
+// Route::get('/sign-in', function () {
+//     return view('sign-in' , ["title" => "Sign in"]);
+// });
+// Route::get('/sign-up', function () {
+//     return view('sign-up' , ["title" => "Sign up"]);
+// });
 Route::get('/payment', function () {
     return view('payment' , ["title" => "payment"]);
 });
 Route::get('/lecture-live', function () {
     return view('lecture-live' , ["title" => "Lecture live"]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
