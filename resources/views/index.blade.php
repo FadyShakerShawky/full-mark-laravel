@@ -188,7 +188,7 @@
                                     </div>
                                     <hr />
                                 </div>
-                                <a href="teacherprofile.php" class="btn btn-primary">Details</a>
+                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                                     </div>
                                     <hr />
                                 </div>
-                                <a href="teacherprofile.php" class="btn btn-primary">Details</a>
+                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>
@@ -240,7 +240,7 @@
                                     </div>
                                     <hr />
                                 </div>
-                                <a href="teacherprofile.php" class="btn btn-primary">Details</a>
+                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>
@@ -266,7 +266,7 @@
                                     </div>
                                     <hr />
                                 </div>
-                                <a href="teacherprofile.php" class="btn btn-primary">Details</a>
+                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>

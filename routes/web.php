@@ -31,7 +31,8 @@ Route::get('/course-info', function () {
 Route::get('/privacy&policy', function () {
     return view('privacy&policy' , ["title" => "Privacy&policy"]);
 });
-Route::get('/teacher-profile', [TeacherProfileController::class, 'index']);
+Route::get('/teacher-profile/{id}',[TeacherProfileController::class, 'show'])->name("teacher-profile");
+
 
 Route::get('/search-courses', function () {
     return view('search-courses' , ["title" => "Search courses"]);
