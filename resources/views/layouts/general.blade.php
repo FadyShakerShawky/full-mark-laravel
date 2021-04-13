@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <link rel="stylesheet" href="./style/common.css" />    
-    <link rel="stylesheet" href="./style/home.css" />
-    <link rel="stylesheet" href="./style/slider.css" />
-    <link href="./fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('style/common.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('style/home.css') }}" />
+    <link href="{{ asset('fontawesome-free-5.15.1-web/css/all.css') }}" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -24,7 +23,7 @@
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark col-12">
                 <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="media/Logo_2.png" alt="logo" style="height: 10vh" />
+                    <img src="{{ asset('media/Logo_2.png') }}" alt="logo" style="height: 10vh" />
                 </a>
                 <form class="form-inline my-2 my-lg-0 order-lg-1 d-flex flex-nowrap">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
@@ -151,8 +150,8 @@
                     </p>
                     <h3 class="footer-title">Contact on the go</h3>
                     <span id="img-footer">
-                        <img src="./media/app-store.svg" />
-                        <img src="./media/google-play.svg" />
+                        <img src="{{asset('media/app-store.svg')}} " />
+                        <img src="{{asset('media/google-play.svg')}}" />
                     </span>
                 </div>
             </div>
@@ -160,9 +159,8 @@
     </footer>
     <!-- end of footer -->
     @yield('special-end-page')
-    <script src="./scripts/home.js"></script>
-    <script src="./scripts/slider.js"></script>
-    <script src="./scripts/multipagesslider.js"></script>
+    <script src="{{asset('scripts/home.js')}}"></script>
+    <script src="{{asset('scripts/multipagesslider.js')}}"></script>
 </body>
 
 </html>

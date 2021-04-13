@@ -1,8 +1,8 @@
 @extends('layouts.general')
 
 @section('special-header')
-    <link rel="stylesheet" href="./style/teacherprofile.css" />
-    <link rel="stylesheet" href="./style/chat.css" />
+    <link rel="stylesheet" href="{{ asset('style/teacherprofile.css') }}" />
+    <link rel="stylesheet" href="{{ asset('style/chat.css') }}" />
 @endsection
 
 @section('main-body')
@@ -24,24 +24,24 @@
                         aria-labelledby="profile-tab">
                         <div class="row">
                             <aside class="col-md-4 text-center" id="teacher-card">
-                                <img src="./media/TempProfile.jpg" alt="profile pic" />
-                                <h1>Teacher name</h1>
+                                <img src="{{asset('media/TempProfile.jpg')}}" alt="profile pic" />
+                                <h1>{{ $data->users->name }}</h1>
                                 <span id="teacher-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                                         class="fas fa-star"></i><i class="fas fa-star"></i><i
                                         class="far fa-star"></i></span>
                                 <div id="logos-container" class="d-flex justify-content-around">
-                                    <i class="fab fa-facebook"></i>
-                                    <i class="fab fa-twitter"></i>
-                                    <i class="fab fa-google-plus-square"></i>
+                                    <a href="{{ $data->t_link_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="{{ $data->t_link_youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+                                    
                                 </div>
                             </aside>
                             <article class="row col-md-8 col-sm-12">
                                 <div class="col-md-12" id="contentbody">
-                                    <h2>{{$data->users->name}}</h2>
+                                    <h2>Description</h2>
 
                                     <div class="details">
                                         <p>
-                                            {{$data["description"]}}
+                                            {{$data->description}}
                                         </p>
                                     </div>
                                 </div>
@@ -164,5 +164,5 @@
 @endsection
 
 @section('special-end-page')
-    <script src="./scripts/chat.js"></script>
+    <script src="{{asset('scripts/chat.js')}}"></script>
 @endsection
