@@ -10,7 +10,23 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        
+                        <div class="form-group row">
+                            <div class="col-6 mx-auto">
+                                <a href="login/facebook" class="btn btn-primary d-block w-100">Login with Facebook</a>                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6 mx-auto">
+                                <a href="login/facebook" class="btn btn-danger d-block w-100">Login with GOOGLE</a>                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6 mx-auto text-center">
+                                OR                                
+                            </div>
+                        </div>
+                        
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -24,7 +40,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

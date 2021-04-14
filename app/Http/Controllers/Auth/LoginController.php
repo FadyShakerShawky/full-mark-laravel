@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -36,5 +38,32 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+
+    
+    public function redirectToFacebbok(){
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    
+    public function handleFacebbokCallback(){
+        $user =  Socialite::driver('facebook')->user();
+        
+        $this->_loginOrRegister($user);
+        return redirect('/#');
+    }
+
+    public function _loginOrRegister($data){
+        $user = User::where('email' , '=' , $data->email)->first();
+        if (!$user){
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->provider_id = $data->id;
+            $user->save();
+        }
+        Auth::login($user);
     }
 }

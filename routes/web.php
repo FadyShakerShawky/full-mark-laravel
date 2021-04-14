@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TeacherProfileController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,10 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('index' , ["title" => "Home"]);
-});
+})->name('index');
 Route::get('/about-us', function () {
     return view('about-us' , ["title" => "About us"]);
-});
+})->name("no3noa3");
 Route::get('/contact-us', function () {
     return view('contact-us' , ["title" => "Contact us"]);
 });
@@ -53,3 +54,9 @@ Route::get('/lecture-live', function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// login with facebook
+Route::get('/login/facebook', [LoginController::class, 'redirectToFacebbok']);
+
+Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokCallback']);

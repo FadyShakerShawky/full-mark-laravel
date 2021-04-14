@@ -25,12 +25,7 @@
                 <a class="navbar-brand" href="{{url('/')}}">
                     <img src="{{ asset('media/Logo_2.png') }}" alt="logo" style="height: 10vh" />
                 </a>
-                <form class="form-inline my-2 my-lg-0 order-lg-1 d-flex flex-nowrap">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-success mx-1" type="submit">
-                        Search
-                    </button>
-                </form>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                     aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -60,8 +55,13 @@
                                 </div>
                             </div>
                         </li>
-
                     </ul>
+                    <form class="form-inline my-2 my-lg-0 d-flex flex-nowrap">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-success mx-1" type="submit">
+                            Search
+                        </button>
+                    </form>
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
