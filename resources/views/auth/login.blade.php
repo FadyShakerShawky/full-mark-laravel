@@ -10,23 +10,23 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        
+
                         <div class="form-group row">
                             <div class="col-6 mx-auto">
-                                <a href="login/facebook" class="btn btn-primary d-block w-100">Login with Facebook</a>                                
+                                <a href="login/facebook" class="btn btn-primary d-block w-100">Login with Facebook</a>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-6 mx-auto">
-                                <a href="login/facebook" class="btn btn-danger d-block w-100">Login with GOOGLE</a>                                
+                                <a href="login/facebook" class="btn btn-danger d-block w-100">Login with GOOGLE</a>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-6 mx-auto text-center">
-                                OR                                
+                                OR
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -77,6 +77,12 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-row mb-0 mt-3 ">
+                            <div class="col-md-8 offset-md-4">
+                                <a href="/sign-in/github" class="btn btn-secondary ">Sign in with GitHub</a>
                             </div>
                         </div>
                     </form>
