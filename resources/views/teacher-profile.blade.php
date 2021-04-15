@@ -53,9 +53,13 @@
                                     <h2>Courses</h2>
                                     <div class="details" id="courses-list">
                                         <ol>
-                                            <li>English first grade primary school</li>
-                                            <li>English second grade primary school</li>
-                                            <li>English third grade primary school</li>
+                                            @if (count($data->courses) === 0)
+                                            <p>This teacher doesn't have any courses yet</p>
+                                            @else
+                                            @foreach($data->courses as $course)
+                                            <li>{{$course["name"]}}</li>
+                                            @endforeach
+                                            @endif
                                         </ol>
                                     </div>
                                 </div>
