@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+// use Illuminate\Support\Facades\Auth;
 use Auth;
 class LoginController extends Controller
 {
@@ -42,17 +43,31 @@ class LoginController extends Controller
 
 
 
-    
+
     public function redirectToFacebbok(){
         return Socialite::driver('facebook')->redirect();
     }
 
-    
+
     public function handleFacebbokCallback(){
         $user =  Socialite::driver('facebook')->user();
-        
+
         $this->_loginOrRegister($user);
         return redirect('/#');
+    }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        $this->_loginOrRegister($user);
+
+          return redirect('/');
     }
 
     public function _loginOrRegister($data){

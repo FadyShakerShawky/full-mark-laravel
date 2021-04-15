@@ -60,7 +60,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/login/facebook', [LoginController::class, 'redirectToFacebbok']);
 
 Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokCallback']);
-
+//login with github
 Route::get('/sign-in/github', 'App\Http\Controllers\LoginController@github');
 
 Route::get('/sign-in/github/redirect', 'App\Http\Controllers\LoginController@githubRedirect');
+
+
+//login with google
+Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
