@@ -22,7 +22,7 @@ Route::get('/', function () {
 })->name('index');
 Route::get('/about-us', function () {
     return view('about-us' , ["title" => "About us"]);
-})->name("no3noa3");
+})->name("about-us");
 Route::get('/contact-us', function () {
     return view('contact-us' , ["title" => "Contact us"]);
 });
