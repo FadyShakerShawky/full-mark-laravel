@@ -26,13 +26,17 @@
                             <aside class="col-md-4 text-center" id="teacher-card">
                                 <img src="{{asset('media/TempProfile.jpg')}}" alt="profile pic" />
                                 <h1>{{ $data->users->name }}</h1>
-                                <span id="teacher-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="far fa-star"></i></span>
+                                <span id="teacher-rating">
+                                <span id="teacher-rating" >
+                                        @for( $i=1 ; $i <= ($data->t_rate_sum/$data->t_rate_count) && $i <= 5 ; $i++)
+                                            <i class="fas fa-star"></i>
+                                        @endfor
+                                </span>
+                                </span>
                                 <div id="logos-container" class="d-flex justify-content-around">
                                     <a href="{{ $data->t_link_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
                                     <a href="{{ $data->t_link_youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
-                                    
+
                                 </div>
                             </aside>
                             <article class="row col-md-8 col-sm-12">

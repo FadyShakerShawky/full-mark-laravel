@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                         </div>
-                        <p class="text-center m-4 h2">OR</p>
+                        <p class="text-center m-4 h6">OR</p>
                         <div class="form-group row">
                             <div class="col-md-6   offset-md-3">
                                 <a href="{{route('login.google')}}" class="btn btn-danger btn-block">
