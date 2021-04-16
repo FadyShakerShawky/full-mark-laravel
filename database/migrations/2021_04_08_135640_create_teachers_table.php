@@ -22,8 +22,7 @@ class CreateTeachersTable extends Migration
             $table->text("description");
             $table->string("t_link_facebook");
             $table->string("t_link_youtube");
-            $table->integer("t_rate_sum");
-            $table->integer("t_rate_count");
+            $table->float("rating" , 8 , 2)->default(0);
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')

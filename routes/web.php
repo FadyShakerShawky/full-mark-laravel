@@ -70,3 +70,6 @@ Route::get('/sign-in/github/redirect', 'App\Http\Controllers\LoginController@git
 //login with google
 Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+
+//Rating system

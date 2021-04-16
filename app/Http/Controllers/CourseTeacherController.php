@@ -94,10 +94,10 @@ class CourseTeacherController extends Controller
             return view('search-courses', ['data'=> $data , 'searchText' =>$text ]);
     }
 
-
+    private $searchParams = [];
     public function extinsiveSearch(){
         $searchParams = json_decode($_REQUEST['searchParams'], true);
-        $searchCourses = $searchParams['searchCourses'];
+        $this->searchParams = $searchParams;
         $result = DB::table('course_teachers')
                         ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
                         ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
@@ -105,13 +105,13 @@ class CourseTeacherController extends Controller
                         ->join('group_students', 'course_teachers.id', '=', 'group_students.course_teacher_id')
                         ->join('groups', 'groups.id', '=', 'group_students.group_id')
                         ->whereBetween('groups.price' ,[ $searchParams['minPrice'] , $searchParams['maxPrice']])
-                        ->where(function ($query) {
-                            // dd($searchParams);
-                            // $query->where('courses.name' , 'like' , '%' . $searchParams['searchText'] . '%')
-                            //         ->orWhere('courses.description' , 'like' , '%' . $searchParams['searchText'] . '%')
-                            //         ->orWhere('teachers.description' , 'like' , '%' . $searchParams['searchText'] . '%')
-                            //         ->orWhere('users.name' , 'like' , '%' . $searchParams['searchText'] . '%');
+                        ->where(function ($query ) {
+                            $query->where('courses.name' , 'like' , '%' . $this->searchParams['searchText'] . '%')
+                                    ->orWhere('courses.description' , 'like' , '%' . $this->searchParams['searchText'] . '%')
+                                    ->orWhere('teachers.description' , 'like' , '%' . $this->searchParams['searchText'] . '%')
+                                    ->orWhere('users.name' , 'like' , '%' . $this->searchParams['searchText'] . '%');
                         })
+                        ->whereIn('courses.name' ,$searchParams['searchCourses'])
                         ->select('course_teachers.id','groups.price' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'courses.description')
                         ->limit(8)
                         ->get();

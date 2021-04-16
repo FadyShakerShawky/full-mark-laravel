@@ -28,11 +28,13 @@
                     </div>
                     <div class="d-flex flex-column">
                         <span>Rating</span>
-                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i></span>
-                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
-                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
-                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
-                        <span class="ml-3"><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
+                        <span class="ml-3">
+                            <i class="far golden fa-star" id="star-1" onclick="choseRatingHandler(1)" onmouseover="ratingStarsHandler(1)" onmouseout="ratingStarsHandler(1)"></i>
+                            <i class="far golden fa-star" id="star-2" onclick="choseRatingHandler(2)" onmouseover="ratingStarsHandler(2)" onmouseout="ratingStarsHandler(2)"></i>
+                            <i class="far golden fa-star" id="star-3" onclick="choseRatingHandler(3)" onmouseover="ratingStarsHandler(3)" onmouseout="ratingStarsHandler(3)"></i>
+                            <i class="far golden fa-star" id="star-4" onclick="choseRatingHandler(4)" onmouseover="ratingStarsHandler(4)" onmouseout="ratingStarsHandler(4)"></i>
+                            <i class="far golden fa-star" id="star-5" onclick="choseRatingHandler(5)" onmouseover="ratingStarsHandler(5)" onmouseout="ratingStarsHandler(5)"></i>
+                        </span>
                     </div>
                     <input type="button" value="Filter results" class="btn btn-success" onclick="filterResults()">
                 </div>
