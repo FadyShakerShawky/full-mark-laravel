@@ -22,7 +22,7 @@ Route::get('/', function () {
 })->name('index');
 Route::get('/about-us', function () {
     return view('about-us' , ["title" => "About us"]);
-})->name("no3noa3");
+})->name("about-us");
 Route::get('/contact-us', function () {
     return view('contact-us' , ["title" => "Contact us"]);
 });
@@ -61,3 +61,12 @@ Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokC
 
 
 Route::get('/courses/search', [App\Http\Controllers\CourseTeacherController::class , 'extinsiveSearch']);
+//login with github
+Route::get('/sign-in/github', 'App\Http\Controllers\LoginController@github');
+
+Route::get('/sign-in/github/redirect', 'App\Http\Controllers\LoginController@githubRedirect');
+
+
+//login with google
+Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);

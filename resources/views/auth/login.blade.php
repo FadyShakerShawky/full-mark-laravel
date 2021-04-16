@@ -10,28 +10,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        
-                        <div class="form-group row">
-                            <div class="col-6 mx-auto">
-                                <a href="login/facebook" class="btn btn-primary d-block w-100">Login with Facebook</a>                                
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-6 mx-auto">
-                                <a href="login/facebook" class="btn btn-danger d-block w-100">Login with GOOGLE</a>                                
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-6 mx-auto text-center">
-                                OR                                
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <div class="form-group row">
+                            {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
+
+                            <div class="col-md-6   offset-md-3">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Mail Address">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -40,11 +24,12 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <div class="form-group row">
+                            {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
+
+                            <div class="col-md-6   offset-md-3">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -55,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -67,7 +52,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -77,6 +62,28 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
+                        </div>
+                        <p class="text-center m-4 h6">OR</p>
+                        <div class="form-group row">
+                            <div class="col-md-6   offset-md-3">
+                                <a href="{{route('login.google')}}" class="btn btn-danger btn-block">
+                                    login with in Google
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6   offset-md-3">
+                                <a href="login/facebook" class="btn btn-info btn-block">
+                                    login with in Facebook
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6   offset-md-3">
+                                <a href="/sign-in/github" class="btn btn-secondary btn-block">
+                                    login with in GitHub
+                                </a>
                             </div>
                         </div>
                     </form>
