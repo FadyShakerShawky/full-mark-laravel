@@ -28,6 +28,11 @@ function priceViewHandler(event, targetDiv) {
     searchParams.maxPrice = document.getElementById("max-price-slider").value;
     searchParams.minPrice = document.getElementById("min-price-slider").value;
 }
+function ratingViewHandler(event, targetDiv) {
+    document.getElementById(targetDiv).innerText = event.target.value;
+    searchParams.maxRating = document.getElementById("max-rating-slider").value;
+    searchParams.minRating = document.getElementById("min-rating-slider").value;
+}
 function filterResults() {
     $.ajax({
         contentType: "application/json",

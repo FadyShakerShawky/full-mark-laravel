@@ -32,9 +32,9 @@
                     <div class="d-flex flex-column">
                         <span>Rating</span>
                         <span class="ml-3"><span><span>Max : </span><span id="max-rating-value">5</span></span>
-                            <input oninput="priceViewHandler(event, 'max-rating-value')" id="max-rating-slider" type="range" name="rating" min='0' step="0.1" value='5' max='5' class='slider' >
+                            <input oninput="ratingViewHandler(event, 'max-rating-value')" id="max-rating-slider" type="range" name="rating" min='0' step="0.1" value='5' max='5' class='slider' >
                             <span><span>Min : </span><span id="min-rating-value">0</span></span>
-                            <input oninput="priceViewHandler(event, 'min-rating-value')" id="min-price-slider" type="range" name="price" min='0' step="0.1" value='0' max='5' class="slider">
+                            <input oninput="ratingViewHandler(event, 'min-rating-value')" id="min-price-slider" type="range" name="price" min='0' step="0.1" value='0' max='5' class="slider">
                     
                         </span>
                     </div>
