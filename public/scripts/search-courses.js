@@ -8,6 +8,8 @@ if (document.getElementById("search-key-word")) {
 searchParams.maxPrice = document.getElementById("max-price-slider").value;
 searchParams.minPrice = document.getElementById("min-price-slider").value;
 searchParams.searchCourses = [];
+searchParams.minRating = 0;
+searchParams.maxRating = 5;
 
 function coursesSearchNameHandler(event) {
     if (event.target.checked) {

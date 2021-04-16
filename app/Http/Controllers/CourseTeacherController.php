@@ -105,6 +105,7 @@ class CourseTeacherController extends Controller
                         ->join('group_students', 'course_teachers.id', '=', 'group_students.course_teacher_id')
                         ->join('groups', 'groups.id', '=', 'group_students.group_id')
                         ->whereBetween('groups.price' ,[ $searchParams['minPrice'] , $searchParams['maxPrice']])
+                        ->whereBetween('teachers.rating' ,[ $searchParams['minRating'] , $searchParams['maxRating']])
                         ->where(function ($query ) {
                             $query->where('courses.name' , 'like' , '%' . $this->searchParams['searchText'] . '%')
                                     ->orWhere('courses.description' , 'like' , '%' . $this->searchParams['searchText'] . '%')
@@ -115,6 +116,7 @@ class CourseTeacherController extends Controller
                         ->select('course_teachers.id','groups.price' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'courses.description')
                         ->limit(8)
                         ->get();
+            $this->searchParams = [];
         return $result;
     }
     

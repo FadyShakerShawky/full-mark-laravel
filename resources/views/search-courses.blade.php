@@ -21,19 +21,21 @@
                         <span class="ml-3"><input type="checkbox" value="science" onchange="coursesSearchNameHandler(event)" name="science" id="science" class="mr-2"/><label for="science">Science</label></span>
                     </div>
                     <div class="d-flex flex-column">
-                        <span><span>Max price : </span><span id="max-price-value">1000</span></span>
-                        <input oninput="priceViewHandler(event, 'max-price-value')" id="max-price-slider" type="range" name="price" min='0' value='1000' max='1000' class='slider' >
-                        <span><span>Min price : </span><span id="min-price-value">0</span></span>
-                        <input oninput="priceViewHandler(event, 'min-price-value')" id="min-price-slider" type="range" name="price" min='0' value='0' max='1000' class="slider">
-                    </div>
+                        <span>Price</span>
+                        <span class="ml-3">
+                            <span><span>Max : </span><span id="max-price-value">1000</span></span>
+                            <input oninput="priceViewHandler(event, 'max-price-value')" id="max-price-slider" type="range" name="price" min='0' value='1000' max='1000' class='slider' >
+                            <span><span>Min : </span><span id="min-price-value">0</span></span>
+                            <input oninput="priceViewHandler(event, 'min-price-value')" id="min-price-slider" type="range" name="price" min='0' value='0' max='1000' class="slider">
+                        </span>
+                      </div>
                     <div class="d-flex flex-column">
                         <span>Rating</span>
-                        <span class="ml-3">
-                            <i class="far golden fa-star" id="star-1" onclick="choseRatingHandler(1)" onmouseover="ratingStarsHandler(1)" onmouseout="ratingStarsHandler(1)"></i>
-                            <i class="far golden fa-star" id="star-2" onclick="choseRatingHandler(2)" onmouseover="ratingStarsHandler(2)" onmouseout="ratingStarsHandler(2)"></i>
-                            <i class="far golden fa-star" id="star-3" onclick="choseRatingHandler(3)" onmouseover="ratingStarsHandler(3)" onmouseout="ratingStarsHandler(3)"></i>
-                            <i class="far golden fa-star" id="star-4" onclick="choseRatingHandler(4)" onmouseover="ratingStarsHandler(4)" onmouseout="ratingStarsHandler(4)"></i>
-                            <i class="far golden fa-star" id="star-5" onclick="choseRatingHandler(5)" onmouseover="ratingStarsHandler(5)" onmouseout="ratingStarsHandler(5)"></i>
+                        <span class="ml-3"><span><span>Max : </span><span id="max-rating-value">5</span></span>
+                            <input oninput="priceViewHandler(event, 'max-rating-value')" id="max-rating-slider" type="range" name="rating" min='0' step="0.1" value='5' max='5' class='slider' >
+                            <span><span>Min : </span><span id="min-rating-value">0</span></span>
+                            <input oninput="priceViewHandler(event, 'min-rating-value')" id="min-price-slider" type="range" name="price" min='0' step="0.1" value='0' max='5' class="slider">
+                    
                         </span>
                     </div>
                     <input type="button" value="Filter results" class="btn btn-success" onclick="filterResults()">
