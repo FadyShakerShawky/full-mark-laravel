@@ -2,6 +2,7 @@
 
 
 @section('main-body')
+<link rel="stylesheet" href="{{ asset('style/teacherprofile.css') }}" />
     <main>
         <!-- start of carosel -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -114,7 +115,7 @@
                                     Enjoy your time with the most famous teachers all over the
                                     Republic.
                                 </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3">enroll me</a>
+                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
                             </div>
                         </div>
                     </div>
@@ -128,7 +129,7 @@
                                     Enjoy your time with the most famous teachers all over the
                                     Republic.
                                 </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3">enroll me</a>
+                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
                             </div>
                         </div>
                     </div>
@@ -142,7 +143,7 @@
                                     Enjoy your time with the most famous teachers all over the
                                     Republic.
                                 </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3">enroll me</a>
+                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
                             </div>
                         </div>
                     </div>
@@ -156,7 +157,7 @@
                                     Enjoy your time with the most famous teachers all over the
                                     Republic.
                                 </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3">enroll me</a>
+                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
                             </div>
                         </div>
                     </div>
@@ -166,6 +167,7 @@
         <div id="popular" class="d-none">
             <div class="container my-5">
                 <div class="row" style="justify-content: space-around">
+                @foreach($data as $user)
                     <div class="col-md-6 col-lg-3 col-sm-12">
                         <div class="card col bg-light shadow scale-up-center">
                             <div style="width: 100%; text-align: center">
@@ -175,101 +177,24 @@
                             <div class="card-body">
                                 <div style="text-align: center">
                                     <p class="card-title" style="color: #6610f2; font-weight: 700">
-                                        Mohamed Khaled
+                                    {{$user->users->name}}
                                     </p>
-                                    <p class="card-title" style="font-weight: 200">
-                                        English teacher
-                                    </p>
-                                    <div class="flex-nowrap d-flex align-items-center">
-                                        <span class="pr-1" style="color: #6610f2; font-weight: 600">Rating : </span><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="far fa-star golden"></i>
-                                    </div>
+
+                                    <!-- <div class="flex-nowrap d-flex align-items-center"> -->
+                                    <span id="teacher-rating" >
+                                    @for( $i=1 ; $i <= $user["rating"] && $i <= 5 ; $i++)
+                                                <i class="fas fa-star"></i>
+                                            @endfor
+                                    </span>
+                                    <!-- </div> -->
                                     <hr />
                                 </div>
-                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
+                                <a href="{{route('teacher-profile',$user->id)}}" class="btn btn-success mx-auto d-block">Details</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card col bg-light shadow scale-up-center">
-                            <div style="width: 100%; text-align: center">
-                                <img src="./media/TempProfile.jpg" class="card-img-top rounded-circle"
-                                    style="width: 50%" alt="Temp profile" />
-                            </div>
-                            <div class="card-body">
-                                <div style="text-align: center">
-                                    <p class="card-title" style="color: #6610f2; font-weight: 700">
-                                        Mohamed Khaled
-                                    </p>
-                                    <p class="card-title" style="font-weight: 200">
-                                        English teacher
-                                    </p>
-                                    <div class="flex-nowrap d-flex align-items-center">
-                                        <span class="pr-1" style="color: #6610f2; font-weight: 600">Rating : </span><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="far fa-star golden"></i>
-                                    </div>
-                                    <hr />
-                                </div>
-                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card col bg-light shadow scale-up-center">
-                            <div style="width: 100%; text-align: center">
-                                <img src="./media/TempProfile.jpg" class="card-img-top rounded-circle"
-                                    style="width: 50%" alt="Temp profile" />
-                            </div>
-                            <div class="card-body">
-                                <div style="text-align: center">
-                                    <p class="card-title" style="color: #6610f2; font-weight: 700">
-                                        Mohamed Khaled
-                                    </p>
-                                    <p class="card-title" style="font-weight: 200">
-                                        English teacher
-                                    </p>
-                                    <div class="flex-nowrap d-flex align-items-center">
-                                        <span class="pr-1" style="color: #6610f2; font-weight: 600">Rating : </span><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="far fa-star golden"></i>
-                                    </div>
-                                    <hr />
-                                </div>
-                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card col bg-light shadow scale-up-center">
-                            <div style="width: 100%; text-align: center">
-                                <img src="./media/TempProfile.jpg" class="card-img-top rounded-circle"
-                                    style="width: 50%" alt="Temp profile" />
-                            </div>
-                            <div class="card-body">
-                                <div style="text-align: center">
-                                    <p class="card-title" style="color: #6610f2; font-weight: 700">
-                                        Mohamed Khaled
-                                    </p>
-                                    <p class="card-title" style="font-weight: 200">
-                                        English teacher
-                                    </p>
-                                    <div class="flex-nowrap d-flex align-items-center">
-                                        <span class="pr-1" style="color: #6610f2; font-weight: 600">Rating : </span><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="fas fa-star golden"></i><i class="fas fa-star golden"></i><i
-                                            class="far fa-star golden"></i>
-                                    </div>
-                                    <hr />
-                                </div>
-                                <a href="{{route('teacher-profile',['id' => 1])}}" class="btn btn-primary">Details</a>
-                            </div>
-                        </div>
-                    </div>
+                    @break($loop->iteration === 4)
+                    @endforeach
                 </div>
             </div>
         </div>
