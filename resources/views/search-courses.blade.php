@@ -5,189 +5,72 @@
 @endsection
 
 @section('main-body')
-    <main class="container-fluid" id="page-cont">
-        <aside class="col-md-2" style="padding:0">
-            <div class="accordion transparent" id="accordionExample">
-                <div class="card transparent no-border">
-                    <div class="card-header no-border" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-block text-left aside-header" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Grade
-                            </button>
-                        </h2>
-                    </div>
 
-                    <div id="collapseOne" class="collapse show aside-accord-body" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul>
-                                <li>Primary</li>
-                            </ul>
-                        </div>
-                    </div>
+    <main class="container-fluid mb-3" id="page-cont">
+        <aside class="col-md-3">
+            <div class="card h-100">
+                <div class="card-header title">
+                    Search parameters
                 </div>
-                <div class="card transparent no-border">
-                    <div class="card-header no-border" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-block text-left aside-header" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                Grade
-                            </button>
-                        </h2>
+                <div class="card-body d-flex flex-column" id="filter-params">
+                    <div class="d-flex flex-column">
+                        <span>Course</span>
+                        <span class="ml-3"><input type="checkbox" value="english" onchange="coursesSearchNameHandler(event)" name="english" id="english" class="mr-2"/><label for="english">English</label></span>
+                        <span class="ml-3"><input type="checkbox" value="arabic" onchange="coursesSearchNameHandler(event)" name="arabic" id="arabic" class="mr-2"/><label for="arabic">Arabic</label></span>
+                        <span class="ml-3"><input type="checkbox" value="math" onchange="coursesSearchNameHandler(event)" name="math" id="math" class="mr-2"/><label for="math">Math</label></span>
+                        <span class="ml-3"><input type="checkbox" value="science" onchange="coursesSearchNameHandler(event)" name="science" id="science" class="mr-2"/><label for="science">Science</label></span>
                     </div>
-
-                    <div id="collapseTwo" class="collapse  aside-accord-body" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul>
-                                <li>Primary</li>
-                            </ul>
-                        </div>
+                    <div class="d-flex flex-column">
+                        <span><span>Max price : </span><span id="max-price-value">1000</span></span>
+                        <input oninput="priceViewHandler(event, 'max-price-value')" id="max-price-slider" type="range" name="price" min='0' value='1000' max='1000' class='slider' >
+                        <span><span>Min price : </span><span id="min-price-value">0</span></span>
+                        <input oninput="priceViewHandler(event, 'min-price-value')" id="min-price-slider" type="range" name="price" min='0' value='0' max='1000' class="slider">
                     </div>
-                </div>
-                <div class="card transparent no-border">
-                    <div class="card-header no-border" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-block text-left aside-header" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                Grade
-                            </button>
-                        </h2>
+                    <div class="d-flex flex-column">
+                        <span>Rating</span>
+                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i></span>
+                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
+                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="fas golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
+                        <span class="ml-3"><i class="fas golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
+                        <span class="ml-3"><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i><i class="far golden fa-star"></i></span>
                     </div>
-
-                    <div id="collapseThree" class="collapse aside-accord-body" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul>
-                                <li>Primary</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card transparent no-border">
-                    <div class="card-header no-border" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-block text-left aside-header" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                Grade
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseFour" class="collapse  aside-accord-body" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul>
-                                <li>Primary</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card transparent no-border">
-                    <div class="card-header no-border" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-block text-left aside-header" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                                Grade
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseSix" class="collapse  aside-accord-body" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul>
-                                <li>Primary</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <input type="button" value="Filter results" class="btn btn-success" onclick="filterResults()">
                 </div>
             </div>
         </aside>
-
-        <div class="container-fluid col-md-10 my-3">
-            <div class="cards-container">
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
-                    </div>
+        <div class="col-md-9">
+            <div class="card h-100">
+                <div class="card-header align-items-center" style="gap: 10px">
+                    <span class="title">Our Courses with</span>
+                   @if ($searchText)
+                   <span id='search-key-word'>
+                    "key words <span class="search-item-display" id='search-key-word-text'>{{$searchText}}</span> "
+                   </span>
+                   
+                   @endif 
                 </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
+                <div class="card-body row" id="search-result-container">
+                        @foreach ($data as $course)
+                        <div class="mx-auto flex-wrap" style="width: 15rem">
+                            <div class="card">
+                                <img src="./media/science.jpeg" class="card-img-top" alt="science">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ $course->courseName }}</h4>
+                                    <h5>By : <a href="{{ route('teacher-profile' ,$course->teacherId ) }}">{{$course->teacherName}}</a></h5>
+                                    <p class="card-text">{{$course->description}}</p>
+                                    <a href="{{ url('course-info') }}" class="btn btn-success">View course</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="costome-card">
-                    <div class="card " style="width: 18rem;">
-                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                        <div class="card-body">
-                            <h5 class="card-title">Science</h5>
-                            <p class="card-text">This course is provided for the secondary stage and includes
-                                many examinations and exercises.</p>
-                            <a href="{{ url('course-info') }}" class="btn btn-success">Go somewhere</a>
-                        </div>
+                        
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
+@endsection
+
+@section('special-end-page')
+    <script src="{{asset('scripts/search-courses.js')}}"></script>
 @endsection

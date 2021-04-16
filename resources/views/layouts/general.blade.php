@@ -56,11 +56,9 @@
                             </div>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0 d-flex flex-nowrap">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-success mx-1" type="submit">
-                            Search
-                        </button>
+                    <form class="form-inline my-2 my-lg-0 d-flex flex-nowrap" method="GET" action="{{ route('courses.search') }}">
+                        <input class="form-control mr-sm-2" type="search" name="text" placeholder="Search" aria-label="Search" />
+                        <input type="submit" value="Search" class="btn btn-success">
                     </form>
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

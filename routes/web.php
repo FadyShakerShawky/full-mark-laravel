@@ -35,9 +35,7 @@ Route::get('/privacy&policy', function () {
 Route::get('/teacher-profile/{id}',[TeacherProfileController::class, 'show'])->name("teacher-profile");
 
 
-Route::get('/search-courses', function () {
-    return view('search-courses' , ["title" => "Search courses"]);
-});
+Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class , 'searchByName'])->name('courses.search');
 // Route::get('/sign-in', function () {
 //     return view('sign-in' , ["title" => "Sign in"]);
 // });
@@ -60,3 +58,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/login/facebook', [LoginController::class, 'redirectToFacebbok']);
 
 Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokCallback']);
+
+
+Route::get('/courses/search', [App\Http\Controllers\CourseTeacherController::class , 'extinsiveSearch']);
