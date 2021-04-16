@@ -29,12 +29,19 @@ class LoginController extends Controller
         $user = Socialite::driver('github')->user();
 
         // dd($user);
-
-        $user= User::firstOrCreate(
-            [ 'email' => $user->email],
-            [ 'name' => $user->name,
-              'password' => Hash::make(Str::random(24))
-            ]);
+        if($user->name){
+            $user= User::firstOrCreate(
+                [ 'email' => $user->email],
+                [ 'name' => $user->name,
+                  'password' => Hash::make(Str::random(24))
+                ]);
+        }   else    {
+            $user= User::firstOrCreate(
+                [ 'email' => $user->email],
+                [ 'name' => $user->nickname,
+                  'password' => Hash::make(Str::random(24))
+                ]);
+        }
 
             Auth::login($user, true);
 
