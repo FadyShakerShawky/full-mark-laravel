@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FourmaxratingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ Route::get('/', function () {
     return view('index' , ["title" => "Home"]);
 })->name('index');
 
-Route::get('/',[TeacherProfileController::class, 'index1']);
+Route::get('/',[FourmaxratingController::class, 'index1']);
 
 Route::get('/about-us', function () {
     return view('about-us' , ["title" => "About us"]);

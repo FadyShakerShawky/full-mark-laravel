@@ -177,7 +177,7 @@
                             <div class="card-body">
                                 <div style="text-align: center">
                                     <p class="card-title" style="color: #6610f2; font-weight: 700">
-                                    {{$user->users->name}}
+                                    {{$user->name}}
                                     </p>
 
                                     <!-- <div class="flex-nowrap d-flex align-items-center"> -->
@@ -193,7 +193,6 @@
                             </div>
                         </div>
                     </div>
-                    @break($loop->iteration === 4)
                     @endforeach
                 </div>
             </div>
