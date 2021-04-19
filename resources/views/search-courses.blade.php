@@ -15,18 +15,21 @@
                 <div class="card-body d-flex flex-column" id="filter-params">
                     <div class="d-flex flex-column">
                         <span>Course</span>
-                        <span class="ml-3"><input type="checkbox" value="english" onchange="coursesSearchNameHandler(event)" name="english" id="english" class="mr-2"/><label for="english">English</label></span>
-                        <span class="ml-3"><input type="checkbox" value="arabic" onchange="coursesSearchNameHandler(event)" name="arabic" id="arabic" class="mr-2"/><label for="arabic">Arabic</label></span>
-                        <span class="ml-3"><input type="checkbox" value="math" onchange="coursesSearchNameHandler(event)" name="math" id="math" class="mr-2"/><label for="math">Math</label></span>
-                        <span class="ml-3"><input type="checkbox" value="science" onchange="coursesSearchNameHandler(event)" name="science" id="science" class="mr-2"/><label for="science">Science</label></span>
-                    </div>
+
+                        @foreach($course as $courses)
+                        <span class="ml-3">
+                            <input type="checkbox" value="{{$courses->name}}" onchange="coursesSearchNameHandler(event)" name="{{$courses->name}}" id="{{$courses->name}}" class="mr-2"/>
+                            <label for="{{$courses->name}}">{{$courses->name}}</label>
+                        </span>
+                        @endforeach
+
                     <div class="d-flex flex-column">
                         <span>Price</span>
                         <span class="ml-3">
-                            <span><span>Max : </span><span id="max-price-value">1000</span></span>
-                            <input oninput="priceViewHandler(event, 'max-price-value')" id="max-price-slider" type="range" name="price" min='0' value='1000' max='1000' class='slider' >
-                            <span><span>Min : </span><span id="min-price-value">0</span></span>
-                            <input oninput="priceViewHandler(event, 'min-price-value')" id="min-price-slider" type="range" name="price" min='0' value='0' max='1000' class="slider">
+                            <span><span>Max : </span><span id="max-price-value">{{$maxvalue}}</span></span>
+                            <input oninput="priceViewHandler(event, 'max-price-value')" id="max-price-slider" type="range" name="price" min='{{$minvalue}}' value='{{$maxvalue}}' max='{{$maxvalue}}' class='slider' >
+                            <span><span>Min : </span><span id="min-price-value">{{$minvalue}}</span></span>
+                            <input oninput="priceViewHandler(event, 'min-price-value')" id="min-price-slider" type="range" name="price" min='{{$minvalue}}' value='{{$minvalue}}' max='{{$maxvalue}}' class="slider">
                         </span>
                       </div>
                     <div class="d-flex flex-column">
@@ -35,7 +38,7 @@
                             <input oninput="ratingViewHandler(event, 'max-rating-value')" id="max-rating-slider" type="range" name="rating" min='0' step="0.1" value='5' max='5' class='slider' >
                             <span><span>Min : </span><span id="min-rating-value">0</span></span>
                             <input oninput="ratingViewHandler(event, 'min-rating-value')" id="min-price-slider" type="range" name="price" min='0' step="0.1" value='0' max='5' class="slider">
-                    
+
                         </span>
                     </div>
                     <input type="button" value="Filter results" class="btn btn-success" onclick="filterResults()">
@@ -50,8 +53,8 @@
                    <span id='search-key-word'>
                     "key words <span class="search-item-display" id='search-key-word-text'>{{$searchText}}</span> "
                    </span>
-                   
-                   @endif 
+
+                   @endif
                 </div>
                 <div class="card-body row" id="search-result-container">
                         @foreach ($data as $course)
@@ -66,7 +69,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         @endforeach
                     </div>
                 </div>

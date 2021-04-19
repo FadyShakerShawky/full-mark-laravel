@@ -5,7 +5,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FourmaxratingController;
-
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,14 @@ use App\Http\Controllers\FourmaxratingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/', function () {
     return view('index' , ["title" => "Home"]);
 })->name('index');
 
-Route::get('/',[FourmaxratingController::class, 'index1']);
+Route::get('/',[FourmaxratingController::class, 'index1'  ]);
 
 Route::get('/about-us', function () {
     return view('about-us' , ["title" => "About us"]);
@@ -41,6 +43,7 @@ Route::get('/teacher-profile/{id}',[TeacherProfileController::class, 'show'])->n
 
 
 Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class , 'searchByName'])->name('courses.search');
+
 // Route::get('/sign-in', function () {
 //     return view('sign-in' , ["title" => "Sign in"]);
 // });

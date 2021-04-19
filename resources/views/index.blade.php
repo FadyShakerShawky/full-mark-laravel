@@ -45,25 +45,32 @@
         </div>
         <div class="lower-slider mt-5">
             <div>
-                <i class="fas fa-laptop" id="fontaweson"></i>
-                <div class="lower-slider_1" id="lower-slider_1">
-                    <b>130,000 online Courses</b> <br />
+                <span >
+                <i class="fas fa-laptop" style="font-size: 70px " id="fontaweson"></i>
+                <div class="lower-slider_1  mt-2" id="lower-slider_1">
+                    <b>{{$counts}} online Courses</b> <br />
                     Enjoy a variety of fresh topics
                 </div>
+                </span>
             </div>
             <div>
-                <i class="fas fa-chalkboard-teacher" id="fontaweson"></i>
-                <div class="lower-slider_2" id="lower-slider_2">
-                    <b>130,000 online Courses</b> <br />
+                <span >
+                <i class="fas fa-chalkboard-teacher" style="font-size: 70px " id="fontaweson"></i>
+                <div class="lower-slider_2 mt-2 " id="lower-slider_2">
+                    <b>{{$counts}} online Courses</b> <br />
                     Enjoy a variety of fresh topics
                 </div>
+                </span>
             </div>
             <div>
-                <i class="fas fa-tablet-alt" id="fontaweson"></i>
-                <div class="lower-slider_3" id="lower-slider_3">
-                    <b>130,000 online Courses</b> <br />
-                    Enjoy a variety of fresh topics
-                </div>
+                <span>
+                     <i class="fas fa-tablet-alt   " style="font-size: 70px " id="fontaweson"></i>
+
+                        <div class="lower-slider_3  mt-2" id="lower-slider_3">
+                            <b>{{$counts}} online Courses</b> <br />
+                            Enjoy a variety of fresh topics
+                        </div>
+                </span>
             </div>
         </div>
         <!-- end of carosel -->
@@ -72,13 +79,13 @@
             <div id="middle-row" class="row">
                 <div class="col-md-7 col-sm-12">
                     <div class="cont ml-5 pt-2 my-4 text-light">
-                        <h2 class="font-weight-bol h1">Acad-Hool for your CHILDREN</h2>
+                        <h2 class="font-weight-bol h1">Full-Mark for your CHILDREN</h2>
                         <p class="h3">
-                            get un limite access to 5,000 of Acad-Hool top courses for your
+                            get un limite access to 5,000 of Full-Mark top courses for your
                             children
                         </p>
                         <button class="btn btn-info btn-lg">
-                            Get udemy for bussiness
+                            Get full-mark for bussiness
                         </button>
                     </div>
                 </div>

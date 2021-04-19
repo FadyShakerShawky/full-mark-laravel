@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CourseTeacher;
+use App\Models\Course;
+use App\Models\Group;
 use Illuminate\Support\Facades\DB;
 
 class CourseTeacherController extends Controller
@@ -74,6 +76,11 @@ class CourseTeacherController extends Controller
         //
     }
     public function searchByName(){
+        $maxValue = DB::table('groups')->max('price');
+        $minValue = DB::table('groups')->min('price');
+        $courses=Course::all('name');
+
+
         $text = "";
         if( isset($_REQUEST['text']) ){
             $text = $_REQUEST['text'];
@@ -91,7 +98,7 @@ class CourseTeacherController extends Controller
                         ->select('course_teachers.id' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'courses.description')
                         ->limit(8)
                         ->get();
-            return view('search-courses', ['data'=> $data , 'searchText' =>$text ]);
+            return view('search-courses', ['data'=> $data , 'searchText' =>$text ,"course"=>$courses , "maxvalue"=>$maxValue, "minvalue"=>$minValue]);
     }
 
     private $searchParams = [];
@@ -119,9 +126,9 @@ class CourseTeacherController extends Controller
             $this->searchParams = [];
         return $result;
     }
-    
 
-    
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -133,3 +140,4 @@ class CourseTeacherController extends Controller
         //
     }
 }
+

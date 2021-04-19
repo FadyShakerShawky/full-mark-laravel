@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <link rel="stylesheet" href="{{ asset('style/common.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('style/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('style/home.css') }}" />
     <link href="{{ asset('fontawesome-free-5.15.1-web/css/all.css') }}" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -25,7 +25,7 @@
                 <a class="navbar-brand" href="{{url('/')}}">
                     <img src="{{ asset('media/Logo_2.png') }}" alt="logo" style="height: 10vh" />
                 </a>
-                
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
                     aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,12 +35,7 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{url('/')}}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/about-us')}}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/contact-us')}}">Contact Us</a>
-                        </li>
+
                         <li class="nav-item dropdown">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle nav-link header-btn"
@@ -55,6 +50,12 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/about-us')}}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/contact-us')}}">Contact Us</a>
+                        </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0 d-flex flex-nowrap" method="GET" action="{{ route('courses.search') }}">
                         <input class="form-control mr-sm-2" type="search" name="text" placeholder="Search" aria-label="Search" />
@@ -68,7 +69,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -103,8 +104,8 @@
     <main style="min-height: 100vh;">
         @yield('main-body')
     </main>
- 
-    
+
+
     <!-- end of content -->
     <!-- start of footer -->
     <footer class="container-fluid pt-3 pt-md-4 border-top">
