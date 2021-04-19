@@ -17,6 +17,15 @@ class TeacherProfileController extends Controller
 
         return view('teacher-profile' , ["data" => $teacher]);
     }
+
+    public function index1(){
+
+        $teacher = new Teacher;
+
+        $teacher  = $teacher->all();
+
+        return view('index' , ["data" => $teacher]);
+    }
     public function show($id)
     {
         $teacher = Teacher::findOrFail($id);

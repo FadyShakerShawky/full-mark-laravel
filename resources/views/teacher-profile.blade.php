@@ -27,11 +27,9 @@
                                 <img src="{{asset('media/TempProfile.jpg')}}" alt="profile pic" />
                                 <h1>{{ $data->users->name }}</h1>
                                 <span id="teacher-rating">
-                                <span id="teacher-rating" >
-                                        @for( $i=1 ; $i <= ($data->t_rate_sum/$data->t_rate_count) && $i <= 5 ; $i++)
+                                        @for( $i=1 ; $i <= ($data->rating) && $i <= 5 ; $i++)
                                             <i class="fas fa-star"></i>
                                         @endfor
-                                </span>
                                 </span>
                                 <div id="logos-container" class="d-flex justify-content-around">
                                     <a href="{{ $data->t_link_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -89,6 +87,7 @@
                                     <th scope="col">End time</th>
                                     <th scope="col">Fees</th>
                                     <th scope="col">Enroll now</th>
+                                    <th scope="col">Create Group</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,6 +101,9 @@
                                     <td>10$ /Month</td>
                                     <td>
                                         <a class="btn btn-primary" href="#" role="button">Enroll</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{route('groups')}}" role="button">New Group</a>
                                     </td>
                                 </tr>
                                 <tr>
