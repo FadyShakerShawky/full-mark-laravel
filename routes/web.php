@@ -5,6 +5,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FourmaxratingController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
@@ -23,27 +24,34 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('index' , ["title" => "Home"]);
+    return view('index', ["title" => "Home"]);
 })->name('index');
 
-Route::get('/',[FourmaxratingController::class, 'index1'  ]);
+Route::get('/', [FourmaxratingController::class, 'index1']);
 
 Route::get('/about-us', function () {
-    return view('about-us' , ["title" => "About us"]);
+    return view('about-us', ["title" => "About us"]);
 })->name("about-us");
-Route::get('/contact-us', function () {
-    return view('contact-us' , ["title" => "Contact us"]);
-});
+
+// // Start Contact Us Routs :
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name("contact-us");
+Route::post('/contactstore', [ContactUsController::class, 'store'])->name("contact.store");
+// End Contact Us Routs
+
+
+// Route::get('/contact-us', function () {
+//     return view('contact-us' , ["title" => "Contact us"]);
+// });
 Route::get('/course-info', function () {
-    return view('course-info' , ["title" => "Course info"]);
+    return view('course-info', ["title" => "Course info"]);
 });
 Route::get('/privacy&policy', function () {
-    return view('privacy&policy' , ["title" => "Privacy&policy"]);
+    return view('privacy&policy', ["title" => "Privacy&policy"]);
 });
-Route::get('/teacher-profile/{id}',[TeacherProfileController::class, 'show'])->name("teacher-profile");
+Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile");
 
 
-Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class , 'searchByName'])->name('courses.search');
+Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class, 'searchByName'])->name('courses.search');
 
 // Route::get('/sign-in', function () {
 //     return view('sign-in' , ["title" => "Sign in"]);
@@ -55,7 +63,7 @@ Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::cla
 Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth');
 
 Route::get('/lecture-live', function () {
-    return view('lecture-live' , ["title" => "Lecture live"]);
+    return view('lecture-live', ["title" => "Lecture live"]);
 });
 
 
@@ -69,7 +77,7 @@ Route::get('/login/facebook', [LoginController::class, 'redirectToFacebbok']);
 Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokCallback']);
 
 
-Route::get('/courses/search', [App\Http\Controllers\CourseTeacherController::class , 'extinsiveSearch']);
+Route::get('/courses/search', [App\Http\Controllers\CourseTeacherController::class, 'extinsiveSearch']);
 //login with github
 Route::get('/sign-in/github', 'App\Http\Controllers\LoginController@github');
 
@@ -85,5 +93,5 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 
 //start group route get and post
 Route::get('/group', [GroupController::class, 'index'])->name('groups');
-Route::post('/store', [GroupController::class, 'store'])->name('group.store');
+Route::post('/groupstore', [GroupController::class, 'store'])->name('group.store');
 //end group route

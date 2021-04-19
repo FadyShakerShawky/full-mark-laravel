@@ -8,13 +8,14 @@
     <main style="min-height: 100vh">
         <div class="container">
             <div class="row px-5 py-5">
-                <form action="#" method="GET" id="contact-form" class="mx-auto row col-md-8 col-sm-12" style="gap: 10px"
-                    onsubmit="myformValidate(event)">
+                <form action="{{route('contact.store')}}" method="POST" id="contact-form" class="mx-auto row col-md-8 col-sm-12" style="gap: 10px"
+                    >
+                    @csrf
                     <h1 class="col-md-12 text-center" style="color:#D7E081">Keep in touch with us</h1>
                     <span class="row col-md-12 justify-content-between align-items-center">
                         <span class="input-container">
                             <i class="fas fa-user-tie"></i>
-                            <input type="text" id="fname" name="firstname" class="hover-shadow input-container-input"
+                            <input type="text" id="fname" name="name" class="hover-shadow input-container-input"
                                 placeholder="Your name.." />
                         </span>
                     </span>
@@ -33,15 +34,15 @@
                         </span>
                     </span>
                     <span class="row col-md-12 justify-content-between align-items-center">
-                        <textarea class="col-md-12 hover-shadow input-container-input" id="subject" name="subject"
-                            placeholder="Write something.."></textarea>
+                        <textarea class="col-md-12 hover-shadow input-container-input" id="subject" name="message"
+                            placeholder="Write your message"></textarea>
                         <input type="submit" value="Send Message" class="btn btn-success ml-auto mt-2 " /></span>
 
                 </form>
             </div>
         </div>
     </main>
-    <script>
+    {{-- <script>
         function myformValidate(event) {
             function ValidateEmail(mail) {
                 let email = document.getElementById("email"),
@@ -57,7 +58,7 @@
                 alert("You have entered an invalid email address!");
                 return false;
             }
-    
+
             if (
                 email.value.length != 0 &&
                 fname.value.length > 8 &&
@@ -73,5 +74,5 @@
                 event.preventDefault();
             }
         }
-        </script>
+        </script> --}}
 @endsection
