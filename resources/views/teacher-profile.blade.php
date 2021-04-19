@@ -87,6 +87,7 @@
                                     <th scope="col">End time</th>
                                     <th scope="col">Fees</th>
                                     <th scope="col">Enroll now</th>
+                                    <th scope="col">Create Group</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,6 +101,9 @@
                                     <td>10$ /Month</td>
                                     <td>
                                         <a class="btn btn-primary" href="#" role="button">Enroll</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{route('groups')}}" role="button">New Group</a>
                                     </td>
                                 </tr>
                                 <tr>

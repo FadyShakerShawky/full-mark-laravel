@@ -19,8 +19,8 @@ class CreateGroupsTable extends Migration
             $table->integer("max_no_student");
             $table->date("start_date");
             $table->date("end_date");
-            $table->timestamp("start_time")->nullable();
-            $table->timestamp("end_time")->nullable();
+            $table->time("start_time")->nullable();
+            $table->time("end_time")->nullable();
             $table->integer("no_lec");
             $table->decimal("price",$precision = 10, $scale = 2);
             $table->timestamps();

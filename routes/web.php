@@ -6,6 +6,7 @@ use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FourmaxratingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -81,3 +82,8 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 
 
 //Rating system
+
+//start group route get and post
+Route::get('/group', [GroupController::class, 'index'])->name('groups');
+Route::post('/store', [GroupController::class, 'store'])->name('group.store');
+//end group route
