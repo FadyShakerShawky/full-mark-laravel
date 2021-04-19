@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\PayPalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,4 +72,8 @@ Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, '
 Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
 
 
-//Rating system
+//payment with paypal
+
+Route::get('paypal/checkout/{id}', [PayPalController::class ,'getExpressCheckout'])->name('paypal.checkout');
+Route::get('paypal/checkout-success/{id}',[PayPalController::class , 'getExpressCheckoutSuccess'])->name('paypal.success');
+Route::get('paypal/checkout-cancel', [PayPalController::class , 'cancelPage'])->name('paypal.cancel');
