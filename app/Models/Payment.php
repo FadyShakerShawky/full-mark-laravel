@@ -9,10 +9,6 @@ class Payment extends Model
 {
     use HasFactory;
 
-    public function groupstudents()
-    {
-        return $this->belongsTo(GroupStudent::class);
-    }
 
     public function  students()
     {

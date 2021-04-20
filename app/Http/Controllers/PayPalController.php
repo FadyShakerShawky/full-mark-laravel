@@ -72,11 +72,11 @@ class PayPalController extends Controller
         if ($response->result->status == 'COMPLETED') {
             $payment->is_paid = 1;
             $payment->save();
-            return redirect()->route('index')->withMessage('Payment successful!');
+            return redirect('/');
 
         }
 
-        return redirect()->route('index')->withError('Payment UnSuccessful! Something went wrong!');
+        return redirect('/');
 
 
     }

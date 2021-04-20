@@ -59,4 +59,32 @@ class GroupController extends Controller
 
             return view('allgroups',["data" => $result]);
     }
+
+    private function getGroupData($id){
+
+        $data = DB::table('groups')
+                    ->join('course_teachers' , 'groups.course_teacher_id' ,'=' ,"course_teachers.id")
+                    ->join('courses' , 'course_teachers.course_id' ,'=' ,"courses.id")
+                    ->where('groups.id' , '=' , $id)
+                    ->select("courses.name" , 'groups.price' , 'groups.id')
+                    ->first();
+        return $data;
+    }
+    
+    public function shoppingCartData(){
+        if(isset( $_REQUEST['shoppingCart'] )){
+            
+            $arrayOfGroups = json_decode($_REQUEST['shoppingCart'], true); 
+            
+            $data = [];
+            foreach ($arrayOfGroups as  $id) {
+                array_push($data , $this->getGroupData($id));
+            }
+            return $data;
+        }
+       
+        
+    }
+
+
 }

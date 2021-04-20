@@ -63,7 +63,7 @@ Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::cla
 //     return view('sign-up' , ["title" => "Sign up"]);
 // });
 
-Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth');
+
 
 Route::get('/lecture-live', function () {
     return view('lecture-live', ["title" => "Lecture live"]);
@@ -102,13 +102,17 @@ Route::get('paypal/checkout-cancel', [PayPalController::class , 'cancelPage'])->
 //start group route get and post
 Route::get('/group', [GroupController::class, 'index'])->name('groups');
 Route::post('/groupstore', [GroupController::class, 'store'])->name('group.store');
-//end group route
 
-//shoppingcart
-Route::get('/shoppingcart', function(){
-    return redirect('shoppingcart');
-})->name('shoppingcart');
+
+//end group route
 Route::get('/allgroups/{id}',[GroupController::class, 'showGroup'])->name("allgroups");
 
 
-//end group route
+//shoppingcart
+Route::get('/shoppingcart', function(){
+    return view('shoppingcart');
+})->name('shoppingcart');
+
+Route::get('/groups.data', [GroupController::class , 'shoppingCartData']);
+
+Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth');

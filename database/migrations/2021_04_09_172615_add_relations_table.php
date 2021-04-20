@@ -31,13 +31,27 @@ class AddRelationsTable extends Migration
         Schema::table('groups', function (Blueprint $table) {
             //
             $table->foreign('course_teacher_id')->references('id')
-        ->on('course_teachers')
-        ->onUpdate('cascade')
-        ->onDelete('cascade');
+                    ->on('course_teachers')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
 
             
 
         }); 
+        Schema::table('group_students' , function (Blueprint $table){
+            $table->foreign('payment_id')->references('id')
+                    ->on('payments')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+        });
+        Schema::table('payments', function (Blueprint $table) {
+            //
+            $table->foreign('students_id')->references('id')
+                                        ->on('students')
+                                        ->onUpdate('cascade')
+                                        ->onDelete('cascade'); 
+
+        });
     }
     
     /**

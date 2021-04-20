@@ -19,7 +19,7 @@ class CreateGroupStudentsTable extends Migration
             $table->unsignedBigInteger('student_id');
 
             $table->unsignedBigInteger('group_id');
-
+            $table->unsignedBigInteger('payment_id');
             $table->timestamps();
         });
     }
