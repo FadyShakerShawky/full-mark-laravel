@@ -9,10 +9,7 @@ class CourseTeacher extends Model
 {
     use HasFactory;
 
-    public function groupstudents()
-    {
-        return $this->hasMany(GroupStudent::class);
-    }
+
     public function course()
     {
         return $this->belongsTo(Course::class,"course_id", "id");

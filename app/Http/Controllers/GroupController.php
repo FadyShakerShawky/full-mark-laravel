@@ -47,12 +47,11 @@ class GroupController extends Controller
 
     public function showGroup($id)
     {
-        $result = DB::table('course_teachers')
-        ->join('teachers', 'teachers.id', '=', 'course_teachers.teacher_id')
-        ->join( 'group_students' ,'group_students.course_teacher_id' , '=' , 'course_teachers.id')
-        ->join('groups' , 'groups.id' , '=' , 'group_students.group_id')
+        $result = DB::table('groups')
+        // ->join('teachers', 'teachers.id', '=', 'groups.teacher_id')
+        ->join('course_teachers' ,'course_teachers.id' , '=' , 'groups.course_teacher_id')
         ->join('courses' ,'courses.id' , '=' , 'course_teachers.course_id')
-        ->where('teachers.id' , '=' , $id)
+        ->where('course_teachers.teacher_id' , '=' , $id)
         ->select('courses.name as courseName','groups.description as description','groups.max_no_student','groups.start_date as sd','groups.end_date as ed',
         'groups.start_time as st','groups.end_time as et','groups.end_time','groups.no_lec','groups.price as p')
         ->get();

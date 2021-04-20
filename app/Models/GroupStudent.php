@@ -23,9 +23,6 @@ class GroupStudent extends Model
         return $this->belongsTo(Group::class,"group_id", "id");
     }
 
-    public function  courseteacher()
-    {
-        return $this->belongsTo(CourseTeacher::class, 'course_teachers');
-    }
+
 
 }
