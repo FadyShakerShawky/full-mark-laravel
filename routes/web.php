@@ -101,3 +101,8 @@ Route::get('paypal/checkout-cancel', [PayPalController::class , 'cancelPage'])->
 Route::get('/group', [GroupController::class, 'index'])->name('groups');
 Route::post('/groupstore', [GroupController::class, 'store'])->name('group.store');
 //end group route
+
+//shoppingcart
+Route::get('/shoppingcart', function(){
+    return redirect('shoppingcart');
+})->name('shoppingcart');

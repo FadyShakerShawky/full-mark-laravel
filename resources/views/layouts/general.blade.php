@@ -77,11 +77,24 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="shoppingCartDropDown"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span class="position-relative">
+                                        <i class="fas fa-shopping-cart" id="cart-icon"></i>
+                                        <span class="position-absolute" id="cart-item-cunt"></span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shoppingCartDropDown">
+                                    <a class="dropdown-item" href="{{ route('shoppingcart') }}">
+                                        View shopping cart
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="userMenueDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenueDropDown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

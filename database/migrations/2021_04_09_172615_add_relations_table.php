@@ -25,13 +25,21 @@ class AddRelationsTable extends Migration
                                         ->onUpdate('cascade')
                                         ->onDelete('cascade');
             
-            $table->foreign('course_teacher_id')->references('id')
-                                        ->on('course_teachers')
-                                        ->onUpdate('cascade')
-                                        ->onDelete('cascade');
-        });
-    }
 
+        }); 
+    
+        Schema::table('groups', function (Blueprint $table) {
+            //
+            $table->foreign('course_teacher_id')->references('id')
+        ->on('course_teachers')
+        ->onUpdate('cascade')
+        ->onDelete('cascade');
+
+            
+
+        }); 
+    }
+    
     /**
      * Reverse the migrations.
      *
