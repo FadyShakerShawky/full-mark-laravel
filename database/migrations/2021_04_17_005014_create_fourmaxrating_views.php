@@ -36,6 +36,6 @@ class CreateFourmaxratingViews extends Migration
      */
     public function down()
     {
-        DB::statement('DROP VIEW IF EXISTS fourmaxratings');
+        DB::dropIfExists('fourmaxratings');
     }
 }

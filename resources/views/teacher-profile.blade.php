@@ -34,6 +34,7 @@
                                 <div id="logos-container" class="d-flex justify-content-around">
                                     <a href="{{ $data->t_link_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
                                     <a href="{{ $data->t_link_youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+                                    <a href="{{route('allgroups', $data->id)}}" target="_blank"><i class="fas fa-users"></i></a>
 
                                 </div>
                             </aside>
@@ -91,6 +92,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <tr>
                                     <th scope="row">1</th>
                                     <td>Algebra</td>
@@ -106,31 +108,9 @@
                                         <a class="btn btn-primary" href="{{route('groups')}}" role="button">New Group</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Algebra</td>
-                                    <td>01/09/2020-31/07/2021</td>
-                                    <td>Sat , Mon , Wed</td>
-                                    <td>10:00 am</td>
-                                    <td>12:00 pm</td>
-                                    <td>10$ /Month</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="#" role="button">Enroll</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Algebra</td>
-                                    <td>01/09/2020-31/07/2021</td>
-                                    <td>Sat , Mon , Wed</td>
-                                    <td>10:00 am</td>
-                                    <td>12:00 pm</td>
-                                    <td>10$ /Month</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="#" role="button">Enroll</a>
-                                    </td>
-                                </tr>
+
                             </tbody>
+
                         </table>
                     </div>
                 </div>
