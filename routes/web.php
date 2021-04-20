@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\FourmaxratingController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\CogroupController;
@@ -35,18 +36,15 @@ Route::get('/about-us', function () {
     return view('about-us', ["title" => "About us"]);
 })->name("about-us");
 
-// // Start Contact Us Routs :
+// Start Contact Us Routs :
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name("contact-us");
 Route::post('/contactstore', [ContactUsController::class, 'store'])->name("contact.store");
 // End Contact Us Routs
 
+// Start Course Info Routs :
+Route::get('/course-info/{id}',[CourseController::class, 'show'])->name("course-info");
+// Start Course Info Routs :
 
-// Route::get('/contact-us', function () {
-//     return view('contact-us' , ["title" => "Contact us"]);
-// });
-Route::get('/course-info', function () {
-    return view('course-info', ["title" => "Course info"]);
-});
 Route::get('/privacy&policy', function () {
     return view('privacy&policy', ["title" => "Privacy&policy"]);
 });
@@ -63,7 +61,7 @@ Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::cla
 //     return view('sign-up' , ["title" => "Sign up"]);
 // });
 
-Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth');
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment')->middleware('auth');
 
 Route::get('/lecture-live', function () {
     return view('lecture-live', ["title" => "Lecture live"]);
