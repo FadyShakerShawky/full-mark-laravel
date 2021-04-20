@@ -65,7 +65,7 @@
                                     <h4 class="card-title">{{ $course->courseName }}</h4>
                                     <h5>By : <a href="{{ route('teacher-profile' ,$course->teacherId ) }}">{{$course->teacherName}}</a></h5>
                                     <p class="card-text">{{$course->description}}</p>
-                                    <a href="{{ url('course-info') }}" class="btn btn-success">View course</a>
+                                    <a href="{{route('course-info',$course->id)}}" class="btn btn-success">View course</a>
                                 </div>
                             </div>
                         </div>

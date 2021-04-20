@@ -8,40 +8,56 @@
     <main>
         <!--------------------------- Start Course Detailes --------------------------------------------------------->
         <div class="container-fluid">
+            @foreach($data as $course)
             <div class="row">
                 <div class="courseNaDetails col-lg-12 p-5 mb-5 bg-dark text-white">
                     <h1 class="courseName  mt-5">
-                        React and Typescript: Build a Portfolio Project
+
+                        {{$course->name}}
+
                     </h1>
                     <h5 class="brief mb-3">
-                        Expand your portfolio of projects by building a complex app with the
-                        latest web technologies.
+                        {{$course->briefDescription}}
+
                     </h5>
-                    <span class="rate p-2 bg-warning text-dark rounded-sm mr-2 font-weight-bold">
+                    {{-- <span class="rate p-2 bg-warning text-dark rounded-sm mr-2 font-weight-bold">
                         Highest Rated
-                    </span>
-                    <span class="rateNumbers mb-2">4.0
+                    </span> --}}
+                    {{-- <span class="rateNumbers mb-2">4.0
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="fas fa-star text-warning"></i>
                         <i class="far fa-star text-warning"></i>
-                    </span>
-    
-                    <span class="noOfRatings">( 377 ratings ) 5,006 students</span>
+                    </span> --}}
+
+                    {{-- <span class="noOfRatings">( 377 ratings ) 5,006 students</span> --}}
+                    @if($course->rating > 5)
+                    <span> ( </span>{{(5)}} <span> ) </span>
+                    @else
+                    <span> ( </span>{{$course->rating}}<span> ) </span>
+                    @endif
+
+                    <span class="rateNumbers mb-2" id="teacher-rating">
+                        @for( $i=1 ; $i <= ($course->rating) && $i <= 5 ; $i++)
+                            <i class="fas fa-star text-warning"></i>
+                        @endfor
+                </span>
                     <div class="author mt-3">
                         Created By
-                        <a href="" class="authorName text-info ml-1">John Wick</a>
+                        <a href="{{route('teacher-profile',$courses->id)}}" class="authorName text-info ml-1">
+                           {{$course->user_name}}
+                        </a>
                     </div>
                     <div class="details mt-3 col-lg-12 col-sm-12">
-                        <span class="update"><i class="far fa-edit"></i> Last updated 2/2021
+                        <span class="update"><i class="far fa-edit"></i> last updated {{$course->updated_at}}
                         </span>
-                        <span class="lang ml-4"><i class="fas fa-globe-americas"></i> English
+                        <span class="lang ml-4"><i class="fas fa-globe-americas"></i> {{$course->language}}
                         </span>
-                        <span class="subtitle ml-4"><i class="far fa-closed-captioning"></i> English [Auto]
-                        </span>
+                        {{-- <span class="subtitle ml-4"><i class="far fa-closed-captioning"></i> English [Auto]
+                        </span> --}}
                     </div>
-                    <div class="btnContainer mt-3 col-sm-12">
+                    {{-- <div class="btnContainer mt-3 col-sm-12">
                         <button type="button" class="btn btn-outline-light mr-2 text-wight border border-white">
                             Wishlist <i class="far fa-heart"></i>
                         </button>
@@ -51,77 +67,41 @@
                         <button type="button" class="btn btn-outline-light text-wight border border-white">
                             Gift this course <i class="fas fa-hand-holding-heart"></i>
                         </button>
-                    </div>
+                    </div> --}}
+
+
                 </div>
+
             </div>
         </div>
-    
+
         <!-------------------------------- End Course Detailes ------------------------------------------------------>
-    
+
         <!------------------------------- Start Course Content ---------------------------------------------------------------->
-    
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Start (What you'll learn) div -->
                     <div class="container p-4 bg-light rounded-lg shadow p-4 mb-5 bg-white">
-                        <p class="whatLearn font-weight-bold">What you'll learn</p>
+                        <p class="whatLearn font-weight-bold">What you will learn :</p>
                         <div class="row">
                             <div class="learn col-6">
                                 <p>
-                                    <i class="fas fa-check"></i> Build a portfolio-ready project
-                                    with React and Typescript
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Simplify state updates with the
-                                    fabulous Immer library
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Manage a project using a
-                                    package-based architecture
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Build an in-browser transpiler +
-                                    bundler
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Use Redux middlewares to handle
-                                    complicated business logic flows
-                                </p>
-                            </div>
-                            <div class="learn col-6">
-                                <p>
-                                    <i class="fas fa-check"></i> Integrate React and Redux
-                                    together with Typescript
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> See the step-by-step process of
-                                    designing and assembling
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Automate your deployment with the
-                                    popular Lerna CLI
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Assemble incredibly reusable
-                                    React components
-                                </p>
-                                <p>
-                                    <i class="fas fa-check"></i> Use Web Assembly to increase the
-                                    performance of your app
+                                    <i class="fas fa-check"></i><span> {{$course->whatLearn}}</span>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <!-- End (What you'll learn) div -->
-    
+
                     <!-- Start Accordion -->
-                    <div class="container text-center mb-5">
+                    {{-- <div class="container text-center mb-5">
                         <p class="courseContent mb-4">Course content</p>
                         <p class="courseDuration">
                             27 sections • 388 lectures • 29h 16m total length
                         </p>
-    
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-9 col-sm-12">
@@ -152,7 +132,7 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingTwo">
                                                 <h4 class="panel-title">
@@ -177,7 +157,7 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingThree">
                                                 <h4 class="panel-title">
@@ -205,7 +185,7 @@
                                                 </div>
                                             </div>
                                         </div>
-    
+
                                         <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingFour">
                                                 <h4 class="panel-title">
@@ -237,31 +217,28 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- End Accordion -->
-    
+
                     <!-- Start Requirements -->
                     <div class="container bg-light shadow p-4 mb-4 bg-white mb-5">
                         <p class="requirements font-weight-bold">Requirements</p>
                         <div class="reqPoints">
                             <ul>
-                                <li>Basic knowledge of React and Redux</li>
-                                <li>
-                                    No prior knowledge of Typescript required - an introduction is
-                                    provided
-                                </li>
+                                <li>{{$course->requirements}}</li>
                             </ul>
                         </div>
                     </div>
                     <!-- End Requirements -->
-    
+
                     <!-- Start Description -->
-    
+
                     <div class="container bg-light shadow p-4 mb-4 bg-white mb-5">
                         <p class="desc font-weight-bold">Description</p>
                         <div class="row">
                             <p class="decWords p-3" style="line-height: 30px; font-size: larger">
-                                You've learned React, but what now? Time to build an awesome
+                                {{$course->description}}
+                                {{-- You've learned React, but what now? Time to build an awesome
                                 project for your portfolio! Prove your React knowledge to
                                 employers. There are hundreds of resources online for teaching
                                 you the basics of React, but few of them go beyond the basics.
@@ -291,9 +268,9 @@
                                 excellent looks and functionality. You will understand every
                                 line of code, and be able to explain every bit to potential
                                 employers. Here's a partial list of the topics that will be
-                                covered in this course:
+                                covered in this course: --}}
                             </p>
-                            <ul class="descUl">
+                            {{-- <ul class="descUl">
                                 <li>Master the use of React, Redux, and Typescript together</li>
                                 <li>
                                     Build a complex and interesting app using a package-based
@@ -324,85 +301,85 @@
                                     Deploy your app to the NPM registry, where others can easily
                                     use it
                                 </li>
-                            </ul>
-                            <p class="p-3" style="font-size: 18px">
+                            </ul> --}}
+                            {{-- <p class="p-3" style="font-size: 18px">
                                 I built this course to help you apply your React skills. I built
                                 this course to help you apply your React skills. Sign up today
                                 and build an incredible app that will prove your knowledge.
-                            </p>
-                            <div class="p-3">
+                            </p> --}}
+                            {{-- <div class="p-3">
                                 <p class="forwhome">Who this course is for:</p>
                                 <ul class="descUl">
                                     <li>Engineers looking to expand their project portfolio</li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
-    
+
                     <!-- End Description -->
                 </div>
                 <!-- closing div for <div class="col-lg-9"> -->
-    
+
                 <!-- Start Side Card -->
-                <div class="card shadow p-4 mb-4 bg-white col-lg-3 offset-1" style="height: 81rem">
-                    <img class="card-img-top" src="./media/react.jpg" alt="Card image cap" />
+                <div class="card shadow p-4 mb-4 bg-white col-lg-3 offset-1" style="height: 50rem">
+                    <img class="card-img-top"  src="{{ asset($course->image) }}" alt="Course Image" />
                     <div class="card-body">
                         <h3 class="card-title text-center">
-                            React and Typescript: Build a Portfolio Project
+                            {{$course->name}}
                         </h3>
                         <p class="card-text">
-                            Expand your portfolio of projects by building a complex app with
-                            the latest web technologies.
+                            {{$course->briefDescription}}
                         </p>
                         <h3 class="card-text font-weight-bolder text-center">
-                            &dollar; 11.99
-                            <span class="font-weight-lighter"><del> &dollar; 129.99</del></span>
+                            &dollar; {{$course->price}}
+                            {{-- <span class="font-weight-lighter"><del> &dollar; 129.99</del></span> --}}
                         </h3>
-    
+
                         <button type="button" class="btn btn-danger btn-block my-3">
                             Add to cart
                         </button>
-                        <button type="button" class="btn btn-outline-danger my-3 btn-block border border-warning">
+                        <a href="{{route('payment')}}" class="btn btn-outline-danger my-3 btn-block border border-warning">
                             Buy now
-                        </button>
+                        </a>
                         <p class="text-center">30-Day Money-Back Guarantee</p>
                         <div class="font-weight-bold">
                             <h3>This course includes:</h3>
                             <ul class="list-unstyled">
-                                <li class="my-3">
+                                {{-- <li class="my-3">
                                     <i class="fab fa-youtube"></i> 29.5 hours on-demand video
                                 </li>
                                 <li class="my-3"><i class="far fa-file"></i> 8 articles</li>
                                 <li class="my-3">
                                     <i class="fas fa-download"></i> 202 downloadable resources
-                                </li>
+                                </li> --}}
                                 <li class="my-3">
                                     <i class="fas fa-infinity"></i> Full lifetime access
                                 </li>
                                 <li class="my-3">
                                     <i class="fas fa-mobile-alt"></i> Access on mobile and TV
                                 </li>
-                                <li class="my-3">
+                                {{-- <li class="my-3">
                                     <i class="fas fa-graduation-cap"></i> Certificate of
                                     completion
-                                </li>
+                                </li> --}}
                             </ul>
-                            <div class="applyCoupon text-center mt-5">
+                            {{-- <div class="applyCoupon text-center mt-5">
                                 <a href="#" style="text-decoration: none">Apply Coupon</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
         <!-- End Side Card -->
-    
+
         <!-------------------------------------- End Course Content------------------------------------------->
-    
+
         <!------------------------------- Start Scroll Buttom ----------------------------------------------->
-    
-        <button id="topBtn"><i class="fas fa-arrow-up"></i></button>
-    
+
+        {{-- <button id="topBtn"><i class="fas fa-arrow-up"></i></button> --}}
+
         <!------------------------------- End Scroll Buttom ----------------------------------------------->
     </main>
 @endsection
