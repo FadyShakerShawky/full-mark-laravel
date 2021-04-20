@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Group;
 
+use Illuminate\Support\Facades\DB;
+
+
 
 class GroupController extends Controller
 {
@@ -40,5 +43,20 @@ class GroupController extends Controller
 
 
 
+    }
+
+    public function showGroup($id)
+    {
+        $result = DB::table('course_teachers')
+        ->join('teachers', 'teachers.id', '=', 'course_teachers.teacher_id')
+        ->join( 'group_students' ,'group_students.course_teacher_id' , '=' , 'course_teachers.id')
+        ->join('groups' , 'groups.id' , '=' , 'group_students.group_id')
+        ->join('courses' ,'courses.id' , '=' , 'course_teachers.course_id')
+        ->where('teachers.id' , '=' , $id)
+        ->select('courses.name as courseName','groups.description as description','groups.max_no_student','groups.start_date as sd','groups.end_date as ed',
+        'groups.start_time as st','groups.end_time as et','groups.end_time','groups.no_lec','groups.price as p')
+        ->get();
+
+            return view('allgroups',["data" => $result]);
     }
 }

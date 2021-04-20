@@ -14,9 +14,18 @@ class GroupStudent extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function students()
+    {
+        return $this->belongsTo(Student::class,"student_id", "id");
+    }
+    public function groups()
+    {
+        return $this->belongsTo(Group::class,"group_id", "id");
+    }
+
     public function  courseteacher()
     {
-        return $this->belongsTo(CourseTeacher::class);
+        return $this->belongsTo(CourseTeacher::class, 'course_teachers');
     }
 
 }

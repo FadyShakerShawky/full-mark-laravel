@@ -9,6 +9,7 @@ use App\Http\Controllers\FourmaxratingController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\CogroupController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -50,6 +51,7 @@ Route::get('/privacy&policy', function () {
     return view('privacy&policy', ["title" => "Privacy&policy"]);
 });
 Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile");
+
 
 
 Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class, 'searchByName'])->name('courses.search');
@@ -106,3 +108,7 @@ Route::post('/groupstore', [GroupController::class, 'store'])->name('group.store
 Route::get('/shoppingcart', function(){
     return redirect('shoppingcart');
 })->name('shoppingcart');
+Route::get('/allgroups/{id}',[GroupController::class, 'showGroup'])->name("allgroups");
+
+
+//end group route
