@@ -33,7 +33,7 @@
                 </span>
                     <div class="author mt-3">
                         Created By
-                        <a href="{{route('teacher-profile',$courses->id)}}" class="authorName text-info ml-1">
+                        <a href="{{route('teacher-profile',$course->teacher_id)}}" class="authorName text-info ml-1">
                            {{$course->user_name}}
                         </a>
                     </div>

@@ -28,10 +28,12 @@ class CourseController extends Controller
                 'courses.image as image',
                 'courses.requirements as requirements',
                 'courses.updated_at as updated_at',
-                'users.name as user_name'
+                'users.name as user_name',
+                'teachers.id as teacher_id'
             )
             ->get();
-        // dd($course);
+
+        // dd($data);
         return view('course-info', ["data" => $data, "courses" => $course]);
     }
 }
