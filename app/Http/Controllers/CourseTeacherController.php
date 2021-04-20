@@ -89,8 +89,7 @@ class CourseTeacherController extends Controller
                         ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
                         ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
                         ->join('users', 'users.id', '=', 'teachers.user_id')
-                        // ->join('group_students', 'course_teachers.id', '=', 'group_students.course_teacher_id')
-                        // ->join('groups', 'groups.id', '=', 'group_students.group_id')
+                        ->join('groups', 'groups.teacher_id', '=', 'teachers.id')
                         ->where('courses.name' , 'like' , '%' . $text . '%')
                         ->orWhere('courses.description' , 'like' , '%' . $text . '%')
                         ->orWhere('teachers.description' , 'like' , '%' . $text . '%')
@@ -109,8 +108,7 @@ class CourseTeacherController extends Controller
                         ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
                         ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
                         ->join('users', 'users.id', '=', 'teachers.user_id')
-                        ->join('group_students', 'course_teachers.id', '=', 'group_students.course_teacher_id')
-                        ->join('groups', 'groups.id', '=', 'group_students.group_id')
+                        ->join('groups', 'groups.teacher_id', '=', 'teachers.id')
                         ->whereBetween('groups.price' ,[ $searchParams['minPrice'] , $searchParams['maxPrice']])
                         ->whereBetween('teachers.rating' ,[ $searchParams['minRating'] , $searchParams['maxRating']])
                         ->where(function ($query ) {
@@ -140,4 +138,3 @@ class CourseTeacherController extends Controller
         //
     }
 }
-

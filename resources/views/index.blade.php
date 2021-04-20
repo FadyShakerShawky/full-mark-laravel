@@ -122,7 +122,8 @@
                                     Enjoy your time with the most famous teachers all over the
                                     Republic.
                                 </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
+                                <a href="{{ route("paypal.checkout" , ["id"=>1])}}" class="btn btn-success m-3">enroll me</a>
+                                {{-- <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a> --}}
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\FourmaxratingController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeController;
@@ -91,11 +92,17 @@ Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, '
 Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
 
 
+//payment with paypal
+
+Route::get('paypal/checkout/{id}', [PayPalController::class ,'getExpressCheckout'])->name('paypal.checkout');
+Route::get('paypal/checkout-success/{id}',[PayPalController::class , 'getExpressCheckoutSuccess'])->name('paypal.success');
+Route::get('paypal/checkout-cancel', [PayPalController::class , 'cancelPage'])->name('paypal.cancel');
 //Rating system
 
 //start group route get and post
 Route::get('/group', [GroupController::class, 'index'])->name('groups');
 Route::post('/groupstore', [GroupController::class, 'store'])->name('group.store');
 Route::get('/allgroups/{id}',[GroupController::class, 'showGroup'])->name("allgroups");
+
 
 //end group route

@@ -18,6 +18,10 @@
                         <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab"
                             aria-controls="schedule" aria-selected="false">Schedule</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="group-tab" data-toggle="tab" href="#group" role="tab"
+                            aria-controls="group" aria-selected="false">New group</a>
+                    </li>
                 </ul>
                 <div class="tab-content container-fluid" id="myTabContent">
                     <div class="tab-pane col-md-12 fade show active" id="profile" role="tabpanel"
@@ -113,12 +117,60 @@
 
                         </table>
                     </div>
+                    <div class="tab-pane col-md-12 fade" id="group" role="tabpanel" aria-labelledby="group-tab">
+                        <div class="card">
+                            <div class="card-header">
+                                New group
+                            </div>
+                            <div class="card-body">
+                                <form action="" method="post" >
+                                     
+                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
+                                        <label for="course" class='col'>course</label>
+                                        <select name="" id="" class="form-control col">
+                                            <option value="Arabic">Arabic</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
+                                        <label for="course" class='col'>course</label>
+                                        <select name="" id="" class="form-control col">
+                                            <option value="Arabic">Arabic</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
+                                        <label for="course" class='col'>course</label>
+                                        <select name="" id="" class="form-control col">
+                                            <option value="Arabic">Arabic</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
+                                        <label for="course" class='col'>course</label>
+                                        <select name="" id="" class="form-control col">
+                                            <option value="Arabic">Arabic</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
+                                        <label for="course" class='col'>course</label>
+                                        <select name="" id="" class="form-control col">
+                                            <option value="Arabic">Arabic</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
+                                        <label for="course" class='col'>course</label>
+                                        <select name="" id="" class="form-control col">
+                                            <option value="Arabic">Arabic</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Start Chat-->
-        <input type="button" value="Chat" name="chat" class="open-button" onclick="openchat()" />
+        {{-- <input type="button" value="Chat" name="chat" class="open-button" onclick="openchat()" />
 
         <div class="chat-popup" id="FormHandler">
             <h1><span style="color: rgb(170, 67, 170)">AcadHool</span> Chat</h1>
@@ -148,7 +200,7 @@
                 <i class="fas fa-paper-plane" id="fSend"></i>
                 <input type="button" onclick="messageHandler()" name="send" class="btn" />
             </div>
-        </div>
+        </div> --}}
         <!-- End Chat-->
     </main>
 @endsection

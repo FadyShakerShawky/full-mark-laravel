@@ -23,6 +23,11 @@ class CreateGroupsTable extends Migration
             $table->time("end_time")->nullable();
             $table->integer("no_lec");
             $table->decimal("price",$precision = 10, $scale = 2);
+            $table->unsignedBigInteger('teacher_id');
+            $table->foreign('teacher_id')->references('id')
+                                        ->on('teachers')
+                                        ->onUpdate('cascade')
+                                        ->onDelete('cascade');
             $table->timestamps();
         });
     }
