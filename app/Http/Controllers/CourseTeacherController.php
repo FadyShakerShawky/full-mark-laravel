@@ -89,7 +89,7 @@ class CourseTeacherController extends Controller
                         ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
                         ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
                         ->join('users', 'users.id', '=', 'teachers.user_id')
-                        ->join('groups', 'groups.teacher_id', '=', 'teachers.id')
+                        // ->join('groups', 'groups.teacher_id', '=', 'teachers.id')
                         ->where('courses.name' , 'like' , '%' . $text . '%')
                         ->orWhere('courses.description' , 'like' , '%' . $text . '%')
                         ->orWhere('teachers.description' , 'like' , '%' . $text . '%')
