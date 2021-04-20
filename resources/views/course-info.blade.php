@@ -322,7 +322,7 @@
 
                 <!-- Start Side Card -->
                 <div class="card shadow p-4 mb-4 bg-white col-lg-3 offset-1" style="height: 50rem">
-                    <img class="card-img-top"  src="{{ asset($course->image) }}" alt="Course Image" />
+                    <img class="card-img-top"  src="{{ asset('media/' . $course->image) }}" alt="Course Image" />
                     <div class="card-body">
                         <h3 class="card-title text-center">
                             {{$course->name}}
