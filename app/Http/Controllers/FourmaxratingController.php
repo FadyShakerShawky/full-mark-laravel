@@ -19,9 +19,14 @@ class FourmaxratingController extends Controller
 
 
 
-        $teacher = new Fourmaxrating;
+        // $teacher = new Fourmaxrating;
 
-        $teacher  = $teacher->all();
+        $teacher  = DB::table('teachers')
+        ->join('users' ,'teachers.user_id' , '=' , 'users.id')
+        ->select('users.name as name','teachers.rating as rating','teachers.id as teacher_id')
+        ->orderByRaw('teachers.rating DESC')
+        ->limit(4)
+        ->get();
 
         return view('index' , ["data" => $teacher ,'counts'=> $count]);
     }

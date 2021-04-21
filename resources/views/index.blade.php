@@ -189,14 +189,14 @@
 
                                     <!-- <div class="flex-nowrap d-flex align-items-center"> -->
                                     <span id="teacher-rating" >
-                                    @for( $i=1 ; $i <= $user["rating"] && $i <= 5 ; $i++)
+                                    @for( $i=1 ; $i <= $user->rating && $i <= 5 ; $i++)
                                                 <i class="fas fa-star"></i>
                                             @endfor
                                     </span>
                                     <!-- </div> -->
                                     <hr />
                                 </div>
-                                <a href="{{route('teacher-profile',$user->id)}}" class="btn btn-success mx-auto d-block">Details</a>
+                                <a href="{{route('teacher-profile',$user->teacher_id)}}" class="btn btn-success mx-auto d-block">Details</a>
                             </div>
                         </div>
                     </div>
