@@ -18,7 +18,7 @@
 
                         @foreach($course as $courses)
                         <span class="ml-3">
-                            <input type="checkbox" value="{{$courses->name}}" onchange="coursesSearchNameHandler(event)" name="{{$courses->name}}" id="{{$courses->name}}" class="mr-2"/>
+                            <input type="checkbox" checked value="{{$courses->name}}" onchange="coursesSearchNameHandler(event)" name="{{$courses->name}}" id="{{$courses->name}}" class="mr-2"/>
                             <label for="{{$courses->name}}">{{$courses->name}}</label>
                         </span>
                         @endforeach

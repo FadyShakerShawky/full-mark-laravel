@@ -22,7 +22,7 @@ class GroupFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->text(50),
             'max_no_student' => $this->faker->randomDigit,
             'start_date' => $this->faker->date,
             'end_date' => $this->faker->date,

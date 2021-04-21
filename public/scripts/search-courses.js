@@ -66,16 +66,3 @@ function filterResults() {
         },
     });
 }
-
-function ratingStarsHandler(i) {
-    for (let index = 1; index <= i; index++) {
-        document.getElementById("star-" + index).classList.toggle("far");
-        document.getElementById("star-" + index).classList.toggle("fas");
-    }
-}
-function choseRatingHandler(i) {
-    for (let index = 1; index <= i; index++) {
-        document.getElementById("star-" + index).classList.add("far");
-        document.getElementById("star-" + index).classList.remove("fas");
-    }
-}
