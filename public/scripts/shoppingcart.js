@@ -1,4 +1,4 @@
-(function getCartData() {
+let getCartData = function () {
     shoppingCart = localStorage.getItem("shopingCart");
     if (shoppingCart) {
         $.ajax({
@@ -6,26 +6,44 @@
             data: { shoppingCart },
             contentType: "application/json",
             success: (res) => {
-                console.log(res);
-                res.forEach((group) => {
+                if (res.length != 0) {
                     document.getElementById(
-                        "shopping-cart-body"
-                    ).innerHTML += `<span>Course name</span>
-                    <span>:</span>
-                    <span>${group.name}</span>
-                    <span>Price</span>
-                    <span>:</span>
-                    <span>${group.price}</span>
-                    <span></span>
-                    <span></span>
-                    <span>
-                        <a href="#" class="btn btn-success">Proceed with payment</a>
-                    </span>`;
-                });
+                        "payment-table"
+                    ).innerHTML = `<thead class="">
+                                        <th>Group Name</th>
+                                        <th class="text-center">Price</th>
+                                        <th></th>
+                                    </thead>`;
+                    res.forEach((group) => {
+                        displayGroupData(group);
+                    });
+                } else {
+                    document.getElementById("payment-table").innerHTML =
+                        "Sorry you dont have valid groups to apply for";
+                }
             },
             error: (err) => {
                 console.log(err);
             },
         });
     }
-})();
+};
+
+function deleteShoppingCartItem(id) {
+    let shoppingCart = JSON.parse(localStorage.getItem("shopingCart"));
+    let index = shoppingCart.findIndex((element) => element === id);
+    shoppingCart.splice(index, 1);
+    localStorage.setItem("shopingCart", JSON.stringify(shoppingCart));
+    getCartData();
+    cartCountHandler();
+}
+
+let displayGroupData = function (group) {
+    document.getElementById("payment-table").innerHTML += `<tr>
+    <td>${group.name}</th>
+    <td class="text-center">${group.price}</th>
+    <td class="text-right"><a href="http://localhost:8000/payment/${group.id}" class="btn btn-success mx-2">Pay now</a><button onclick="deleteShoppingCartItem(${group.id})" class="btn btn-danger mr-5">Delete</button></td>
+</tr>`;
+};
+
+getCartData();

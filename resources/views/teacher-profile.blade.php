@@ -38,7 +38,7 @@
                                 <div id="logos-container" class="d-flex justify-content-around">
                                     <a href="{{ $data->t_link_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
                                     <a href="{{ $data->t_link_youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
-                                    <a href="{{route('allgroups', $data->id)}}" target="_blank"><i class="fas fa-users"></i></a>
+                                    {{-- <a href="{{route('allgroups', $data->id)}}" target="_blank"><i class="fas fa-users"></i></a> --}}
 
                                 </div>
                             </aside>
@@ -81,10 +81,10 @@
                             </select>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-                        <table class="table col-md-12 my-4">
+                        <table class="table col-md-12 my-4" style="margin-top:25vh">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">No.</th>
                                     <th scope="col">Course</th>
                                     <th scope="col">Duration</th>
                                     <th scope="col">Days of week</th>
@@ -92,27 +92,24 @@
                                     <th scope="col">End time</th>
                                     <th scope="col">Fees</th>
                                     <th scope="col">Enroll now</th>
-                                    <th scope="col">Create Group</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                            <?php $index=1; ?>
+                            @foreach($groups as $group)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Algebra</td>
-                                    <td>01/09/2020-31/07/2021</td>
+                                    <th scope="row"><?php echo $index++; ?></th>
+                                    <td>{{$group->courseName}}</td>
+                                    <td>{{$group->sd}} / {{$group->ed}}</td>
                                     <td>Sat , Mon , Wed</td>
-                                    <td>10:00 am</td>
-                                    <td>12:00 pm</td>
-                                    <td>10$ /Month</td>
+                                    <td>{{$group->st}}</td>
+                                    <td>{{$group->et}}</td>
+                                    <td>{{$group->p}}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="#" role="button">Enroll</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-primary" href="{{route('groups')}}" role="button">New Group</a>
+                                        <button onclick="addCartHandler({{$group->id}})" class="btn btn-success" href="#" role="button">Enroll</button>
                                     </td>
                                 </tr>
-
+                            @endforeach
                             </tbody>
 
                         </table>
@@ -123,44 +120,85 @@
                                 New group
                             </div>
                             <div class="card-body">
-                                <form action="" method="post" >
-                                     
-                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
-                                        <label for="course" class='col'>course</label>
-                                        <select name="" id="" class="form-control col">
-                                            <option value="Arabic">Arabic</option>
-                                        </select>
+                                <form action="{{route('group.store')}}" method="post">
+                                    @csrf
+                                    <div class="row justify-content-center ">
+                                    <h2 class="text-center">Create New Group</h2>
+
+                                        <div class="form-group col-10 " >
+                                            <label for="course">Course</label>
+                                            <select name="course_teacher" style="border: 1px solid #6ab04c" id="course" class="col-md-12 form-control">
+                                                @foreach ($data->courses as $course)
+                                                    <option value="{{ $course->id }}">{{$course->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-10">
+                                            <label for="language">Language</label>
+                                            <input type="text" id="language" style="border: 1px solid #6ab04c" class="form-control" name="language" placeholder="language">
+                                        </div>
+
+                                        <div class="form-group col-10">
+                                            <label for="price">Price</label>
+                                            <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="price" placeholder="Price" min="10">
+                                        </div>
+
+                                        <div class="form-group col-10 " >
+                                            <label for="description">Description</label>
+                                            <textarea class="col-md-12 form-control" name="description" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                        </div>
+                            
+                                        <div class="form-group col-10">
+                                            <label for="briefDescription">Brief description</label>
+                                            <textarea class="col-md-12 form-control" id="briefDescription" name="briefDescription" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                        </div>
+
+                                        <div class="form-group col-10">
+                                            <label for="whatLearn">What will the student learn</label>
+                                            <textarea class="col-md-12 form-control" id="whatLearn" name="whatLearn" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                        </div>
+
+                                        <div class="form-group col-10">
+                                            <label for="requirements">Requirements</label>
+                                            <textarea class="col-md-12 form-control" id="requirements" name="requirements" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                        </div>
+
+                                        <div class="form-group col-10">
+                                            <label for="max_no_student">Max No Student</label>
+                                            <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="max_no_student" placeholder="Max No Student" min="5">
+                                        </div>
+                            
+                                        <div class="form-group col-10">
+                                            <label for="start_date">Start Date</label>
+                                                <input class="form-control" style="border: 1px solid #6ab04c" type="date" name="start_date">
+                                        </div>
+                            
+                                        <div class="form-group col-10">
+                                            <label for="end_date">End Date</label>
+                                                <input class="form-control" style="border: 1px solid #6ab04c" type="date" name="end_date">
+                                        </div>
+                            
+                                        <div class="form-group col-10">
+                                            <label for="start_time">Start Time</label>
+                                            <input class="form-control" style="border: 1px solid #6ab04c" type="time" name="start_time">
+                                        </div>
+                            
+                                        <div class="form-group col-10">
+                                            <label for="end_time">End Time</label>
+                                            <input class="form-control" style="border: 1px solid #6ab04c" type="time" name="end_time">
+                                        </div>
+                            
+                                        <div class="form-group col-10">
+                                            <label for="no_lec">Number of Lectures</label>
+                                            <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="no_lec" placeholder="Number of Lectures" min="0">
+                                        </div>
+
+                                        <div class="form-group col-10">
+                                            <button type="submit" class="btn btn-success">Create</button>
+                                        </div>
                                     </div>
-                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
-                                        <label for="course" class='col'>course</label>
-                                        <select name="" id="" class="form-control col">
-                                            <option value="Arabic">Arabic</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
-                                        <label for="course" class='col'>course</label>
-                                        <select name="" id="" class="form-control col">
-                                            <option value="Arabic">Arabic</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
-                                        <label for="course" class='col'>course</label>
-                                        <select name="" id="" class="form-control col">
-                                            <option value="Arabic">Arabic</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
-                                        <label for="course" class='col'>course</label>
-                                        <select name="" id="" class="form-control col">
-                                            <option value="Arabic">Arabic</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group row align-items-center mx-4" style="gap: 20px">
-                                        <label for="course" class='col'>course</label>
-                                        <select name="" id="" class="form-control col">
-                                            <option value="Arabic">Arabic</option>
-                                        </select>
-                                    </div>
+                            
                                 </form>
                             </div>
                         </div>

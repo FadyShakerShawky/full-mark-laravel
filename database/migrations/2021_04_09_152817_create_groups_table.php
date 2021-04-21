@@ -24,7 +24,10 @@ class CreateGroupsTable extends Migration
             $table->integer("no_lec");
             $table->decimal("price",$precision = 10, $scale = 2);
             $table->unsignedBigInteger('course_teacher_id');
-
+            $table->text('requirements');
+            $table->string('briefDescription');
+            $table->string('language');
+            $table->text('whatLearn');
             $table->timestamps();
 
         });

@@ -3,13 +3,21 @@
 
 
 @section('special-header')
-
+    <script src="{{asset('scripts/shoppingcart.js')}}"></script>
 @endsection
 
 @can('isStudent')
 @section('main-body')
-    <main>
-        <div class="container panel panel-default mb-4 border" style=" margin-top:7em ;margin-bottom:7em ">
+        @if (isset($_GET['payment']))
+            @if ($_GET['payment'] == 'SUCCESS')
+            <script>
+                deleteShoppingCartItem(<?php $_GET['payment']; ?>)
+            </script>
+            @endif
+        @endif
+        
+        
+        <div class="container panel panel-default mb-4 border" style=" margin-top:30vh">
 
             <div class=" panel-heading ng-binding h2 p-3 mt-3 bg-light text-dark ">
                 payment
@@ -20,27 +28,17 @@
                 <div class="row ">
                     <div class=" col-12 panel panel-default">
 
-                        <table class="table  table-striped ">
+                        <table class="table  table-striped " id="payment-table">
                             <thead class="">
-
-                                <tr>
-                                    <th scope="col-6">Group Name</th>
-                                    <th scope="col-6">Price/lecture </th>
-                                </tr>
-                                <tr>
-                                    <td scope="col-6">Arabic</th>
-                                    <td scope="col-6">100$ </th>
-                                </tr>
-                                <tr>
-                                    <td scope="col-6">English</th>
-                                    <td scope="col-6">120$ </th>
-                                </tr>
+                                <th>Group Name</th>
+                                <th class="text-center">Price</th>
+                                <th></th>
                             </thead>
                         </table>
 
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-12 panel panel-default">
                         <div class="panel-heading ng-binding h2 p-3  bg-light text-dark">
                             Total Invoice
@@ -67,14 +65,14 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
             </div>
 
 
         </div>
 
         <!-- //=========================================================== -->
-        <div class="container  " style="margin-top:5em ;margin-bottom:7em  ">
+        {{-- <div class="container  " style="margin-top:5em ;margin-bottom:7em  ">
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="tab-fawry" data-toggle="tab" href="#nav-home" role="tab"
@@ -141,9 +139,9 @@
                     cash
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- ====================================================================== -->
-    </main>
+   
 @endsection
 
 @elsecan('isTeacher')
@@ -152,9 +150,4 @@
 </div>
 @endcan
 
-@section('special-end-page')
 
-
-
-
-@endsection

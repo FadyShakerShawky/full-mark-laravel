@@ -27,6 +27,9 @@ class Group extends Model
         'price',
 
     ];
+    public function courseTeacher(){
+        return $this->belongsTo(CourseTeacher::class,"course_teacher_id", "id");
+    }
 
     public function students()
     {

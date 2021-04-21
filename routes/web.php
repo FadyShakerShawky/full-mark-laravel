@@ -42,7 +42,7 @@ Route::post('/contactstore', [ContactUsController::class, 'store'])->name("conta
 // End Contact Us Routs
 
 // Start Course Info Routs :
-Route::get('/course-info/{id}',[CourseController::class, 'show'])->name("course-info");
+Route::get('/course-info/{id}',[GroupController::class, 'show'])->name("course-info");
 // Start Course Info Routs :
 
 Route::get('/privacy&policy', function () {
@@ -93,9 +93,9 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 
 //payment with paypal
 
-Route::get('paypal/checkout/{id}', [PayPalController::class ,'getExpressCheckout'])->name('paypal.checkout');
-Route::get('paypal/checkout-success/{id}',[PayPalController::class , 'getExpressCheckoutSuccess'])->name('paypal.success');
-Route::get('paypal/checkout-cancel', [PayPalController::class , 'cancelPage'])->name('paypal.cancel');
+Route::get('paypal/checkout/{id}', [PaymentController::class ,'getExpressCheckout'])->name('paypal.checkout'); 
+Route::get('paypal/checkout-success/{id}',[PaymentController::class , 'getExpressCheckoutSuccess'])->name('paypal.success');
+Route::get('paypal/checkout-cancel', [PaymentController::class , 'cancelPage'])->name('paypal.cancel');
 //Rating system
 
 //start group route get and post
@@ -114,5 +114,5 @@ Route::get('/shoppingcart', function(){
 
 Route::get('/groups.data', [GroupController::class , 'shoppingCartData']);
 
-Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth');
-//end group route
+Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth')->name('payment');
+Route::get('/payment/{id}', [PaymentController::class, 'store'])->middleware('auth')->name('payment.store');

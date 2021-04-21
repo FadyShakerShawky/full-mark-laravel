@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->enum('MethodOfPayment', ['paypal','fawry', 'visa']);
             $table->unsignedBigInteger('students_id');
+            $table->unsignedBigInteger('group_id');
             $table->enum('status', ['pending','processing','completed','decline'])->default('pending');
             $table->float('total');
             $table->boolean('is_paid')->default(false);

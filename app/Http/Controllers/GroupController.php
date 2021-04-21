@@ -19,6 +19,7 @@ class GroupController extends Controller
     }
 
     public function store(){
+
         $group = new Group;
 
         $group->description = request('description');
@@ -37,9 +38,19 @@ class GroupController extends Controller
 
         $group->price = request('price');
 
+        $group->requirements = request('requirements');
+
+        $group->briefDescription = request('briefDescription');
+
+        $group->language = request('language');
+
+        $group->whatLearn = request('whatLearn');
+
+        $group->course_teacher_id = request('course_teacher');
+
         $group->save();
 
-        return view('group');
+        return redirect()->view('teacher-profile');
 
 
 
@@ -84,6 +95,10 @@ class GroupController extends Controller
        
         
     }
-
+    public function show($id)
+    {
+        $group = Group::findOrFail($id);
+        return view('course-info', ["group" => $group]);
+    }
 
 }

@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
+       <script src="{{asset('scripts/home.js')}}"></script>
     @yield('special-header')
 </head>
 
@@ -84,7 +85,7 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shoppingCartDropDown">
-                                    <a class="dropdown-item" href="{{ route('shoppingcart') }}">
+                                    <a class="dropdown-item" href="{{ route('payment') }}">
                                         View shopping cart
                                     </a>
                                 </div>
@@ -170,9 +171,10 @@
         </div>
     </footer>
     <!-- end of footer -->
-    @yield('special-end-page')
-    <script src="{{asset('scripts/home.js')}}"></script>
+   
+ 
     <script src="{{asset('scripts/multipagesslider.js')}}"></script>
+    @yield('special-end-page')
 </body>
 
 </html>

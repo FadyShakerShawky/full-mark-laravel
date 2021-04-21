@@ -89,12 +89,11 @@ class CourseTeacherController extends Controller
                         ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
                         ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
                         ->join('users', 'users.id', '=', 'teachers.user_id')
-                        // ->join('groups', 'groups.teacher_id', '=', 'teachers.id')
+                        ->join('groups', 'groups.course_teacher_id', '=', 'course_teachers.id')
                         ->where('courses.name' , 'like' , '%' . $text . '%')
-                        ->orWhere('courses.description' , 'like' , '%' . $text . '%')
                         ->orWhere('teachers.description' , 'like' , '%' . $text . '%')
                         ->orWhere('users.name' , 'like' , '%' . $text . '%')
-                        ->select('course_teachers.id' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'courses.description', 'courses.id as course_id')
+                        ->select('groups.id' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'groups.description', 'courses.id as course_id')
                         ->limit(8)
                         ->get();
             return view('search-courses', ['data'=> $data , 'searchText' =>$text ,"course"=>$courses , "maxvalue"=>$maxValue, "minvalue"=>$minValue]);
@@ -108,17 +107,16 @@ class CourseTeacherController extends Controller
                         ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
                         ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
                         ->join('users', 'users.id', '=', 'teachers.user_id')
-                        ->join('groups', 'groups.teacher_id', '=', 'teachers.id')
+                        ->join('groups', 'groups.course_teacher_id', '=', 'course_teachers.id')
                         ->whereBetween('groups.price' ,[ $searchParams['minPrice'] , $searchParams['maxPrice']])
                         ->whereBetween('teachers.rating' ,[ $searchParams['minRating'] , $searchParams['maxRating']])
                         ->where(function ($query ) {
                             $query->where('courses.name' , 'like' , '%' . $this->searchParams['searchText'] . '%')
-                                    ->orWhere('courses.description' , 'like' , '%' . $this->searchParams['searchText'] . '%')
                                     ->orWhere('teachers.description' , 'like' , '%' . $this->searchParams['searchText'] . '%')
                                     ->orWhere('users.name' , 'like' , '%' . $this->searchParams['searchText'] . '%');
                         })
                         ->whereIn('courses.name' ,$searchParams['searchCourses'])
-                        ->select('course_teachers.id','groups.price' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'courses.description')
+                        ->select('groups.price' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'groups.description' , 'groups.id')
                         ->limit(8)
                         ->get();
             $this->searchParams = [];
