@@ -1,7 +1,14 @@
 @extends('layouts.general')
 
 @section('main-body')
-<div class="container" style="margin-top: 20vh">
+@section('register')
+
+<div class="container-fluid" style="background-color:#d1d8e0; min-height:110vh">
+    <div>
+        <img src="{{ asset('media/Logo_2.png') }}" style="display: block;
+    margin-left: auto;
+    margin-right: auto; padding-top:70px" alt="logo" />
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -66,6 +73,21 @@
                                 <input id="password-confirm" style="border: 1px solid #6ab04c" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="birthday" style="border: 1px solid #6ab04c" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" required autocomplete>
+
+                                @error('birthday')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="government" class="col-md-4 col-form-label text-md-right">{{ __('Government') }}</label>
 
@@ -129,19 +151,6 @@ line-height: 1.1;">
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="birthday" style="border: 1px solid #6ab04c" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" required autocomplete>
-
-                                @error('birthday')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-success">
@@ -155,4 +164,5 @@ line-height: 1.1;">
         </div>
     </div>
 </div>
+@endsection
 @endsection

@@ -114,8 +114,14 @@
         </div>
     </header>
     <!-- end of header -->
+
+
+
     <!-- start of content -->
-    <main style="min-height: 100vh;">
+    <main style="">
+        <div style="">
+            @yield('register')
+        </div>
         @yield('main-body')
     </main>
 
@@ -171,8 +177,8 @@
         </div>
     </footer>
     <!-- end of footer -->
-   
- 
+
+
     <script src="{{asset('scripts/multipagesslider.js')}}"></script>
     @yield('special-end-page')
 </body>

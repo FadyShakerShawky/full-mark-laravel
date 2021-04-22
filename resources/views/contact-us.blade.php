@@ -1,4 +1,5 @@
 @extends('layouts.general')
+@section('register')
 
 @section('special-header')
     <link rel="stylesheet" href="./style/contactus.css" />

@@ -2,7 +2,7 @@
 
 
 @section('main-body')
-<link rel="stylesheet" href="{{ asset('style/teacherprofile.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('style/teacherprofile.css') }}" /> --}}
     <main>
         <!-- start of carosel -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
