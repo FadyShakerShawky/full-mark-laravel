@@ -1,7 +1,11 @@
 // localStorage.setItem("shopingCart", JSON.stringify([1]));
 let cartCountHandler = function () {
-    shoppingCart = JSON.parse(localStorage.getItem("shopingCart"));
-    $("#cart-item-cunt").text(shoppingCart.length);
+    if (localStorage.getItem("shopingCart")) {
+        shoppingCart = JSON.parse(localStorage.getItem("shopingCart"));
+        $("#cart-item-cunt").text(shoppingCart.length);
+    } else {
+        localStorage.setItem("shopingCart", JSON.stringify([]));
+    }
 };
 
 let addCartHandler = function (id) {
