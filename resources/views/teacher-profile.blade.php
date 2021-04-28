@@ -18,10 +18,13 @@
                         <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab"
                             aria-controls="schedule" aria-selected="false">Schedule</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="group-tab" data-toggle="tab" href="#group" role="tab"
-                            aria-controls="group" aria-selected="false">New group</a>
-                    </li>
+                    @if (Auth::user()->teachers->id ===$data->id )
+                        <li class="nav-item">
+                            <a class="nav-link" id="group-tab" data-toggle="tab" href="#group" role="tab"
+                                aria-controls="group" aria-selected="false">New group</a>
+                        </li>
+                    @endif
+                   
                 </ul>
                 <div class="tab-content container-fluid" id="myTabContent">
                     <div class="tab-pane col-md-12 fade show active" id="profile" role="tabpanel"
@@ -114,6 +117,7 @@
 
                         </table>
                     </div>
+                    @if (Auth::user()->teachers->id ===$data->id )
                     <div class="tab-pane col-md-12 fade" id="group" role="tabpanel" aria-labelledby="group-tab">
                         <div class="card">
                             <div class="card-header">
@@ -203,6 +207,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    
                 </div>
             </div>
         </div>

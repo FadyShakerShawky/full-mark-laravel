@@ -8,7 +8,7 @@ use App\Models\Group;
 
 use Illuminate\Support\Facades\DB;
 
-
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -49,8 +49,8 @@ class GroupController extends Controller
         $group->course_teacher_id = request('course_teacher');
 
         $group->save();
-
-        return redirect()->view('teacher-profile');
+        
+        return redirect()->route('teacher-profile', ['id'=>Auth::user()->teachers->id]);
 
 
 
