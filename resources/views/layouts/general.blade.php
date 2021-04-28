@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
-       <script src="{{asset('scripts/home.js')}}"></script>
+       
     @yield('special-header')
 </head>
 
@@ -94,7 +94,24 @@
                                 <a id="userMenueDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenueDropDown">
+                                    @if (Auth::user()->role === 'teacher')
+                                        <a class="dropdown-item" href="{{ route('teacher-profile', ['id'=>Auth::user()->teachers->id])}}"
+                                            >
+                                            Profile
+                                        </a> 
+                                    @endif
+                                    
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenueDropDown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -178,7 +195,7 @@
     </footer>
     <!-- end of footer -->
 
-
+    <script src="{{asset('scripts/home.js')}}"></script>
     <script src="{{asset('scripts/multipagesslider.js')}}"></script>
     @yield('special-end-page')
 </body>
