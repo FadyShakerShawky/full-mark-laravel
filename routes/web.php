@@ -11,6 +11,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\CogroupController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -42,7 +43,7 @@ Route::post('/contactstore', [ContactUsController::class, 'store'])->name("conta
 // End Contact Us Routs
 
 // Start Course Info Routs :
-Route::get('/course-info/{id}',[GroupController::class, 'show'])->name("course-info");
+Route::get('/course-info/{id}', [GroupController::class, 'show'])->name("course-info");
 // Start Course Info Routs :
 
 Route::get('/privacy&policy', function () {
@@ -64,9 +65,7 @@ Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::cla
 
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment')->middleware('auth');
 
-Route::get('/lecture-live', function () {
-    return view('lecture-live', ["title" => "Lecture live"]);
-});
+
 
 
 
@@ -93,9 +92,9 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 
 //payment with paypal
 
-Route::get('paypal/checkout/{id}', [PaymentController::class ,'getExpressCheckout'])->name('paypal.checkout'); 
-Route::get('paypal/checkout-success/{id}',[PaymentController::class , 'getExpressCheckoutSuccess'])->name('paypal.success');
-Route::get('paypal/checkout-cancel', [PaymentController::class , 'cancelPage'])->name('paypal.cancel');
+Route::get('paypal/checkout/{id}', [PaymentController::class, 'getExpressCheckout'])->name('paypal.checkout');
+Route::get('paypal/checkout-success/{id}', [PaymentController::class, 'getExpressCheckoutSuccess'])->name('paypal.success');
+Route::get('paypal/checkout-cancel', [PaymentController::class, 'cancelPage'])->name('paypal.cancel');
 //Rating system
 
 //start group route get and post
@@ -104,15 +103,33 @@ Route::post('/groupstore', [GroupController::class, 'store'])->name('group.store
 
 
 //end group route
-Route::get('/allgroups/{id}',[GroupController::class, 'showGroup'])->name("allgroups");
+Route::get('/allgroups/{id}', [GroupController::class, 'showGroup'])->name("allgroups");
 
 
 //shoppingcart
-Route::get('/shoppingcart', function(){
+Route::get('/shoppingcart', function () {
     return view('shoppingcart');
 })->name('shoppingcart');
 
-Route::get('/groups.data', [GroupController::class , 'shoppingCartData']);
+Route::get('/groups.data', [GroupController::class, 'shoppingCartData']);
 
 Route::get('/payment', [PaymentController::class, 'index'])->middleware('auth')->name('payment');
 Route::get('/payment/{id}', [PaymentController::class, 'store'])->middleware('auth')->name('payment.store');
+
+
+// Start Videos routes :
+
+Route::get('/lecture-live', function () {
+    return view('lecture-live', ["title" => "Lecture live"]);
+});
+
+Route::get('/upload', [VideoController::class, 'upload'])->name('upload');
+
+Route::post('/lecture-live', [VideoController::class, 'store'])->name('lectureLive');
+
+Route::get('/lectures', [VideoController::class, 'index'])->name('lectures');
+Route::get('/lectures/{id}', [VideoController::class, 'show'])->name('show.lecture');
+Route::get('/lectures/download/{file}', [VideoController::class, 'download'])->name('download.lecture');
+Route::get('/lectures/delete/{id}', [VideoController::class, 'destroy'])->name('destroy.lecture');
+
+// End Videos routes

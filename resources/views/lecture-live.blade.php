@@ -21,9 +21,9 @@
         <div class="m-3">
             <div class="container d-flex justify-content-center " id="videothumbnail">
                 <div class="row col-12 embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item d-flex "  
-                    
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY" 
+                    <iframe class="embed-responsive-item d-flex "
+
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY"
                     align="center" id="videothumbnail"></iframe>
                 </div>
             </div>
@@ -32,7 +32,7 @@
 
     <div class="tab-pane fade" id="nav-recorded" role="tabpanel" aria-labelledby="nav-recorded-tab">
         <div class="m-3">
-           
+
                 <div class="col-12 accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
@@ -44,7 +44,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseOne"
                             >
-                            First session 
+                            First session
                             </button>
                         </h2>
                         <div
@@ -79,7 +79,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseTwo"
                             >
-                            First session 
+                            First session
                             </button>
                         </h2>
                         <div
@@ -114,7 +114,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseThree"
                             >
-                            First session 
+                            First session
                             </button>
                         </h2>
                         <div
@@ -149,7 +149,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseFour"
                             >
-                            First session 
+                            First session
                             </button>
                         </h2>
                         <div
@@ -184,7 +184,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseFive"
                             >
-                            First session 
+                            First session
                             </button>
                         </h2>
                         <div
@@ -209,15 +209,19 @@
                         </div>
                         </div>
                 </div>
-            
+
         </div>
     </div>
 
     <div class="tab-pane fade" id="nav-VideosAndSessions" role="tabpanel" aria-labelledby="nav-contact-tab">
         <div class="container-fluid m-3">
         <div class="row">
-            <aside class="col-3">
+            <a href="{{route('upload')}}" class="btn btn-info">Upload Lecture</a>
+            <a href="{{route('lectures')}}" class="btn btn-danger">Show all lectures</a>
+            {{-- <aside class="col-3">
+
                 <div class="accordion accordion-flush" id="accordionFlushExample">
+                    @foreach($file as $key=>$data)
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                         <button
@@ -228,7 +232,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseOne"
                         >
-                        First session 
+                        Lecture {{++$key}}
                         </button>
                         </h2>
                         <div
@@ -246,14 +250,17 @@
                                 id="flexCheckDefault"
                             />
                             <label class="form-check-label" for="flexCheckDefault">
-                                html
+                                {{$data->title}}
                             </label>
+                            <a href="/files/{{$data->id}}">View</a>
+                            <a href="/files/download/{{$data->file}}">Download</a>
                             </div>
                         </div>
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="accordion-item">
+                    {{-- <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
                         <button
                             class="accordion-button collapsed"
@@ -263,7 +270,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseTwo"
                         >
-                        First session 
+                        First session
                         </button>
                         </h2>
                         <div
@@ -286,9 +293,9 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="accordion-item">
+                    {{-- <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingThree">
                         <button
                             class="accordion-button collapsed"
@@ -298,7 +305,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseThree"
                         >
-                        First session 
+                        First session
                         </button>
                         </h2>
                         <div
@@ -321,9 +328,9 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="accordion-item">
+                    {{-- <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFour">
                         <button
                             class="accordion-button collapsed"
@@ -333,7 +340,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseFour"
                         >
-                        First session 
+                        First session
                         </button>
                         </h2>
                         <div
@@ -356,9 +363,9 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="accordion-item">
+                    {{-- <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingFive">
                         <button
                             class="accordion-button collapsed"
@@ -368,7 +375,7 @@
                             aria-expanded="false"
                             aria-controls="flush-collapseFive"
                         >
-                        First session 
+                        First session
                         </button>
                         </h2>
                         <div
@@ -391,15 +398,16 @@
                             </div>
                         </div>
                         </div>
+                    </div> --}}
                 </div>
             </aside>
 
-            <div class="col-lg-8 col-xl-8 " id="videothumbnail2">
+            {{-- <div class="col-lg-8 col-xl-8 " id="videothumbnail2">
                 <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item d-flex" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                 </iframe>
                 </div>
-            </div>
+            </div> --}}
         </div>
         </div>
     </div>
