@@ -213,11 +213,12 @@
         </div>
     </div>
 
-    <div class="tab-pane fade" id="nav-VideosAndSessions" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <div class="tab-pane fade" id="nav-VideosAndSessions" style="min-height:34vh"
+ role="tabpanel" aria-labelledby="nav-contact-tab">
         <div class="container-fluid m-3">
         <div class="row">
-            <a href="{{route('upload')}}" class="btn btn-info">Upload Lecture</a>
-            <a href="{{route('lectures')}}" class="btn btn-danger">Show all lectures</a>
+            <a href="{{route('upload')}}" class="btn btn-success active mb-3 ">Upload Lecture</a>
+            <a href="{{route('lectures')}}" class="btn btn-warning active" >Show all lectures</a>
             {{-- <aside class="col-3">
 
                 <div class="accordion accordion-flush" id="accordionFlushExample">

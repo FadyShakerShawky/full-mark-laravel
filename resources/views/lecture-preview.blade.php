@@ -1,16 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lecture preview</title>
-</head>
-<body>
-    <h2>{{$data->title}}</h2>
-    <h3>{{$data->description}}</h3>
-    <p>
-        <iframe src="{{url('storage/'.$data->file)}}" style="width: 600px; height:500px"></iframe>
-    </p>
-</body>
-</html>
+@extends('layouts.general')
+
+@section('special-header')
+    <link rel="stylesheet" href="{{ asset('style/livepreview.css') }}" />
+@endsection
+
+@section('main-body')
+<main class="main" >
+<div class="container-fluid">
+    <div class="row justify-content-center
+ 
+">
+        <div class="video">
+            <div class="text text-center mb-3">
+
+                <p class="title">{{$data->title}}</p>
+                    <p class="description">{{$data->description}}</p>
+            </div>
+            <div class="vid justify-content-center">
+                <video controls id="myVideo">
+                    <source src="{{url('storage/'.$data->file)}}"   type="video/mp4" style=" width: 900px; height:500px">
+                    
+                </video>
+                
+            </div>
+            <a style="display: inline-block;" class ="btn btn-success" href="{{route('lectures')}}"> All Lectures</a>
+
+        </div>
+    </div>    
+</div>
+    
+</main>
+@endsection
+
+
+
+    
+
