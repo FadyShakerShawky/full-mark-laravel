@@ -116,6 +116,7 @@ class CourseTeacherController extends Controller
                                     ->orWhere('users.name' , 'like' , '%' . $this->searchParams['searchText'] . '%');
                         })
                         ->whereIn('courses.name' ,$searchParams['searchCourses'])
+                        ->where('groups.discount' , '>' , $searchParams['discount'] ? 0 : -1)
                         ->select('groups.price' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'groups.description' , 'groups.id')
                         ->limit(8)
                         ->get();
@@ -123,6 +124,28 @@ class CourseTeacherController extends Controller
         return $result;
     }
 
+    public function onSaleSearch(){
+        $maxValue = DB::table('groups')->max('price');
+        $minValue = DB::table('groups')->min('price');
+        $courses=Course::all('name');
+
+
+        $text = "";
+        if( isset($_REQUEST['text']) ){
+            $text = $_REQUEST['text'];
+        }
+        $data = DB::table('course_teachers')
+                        ->join('courses', 'course_teachers.course_id', '=', 'courses.id')
+                        ->join('teachers', 'course_teachers.teacher_id', '=', 'teachers.id')
+                        ->join('users', 'users.id', '=', 'teachers.user_id')
+                        ->join('groups', 'groups.course_teacher_id', '=', 'course_teachers.id')
+                        ->where('groups.discount' , '>' ,0)
+                        ->select('groups.id' , 'users.name as teacherName','teachers.id as teacherId','courses.name as courseName', 'groups.description', 'courses.id as course_id')
+                        ->limit(8)
+                        ->get();
+            return view('search-courses', ['data'=> $data , "course"=>$courses , "maxvalue"=>$maxValue, "minvalue"=>$minValue]);
+    
+    }
 
 
     /**

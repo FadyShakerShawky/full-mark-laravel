@@ -12,7 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\CogroupController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\CourseTeacherController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,7 +79,8 @@ Route::get('/login/facebook', [LoginController::class, 'redirectToFacebbok']);
 Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokCallback']);
 
 
-Route::get('/courses/search', [App\Http\Controllers\CourseTeacherController::class, 'extinsiveSearch']);
+Route::get('/courses/search', [CourseTeacherController::class, 'extinsiveSearch']);
+Route::get('courses/sale' , [CourseTeacherController::Class , 'onSaleSearch'])->name('search.sale');
 //login with github
 Route::get('/sign-in/github', 'App\Http\Controllers\LoginController@github');
 

@@ -10,6 +10,7 @@ searchParams.minPrice = document.getElementById("min-price-slider").value;
 searchParams.searchCourses = [];
 searchParams.minRating = 0;
 searchParams.maxRating = 5;
+searchParams.discount = false;
 
 function coursesSearchNameHandler(event) {
     if (event.target.checked) {
@@ -39,13 +40,13 @@ function filterResults() {
         data: { searchParams: JSON.stringify(searchParams) },
         url: "http://localhost:8000/courses/search",
         success: (data) => {
+            console.log(data);
             if (data.length == 0) {
                 document.getElementById("search-result-container").innerHTML =
                     "<h2 class='mt-4 mx-auto'>Sorry no courses could be found</h2>";
             } else {
                 document.getElementById("search-result-container").innerHTML =
                     "";
-                console.log(data);
                 data.forEach((course) => {
                     document.getElementById(
                         "search-result-container"
@@ -62,7 +63,12 @@ function filterResults() {
                                 </div>`;
                 });
             }
-            console.log(data);
         },
     });
+}
+
+function discountFilterHandler(event) {
+    event.target.value == "discount"
+        ? (searchParams.discount = true)
+        : (searchParams.discount = false);
 }

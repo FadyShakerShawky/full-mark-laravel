@@ -52,6 +52,9 @@
                             </div>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{route('search.sale')}}">Offers</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{url('/about-us')}}">About Us</a>
                         </li>
                         <li class="nav-item">

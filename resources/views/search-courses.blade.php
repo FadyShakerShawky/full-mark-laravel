@@ -1,7 +1,7 @@
 @extends('layouts.general')
 
 @section('special-header')
-    <link rel="stylesheet" href="./style/search_courses.css" />
+    <link rel="stylesheet" href="{{asset('./style/search_courses.css')}}" />
 @endsection
 
 @section('main-body')
@@ -13,16 +13,24 @@
                     Search parameters
                 </div>
                 <div class="card-body d-flex flex-column" id="filter-params">
+                    <span>Sale</span>
+                    <div class="form-check">
+                        
+                        <span class="row ml-3"><input onclick="discountFilterHandler(event)" type="radio" class="form-check-input" name="discount-radio" id="discount-radio" value="discount"><label for="discount-radio" class="form-check-label">On sale</label>
+                        </span>
+                        <span class="row ml-3">
+                            <input type="radio" checked onclick="discountFilterHandler(event)" class="form-check-input" name="discount-radio" id="no-discount-radio" value="no-discount"><label for="no-discount-radio" class="form-check-label">All</label>
+                        </span>
+                    </div>
                     <div class="d-flex flex-column">
                         <span>Course</span>
-
                         @foreach($course as $courses)
                         <span class="ml-3">
-                            <input type="checkbox" checked value="{{$courses->name}}" onchange="coursesSearchNameHandler(event)" name="{{$courses->name}}" id="{{$courses->name}}" class="mr-2"/>
+                            <input type="checkbox" value="{{$courses->name}}" onchange="coursesSearchNameHandler(event)" name="{{$courses->name}}" id="{{$courses->name}}" class="mr-2"/>
                             <label for="{{$courses->name}}">{{$courses->name}}</label>
                         </span>
                         @endforeach
-
+                    </div>
                     <div class="d-flex flex-column">
                         <span>Price</span>
                         <span class="ml-3">
@@ -48,19 +56,13 @@
         <div class="col-md-9">
             <div class="card h-100">
                 <div class="card-header align-items-center" style="gap: 10px">
-                    <span class="title">Our Courses with</span>
-                   @if ($searchText)
-                   <span id='search-key-word'>
-                    "key words <span class="search-item-display" id='search-key-word-text'>{{$searchText}}</span> "
-                   </span>
-
-                   @endif
+                    <span class="title">Our Courses</span>
                 </div>
                 <div class="card-body row" id="search-result-container">
                         @foreach ($data as $course)
                         <div class="mx-auto flex-wrap" style="width: 15rem">
                             <div class="card">
-                                <img src="./media/science.jpeg" class="card-img-top" alt="science">
+                                <img src="{{asset('./media/science.jpeg')}}" class="card-img-top" alt="science">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $course->courseName }}</h4>
                                     <h5>By : <a href="{{ route('teacher-profile' ,$course->teacherId ) }}">{{$course->teacherName}}</a></h5>

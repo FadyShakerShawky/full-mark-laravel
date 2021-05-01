@@ -23,6 +23,7 @@ class CreateGroupsTable extends Migration
             $table->time("end_time")->nullable();
             $table->integer("no_lec");
             $table->decimal("price",$precision = 10, $scale = 2);
+            $table->integer('discount')->default(0);
             $table->unsignedBigInteger('course_teacher_id');
             $table->text('requirements');
             $table->string('briefDescription');
