@@ -56,6 +56,34 @@
                                         </label>
                                         </div>
                                     </div>
+
+                                    <div class="accordion-body" id="accordion-body" >
+                                        <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            value=""
+                                            id="flexCheckDefault"
+                                        />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        <a href="/lectures/download/{{$data->file}}">Download</a>
+                                        </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-body" id="accordion-body" >
+                                        <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            value=""
+                                            id="flexCheckDefault"
+                                        />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        <a href="{{route('destroy.lecture',$data->id)}}">Delete</a>
+                                        </label>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                         @endforeach

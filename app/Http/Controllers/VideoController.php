@@ -125,6 +125,6 @@ class VideoController extends Controller
         $file = new Video;
         $file = $file->findorfail($id);
         $file->delete();
-        return redirect()->route('lectures');
+        return redirect()->route('lecture-live');
     }
 }
