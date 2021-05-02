@@ -5,10 +5,10 @@
 @endsection
 
 @section('main-body')
-<main class="main" >
-<div class="container-fluid">
+<main class="main" style="margin-top:25vh">
+<div class="container">
     <div class="row justify-content-center
- 
+
 ">
         <div class="video">
             <div class="text text-center mb-3">
@@ -17,22 +17,21 @@
                     <p class="description">{{$data->description}}</p>
             </div>
             <div class="vid justify-content-center">
-                <video controls id="myVideo">
+
+            <video controls id="myVideo">
                     <source src="{{url('storage/'.$data->file)}}"   type="video/mp4" style=" width: 900px; height:500px">
-                    
                 </video>
-                
             </div>
-            <a style="display: inline-block;" class ="btn btn-success" href="{{route('lectures')}}"> All Lectures</a>
+            <a style="display: inline-block;" class ="btn btn-success" href="{{route('lecture-live')}}"> All Lectures</a>
 
         </div>
-    </div>    
+    </div>
 </div>
-    
+
 </main>
 @endsection
 
 
 
-    
+
 

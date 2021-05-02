@@ -13,18 +13,25 @@ class VideoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function upload()
-    {
-
-        return view('upload');
-    }
-
-
-    public function index()
+    public function lectureLive()
     {
         $file = Video::all();
-        return view('lectures', compact('file'));
+        return view('lecture-live', compact('file'));
+        // return view('lecture-live');
     }
+
+    // public function upload()
+    // {
+
+    //     return view('upload');
+    // }
+
+
+    // public function index()
+    // {
+    //     $file = Video::all();
+    //     return view('lecture-live', compact('file'));
+    // }
 
 
     /**
@@ -52,15 +59,19 @@ class VideoController extends Controller
         $data->description = $request->description;
 
         if ($request->file('file')){
+
+            // file => video
             $file = $request->file('file');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $request->file->move('storage/', $fileName);
+            $result = $request->file->move('storage/', $fileName);
             $data->file = $fileName;
+
         }
+
         $data->save();
         // return redirect()->back();
 
-        return redirect()->route('lectures');
+        return redirect()->route('lecture-live');
     }
 
     /**

@@ -120,15 +120,13 @@ Route::get('/payment/{id}', [PaymentController::class, 'store'])->middleware('au
 
 // Start Videos routes :
 
-Route::get('/lecture-live', function () {
-    return view('lecture-live', ["title" => "Lecture live"]);
-});
+Route::get('/lecture-live', [VideoController::class, 'lectureLive'])->name('lecture-live');
 
-Route::get('/upload', [VideoController::class, 'upload'])->name('upload');
+// Route::get('/upload', [VideoController::class, 'upload'])->name('upload');
 
 Route::post('/lecture-live', [VideoController::class, 'store'])->name('lectureLive');
 
-Route::get('/lectures', [VideoController::class, 'index'])->name('lectures');
+// Route::get('/lectures', [VideoController::class, 'index'])->name('lectures');
 Route::get('/lectures/{id}', [VideoController::class, 'show'])->name('show.lecture');
 Route::get('/lectures/download/{file}', [VideoController::class, 'download'])->name('download.lecture');
 Route::get('/lectures/delete/{id}', [VideoController::class, 'destroy'])->name('destroy.lecture');
