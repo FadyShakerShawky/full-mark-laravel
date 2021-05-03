@@ -35,4 +35,9 @@ class Group extends Model
     {
         return $this->belongsToMany(Student::class);
     }
+
+    public function video()
+    {
+        return $this->belongsToMany(Video::class, 'group_videos');
+    }
 }

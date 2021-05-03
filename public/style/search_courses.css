@@ -74,3 +74,28 @@ body {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
 }
+
+.price {
+    font-size: 1.3rem;
+}
+
+.spanPrice {
+    color: #217fc1;
+}
+
+.discount{
+    color: #217fc1;
+}
+
+.spanPriceDis{
+    color: #b2bec3;
+    text-decoration: line-through;
+}
+
+.showDescription {
+    display: block; /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 1.3em;
+}

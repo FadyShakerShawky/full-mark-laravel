@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Video;
+use App\Models\Group;
+use Illuminate\Support\Facades\DB;
+
 
 class VideoController extends Controller
 {
@@ -13,11 +16,23 @@ class VideoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function lectureLive()
+    public function lectureLive($id)
     {
         $file = Video::all();
-        return view('lecture-live', compact('file'));
-        // return view('lecture-live');
+        $group = Group::find($id);
+
+        // $videoId = DB::table('group_videos')
+        //     ->join('videos', 'group_videos.video_id', '=', 'videos.id')
+        //     ->join('groups', 'group_videos.group_id', '=', 'groups.id')
+        //     ->where('groups.id' , '=' , $id)
+        //     ->select('videos.id')
+        //     ->first();
+        // dd($videoId);
+        // DB::insert('insert into group_videos (group_id, video_id)
+        //  values (?, ?)', [$id, $videoId]);
+
+
+        return view('lecture-live', compact('file'), ["data" => $group]);
     }
 
     // public function upload()
@@ -58,20 +73,25 @@ class VideoController extends Controller
         $data->title = $request->title;
         $data->description = $request->description;
 
-        if ($request->file('file')){
-
+        if ($request->file('file')) {
             // file => video
             $file = $request->file('file');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             $result = $request->file->move('storage/', $fileName);
             $data->file = $fileName;
-
         }
 
         $data->save();
-        // return redirect()->back();
 
-        return redirect()->route('lecture-live');
+        // DB::table('group_videos')->insert([
+        //     'group_id' => Group::find('id'),
+        //     'video_id' => $request->id
+        // ]);
+
+        // DB::insert('insert into group_videos (group_id, video_id)
+        //  values (?, ?)', [6, 6]);
+
+        return redirect()->back();
     }
 
     /**
@@ -126,5 +146,18 @@ class VideoController extends Controller
         $file = $file->findorfail($id);
         $file->delete();
         return redirect()->route('lecture-live');
+    }
+
+    public function groupVideo($id)
+    {
+        // $group = Group::find($id);
+
+        // return redirect()->route('', 'lecture-live', ["group" => $group]);
+
+        // $video = new Video;
+
+        // $video  = $video->all();
+
+        // return view('lecture-live', ["video" => $video]);
     }
 }

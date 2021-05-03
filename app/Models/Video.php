@@ -12,4 +12,9 @@ class Video extends Model
     protected $fillable = [
         'title', 'description', 'file',
     ];
+
+    public function group()
+    {
+        return $this->belongsToMany(Group::class, 'group_videos');
+    }
 }
