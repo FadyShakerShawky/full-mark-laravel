@@ -104,7 +104,12 @@
                                             Profile
                                         </a>
                                     @endif
-
+                                    @if (Auth::user()->role === 'student')
+                                        <a class="dropdown-item" href="{{ route('student-profile', ['id'=>Auth::user()->students->id])}}"
+                                            >
+                                            Profile
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

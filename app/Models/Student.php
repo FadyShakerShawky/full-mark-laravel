@@ -20,7 +20,7 @@ class Student extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"user_id", "id");
     }
 
      public function payments()
@@ -31,6 +31,6 @@ class Student extends Model
 
     public function groups()
     {
-        return $this->belongsToMany(Group::class);
+        return $this->belongsToMany(Group::class , "group_students" , "student_id" , "group_id");
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Teacher;
+use App\Models\GroupStudent;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Group;
 use Illuminate\Support\Facades\DB;
@@ -76,12 +77,18 @@ class PaymentController extends Controller
             $payment->is_paid = 1;
             $payment->status = "completed";
             $payment->save();
-
+            
             $teacher = Teacher::find($payment->group->courseTeacher->teacher->id);
-            $teacher->t_acc_reccivable += 5;
-            $teacher->t_net_income += 5;
+            $teacher->t_acc_reccivable += $response->result->purchase_units[0]->payments->captures[0]->amount->value;
+            $teacher->t_net_income += $response->result->purchase_units[0]->payments->captures[0]->amount->value;
             $teacher->save();
-            dd($response);
+
+            $group_student = new GroupStudent;
+            $group_student->student_id = Auth::user()->students->id;
+            $group_student->group_id = $payment->group->id;
+            $group_student->payment_id = $payment->id;
+            $group_student->save();
+
             return redirect()->route('payment' , ['payment'=>"SUCCESS", 'id'=>$id]);
 
         }
@@ -102,18 +109,23 @@ class PaymentController extends Controller
     public function store($id)
     {
         $payment = DB::table('payments')
-        // ->where('students_id' , '=' , Auth::user()->students->id)
+        ->where('students_id' , '=' , Auth::user()->students->id)
         ->where('group_id' , '=' , $id)
         ->first();
-        if ( !isset($payment) ){
+        if ( !isset($payment)){
             $group = Group::find($id);
             $payment = new Payment;
-            // $payment->students_id = Auth::user()->students->id;
+            $payment->students_id = Auth::user()->students->id;
             $payment->total = $group->price;
             $payment->group_id = $id;
            $payment->save();
+           return redirect()->route('paypal.checkout', $payment->id);
+        }   elseif ($payment->is_paid == 0) {
+            return redirect()->route('paypal.checkout', $payment->id);
+        }   else    {
+            return redirect()->route('payment',['status'=> "duplicate", 'id'=>$id]);
         }
-        return redirect()->route('paypal.checkout', $payment->id);
+        
     }
 
 

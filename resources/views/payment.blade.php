@@ -8,68 +8,70 @@
 
 @can('isStudent')
 @section('main-body')
-        @if (isset($_GET['payment']))
-            @if ($_GET['payment'] == 'SUCCESS')
-            <script>
-                deleteShoppingCartItem(<?php $_GET['payment']; ?>)
-            </script>
-            @endif
-        @endif
         
-        
-        <div class="container panel panel-default mb-4 border" style=" margin-top:30vh">
+        <main style="min-height: 100vh">
+            <div class="container panel panel-default mb-4 border" style=" margin-top:30vh;">
 
-            <div class=" panel-heading ng-binding h2 p-3 mt-3 bg-light text-dark ">
-                payment
-            </div>
-
-
-            <div class="container">
-                <div class="row ">
-                    <div class=" col-12 panel panel-default">
-
-                        <table class="table  table-striped " id="payment-table">
-                            <thead class="">
-                                <th>Group Name</th>
-                                <th class="text-center">Price</th>
-                                <th></th>
-                            </thead>
-                        </table>
-
-                    </div>
+                <div class=" panel-heading ng-binding h2 p-3 mt-3 bg-light text-dark ">
+                    payment
                 </div>
-                {{-- <div class="row">
-                    <div class="col-12 panel panel-default">
-                        <div class="panel-heading ng-binding h2 p-3  bg-light text-dark">
-                            Total Invoice
+    
+    
+                <div class="container">
+                    <div class="row ">
+                        <div class=" col-12 panel panel-default">
+    
+                            <table class="table  table-striped " id="payment-table">
+                                <thead class="">
+                                    <th>Group Name</th>
+                                    <th class="text-center">Price</th>
+                                    <th></th>
+                                </thead>
+                            </table>
+                            <?php 
+                                if (isset($_GET['status'])) {
+                                echo "<div class='text-danger text-center my-3'>You are already a member of this course</div>";
+                            }
+    
+                            ?>
+                            
                         </div>
-                        <div class="row ">
-                            <div class=" col-12 panel panel-default">
-
-                                <table class="table  table-striped ">
-                                    <thead>
-
-                                        <tr>
-                                            <td rowspan="2" class="h5" style="padding-top:2.5rem"> Group name</td>
-                                            <td>Total Invoice </td>
-                                        </tr>
-                                        <tr>
-                                            <!-- <td >Total Invoice</th> -->
-                                            <td>220$ </th>
-                                        </tr>
-
-                                    </thead>
-                                </table>
-
+                    </div>
+                    {{-- <div class="row">
+                        <div class="col-12 panel panel-default">
+                            <div class="panel-heading ng-binding h2 p-3  bg-light text-dark">
+                                Total Invoice
+                            </div>
+                            <div class="row ">
+                                <div class=" col-12 panel panel-default">
+    
+                                    <table class="table  table-striped ">
+                                        <thead>
+    
+                                            <tr>
+                                                <td rowspan="2" class="h5" style="padding-top:2.5rem"> Group name</td>
+                                                <td>Total Invoice </td>
+                                            </tr>
+                                            <tr>
+                                                <!-- <td >Total Invoice</th> -->
+                                                <td>220$ </th>
+                                            </tr>
+    
+                                        </thead>
+                                    </table>
+    
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </div> --}}
+    
+                    </div> --}}
+                </div>
+    
+    
             </div>
-
-
-        </div>
+        </main>
+        
+       
 
         <!-- //=========================================================== -->
         {{-- <div class="container  " style="margin-top:5em ;margin-bottom:7em  ">
@@ -141,7 +143,13 @@
             </div>
         </div> --}}
         <!-- ====================================================================== -->
-   
+        @if (isset($_GET['payment']))
+        @if ($_GET['payment'] == 'SUCCESS')
+        <script>
+            deleteShoppingCartItem(<?php $_GET['payment']; ?>)
+        </script>
+        @endif
+    @endif
 @endsection
 
 @elsecan('isTeacher')
