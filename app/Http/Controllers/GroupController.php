@@ -49,7 +49,7 @@ class GroupController extends Controller
         $group->course_teacher_id = request('course_teacher');
 
         $group->save();
-        
+
         return redirect()->route('teacher-profile', ['id'=>Auth::user()->teachers->id]);
 
 
@@ -80,20 +80,20 @@ class GroupController extends Controller
                     ->first();
         return $data;
     }
-    
+
     public function shoppingCartData(){
         if(isset( $_REQUEST['shoppingCart'] )){
-            
-            $arrayOfGroups = json_decode($_REQUEST['shoppingCart'], true); 
-            
+
+            $arrayOfGroups = json_decode($_REQUEST['shoppingCart'], true);
+
             $data = [];
             foreach ($arrayOfGroups as  $id) {
                 array_push($data , $this->getGroupData($id));
             }
             return $data;
         }
-       
-        
+
+
     }
     public function show($id)
     {

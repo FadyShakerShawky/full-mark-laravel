@@ -15,7 +15,7 @@
                 <div class="card-body d-flex flex-column" id="filter-params">
                     <span>Sale</span>
                     <div class="form-check">
-                        
+
                         <span class="row ml-3"><input onclick="discountFilterHandler(event)" type="radio" class="form-check-input" name="discount-radio" id="discount-radio" value="discount"><label for="discount-radio" class="form-check-label">On sale</label>
                         </span>
                         <span class="row ml-3">
@@ -60,14 +60,19 @@
                 </div>
                 <div class="card-body row" id="search-result-container">
                         @foreach ($data as $course)
-                        <div class="mx-auto flex-wrap" style="width: 15rem">
-                            <div class="card">
+                        <div class="mx-auto flex-wrap" style="width: 25rem;">
+                            <div class="card mx-2 my-4" style="height:31rem">
                                 <img src="{{asset('./media/science.jpeg')}}" class="card-img-top" alt="science">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $course->courseName }}</h4>
                                     <h5>By : <a href="{{ route('teacher-profile' ,$course->teacherId ) }}">{{$course->teacherName}}</a></h5>
-                                    <p class="card-text">{{$course->description}}</p>
-                                    <a href="{{route('course-info',$course->course_id)}}" class="btn btn-success">View course</a>
+                                    @if($course->discount > 0 )
+                                    <p class="price">Price : <span class="spanPriceDis mr-3">{{$course->price }} LE</span><span class="discount">{{ $course->discount}} LE </span></p>
+                                    @else
+                                    <p class="price">Price : <span class="spanPrice mr-5">{{$course->price }} LE</span></p>
+                                    @endif
+                                    <p class="card-text showDescription">{{$course->description}}</p>
+                                    <a href="{{route('course-info',$course->group_id)}}" class="btn btn-success btn-block">View course</a>
                                 </div>
                             </div>
                         </div>

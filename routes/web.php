@@ -55,12 +55,7 @@ Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->
 
 Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class, 'searchByName'])->name('courses.search');
 
-// Route::get('/sign-in', function () {
-//     return view('sign-in' , ["title" => "Sign in"]);
-// });
-// Route::get('/sign-up', function () {
-//     return view('sign-up' , ["title" => "Sign up"]);
-// });
+
 
 
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment')->middleware('auth');
@@ -79,7 +74,7 @@ Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokC
 
 
 Route::get('/courses/search', [CourseTeacherController::class, 'extinsiveSearch']);
-Route::get('courses/sale' , [CourseTeacherController::Class , 'onSaleSearch'])->name('search.sale');
+Route::get('courses/sale' , [CourseTeacherController::class , 'onSaleSearch'])->name('search.sale');
 //login with github
 Route::get('/sign-in/github', 'App\Http\Controllers\LoginController@github');
 
@@ -120,11 +115,12 @@ Route::get('/payment/{id}', [PaymentController::class, 'store'])->middleware('au
 
 // Start Videos routes :
 
-Route::get('/lecture-live', [VideoController::class, 'lectureLive'])->name('lecture-live');
+Route::get('/lecture-live/{id}', [VideoController::class, 'lectureLive'])->name('lecture-live');
 
 // Route::get('/upload', [VideoController::class, 'upload'])->name('upload');
 
 Route::post('/lecture-live', [VideoController::class, 'store'])->name('lectureLive');
+// Route::get('lecture-live/{id}', [VideoController::class, 'lectureLive'])->name('lecture-id');
 
 // Route::get('/lectures', [VideoController::class, 'index'])->name('lectures');
 Route::get('/lectures/{id}', [VideoController::class, 'show'])->name('show.lecture');

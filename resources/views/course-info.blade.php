@@ -107,10 +107,15 @@
                         <p class="card-text">
                             {{$group->briefDescription}}
                         </p>
+                        @if($group->discount > 0 )
+                        <h3 class="card-text font-weight-bolder text-center">
+                        <p class="price">Price : <span class="spanPriceDis mr-3">{{$group->price }} LE</span>
+                            <p class="discount">{{ $group->discount}} LE </p></p>                        </h3>
+                        @else
                         <h3 class="card-text font-weight-bolder text-center">
                             &dollar; {{$group->price}}
                         </h3>
-
+                        @endif
                         <button type="button" onclick="addCartHandler({{$group->id}})" class="btn btn-danger btn-block my-3">
                             Add to cart
                         </button>
@@ -126,14 +131,14 @@
                                     <i class="fas fa-infinity"></i> Full lifetime access
                                 </li>
                                 <li class="my-3">
-                                    <i class="fas fa-mobile-alt"></i> Access on mobile and TV
+                                    <i class="fas fa-mobile-alt"></i> Access on mobile and tablets
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- End Side Card -->
 

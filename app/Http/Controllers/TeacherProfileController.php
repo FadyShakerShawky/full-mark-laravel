@@ -37,6 +37,6 @@ class TeacherProfileController extends Controller
         'groups.start_time as st','groups.end_time as et','groups.end_time','groups.no_lec','groups.price as p')
         ->get();
         $teacher = Teacher::findOrFail($id);
-        return view('teacher-profile' , ["data" => $teacher , 'groups'=>$groups]);
+        return view('teacher-profile', ["data" => $teacher , 'groups'=>$groups]);
     }
 }

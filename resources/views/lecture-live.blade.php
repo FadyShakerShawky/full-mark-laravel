@@ -1,9 +1,9 @@
 @extends('layouts.general')
 
 @section('special-header')
-    <link rel="stylesheet" href="./style/lecture_live.css" />
-    <link rel="stylesheet" href="./style/bootstrap.min.css" />
-    <script src="./scripts/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{asset('style/lecture_live.css')}}" />
+    <link rel="stylesheet" href="{{asset('style/bootstrap.min.css')}}" />
+    <script src="{{asset('scripts/bootstrap.bundle.min.js')}}"></script>
 @endsection
 
 @section(  'main-body')
@@ -45,42 +45,46 @@
                                     >
                                     <div class="accordion-body" id="accordion-body" >
                                         <div class="form-check">
-                                        <input
+                                        {{-- <input
                                             class="form-check-input"
                                             type="checkbox"
                                             value=""
                                             id="flexCheckDefault"
-                                        />
+                                        /> --}}
                                         <label class="form-check-label" for="flexCheckDefault">
-                                        <a href="/lectures/{{$data->id}}">{{$data->description}}</a>
+                                            <i class="icon fas fa-folder-open"></i>
+                                        <a class="link ml-1" href="{{route('show.lecture', $data->id)}}">{{$data->description}}</a>
+                                        {{-- /lectures/{{$data->id}} --}}
                                         </label>
                                         </div>
                                     </div>
 
                                     <div class="accordion-body" id="accordion-body" >
                                         <div class="form-check">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
+                                        {{-- <input
+                                            class="form-input"
+                                            type=""
                                             value=""
                                             id="flexCheckDefault"
-                                        />
+                                        /> --}}
                                         <label class="form-check-label" for="flexCheckDefault">
-                                        <a href="/lectures/download/{{$data->file}}">Download</a>
+                                            <i class="icon fas fa-download"></i>
+                                        <a class="link ml-1" href="/lectures/download/{{$data->file}}"> Download</a>
                                         </label>
                                         </div>
                                     </div>
 
                                     <div class="accordion-body" id="accordion-body" >
                                         <div class="form-check">
-                                        <input
+                                        {{-- <input
                                             class="form-check-input"
                                             type="checkbox"
                                             value=""
                                             id="flexCheckDefault"
-                                        />
+                                        /> --}}
                                         <label class="form-check-label" for="flexCheckDefault">
-                                        <a href="{{route('destroy.lecture',$data->id)}}">Delete</a>
+                                            <i class="icon fas fa-trash-alt"></i>
+                                        <a class="link ml-1" href="{{route('destroy.lecture',$data->id)}}"> Delete</a>
                                         </label>
                                         </div>
                                     </div>
@@ -101,6 +105,16 @@
                         <form class="form" method="POST"  enctype="multipart/form-data" action="{{route('lectureLive')}}">
                             {{csrf_field()}}
                             <h3 class="text-center">Upload files</h3>
+
+                            {{-- <div class="form-group col-10 " >
+                                <label for="course">Choose group</label>
+                                <select name="group_video" style="border: 1px solid #6ab04c" id="course" class="col-md-12 form-control">
+                                    @foreach ($video->group as $group)
+                                        <option value="{{ $group->id }}">{{$group->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div> --}}
+
                             <div class="form-group">
                             <label for="title">Title:</label>
                             <input type="text" name="title" class="form-control" id="title">
