@@ -113,12 +113,27 @@
                             <p class="discount">{{ $group->discount}} LE </p></p>                        </h3>
                         @else
                         <h3 class="card-text font-weight-bolder text-center">
-                            &dollar; {{$group->price}}
+                            {{$group->price}} <span>LE</span>
                         </h3>
                         @endif
+                        @if (Auth::user())
+                        @if (Auth::user()->role === "student")
                         <button type="button" onclick="addCartHandler({{$group->id}})" class="btn btn-danger btn-block my-3">
                             Add to cart
                         </button>
+                        @endif
+                        @else
+                        <a type="button" href="{{url('http://localhost:8000/login')}}" class="btn btn-danger btn-block my-3">
+                            Add to cart
+                        </a>
+                        @endif
+                        {{-- @can('isStudent')
+
+                        @else
+                        <a type="button" href="" class="btn btn-danger btn-block my-3">
+                            Add to cart
+                        </a>
+                        @endcan --}}
                         <button onclick="addCartHandler({{$group->id}});window.location.href = `http://localhost:8000/payment`;" class="btn btn-outline-danger my-3 btn-block border border-warning">
                             Buy now
                         </button>

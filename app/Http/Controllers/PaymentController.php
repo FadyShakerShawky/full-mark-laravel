@@ -23,14 +23,15 @@ class PaymentController extends Controller
         $this->client = new PayPalHttpClient($environment);
     }
 
-    public function getExpressCheckout($id){
+    public function getExpressCheckout($id)
+    {
         $payment = Payment::find($id);
         $request = new OrdersCreateRequest();
         $request->headers["prefer"] = "return=representation";
         $request->body = [
             "intent" => "CAPTURE",
             "purchase_units" => [[
-                "reference_id" => 'webmall_'. uniqid(),
+                "reference_id" => 'webmall_' . uniqid(),
                 "amount" => [
                     "value" => $payment->total,
                     "currency_code" => "USD"
@@ -40,11 +41,11 @@ class PaymentController extends Controller
                 "cancel_url" => route('paypal.cancel'),
                 "return_url" => route('paypal.success', $id)
             ]
-            ];
+        ];
 
         $response = $this->client->execute($request);
 
-        if($response->statusCode !== 201) {
+        if ($response->statusCode !== 201) {
             abort(500);
         }
 
@@ -53,7 +54,7 @@ class PaymentController extends Controller
         $order->save();
 
         foreach ($response->result->links as $link) {
-            if($link->rel == 'approve') {
+            if ($link->rel == 'approve') {
                 return redirect($link->href);
             }
         }
@@ -82,16 +83,13 @@ class PaymentController extends Controller
             $teacher->t_net_income += 5;
             $teacher->save();
             dd($response);
-            return redirect()->route('payment' , ['payment'=>"SUCCESS", 'id'=>$id]);
-
+            return redirect()->route('payment', ['payment' => "SUCCESS", 'id' => $id]);
         }
 
         return redirect('/');
-
-
     }
-    public function cancelPage(){
-
+    public function cancelPage()
+    {
     }
     /**
      * Store a newly created resource in storage.
@@ -102,23 +100,23 @@ class PaymentController extends Controller
     public function store($id)
     {
         $payment = DB::table('payments')
-        // ->where('students_id' , '=' , Auth::user()->students->id)
-        ->where('group_id' , '=' , $id)
-        ->first();
-        if ( !isset($payment) ){
+            ->where('students_id', '=', Auth::user()->students->id)
+            ->where('group_id', '=', $id)
+            ->first();
+        if (!isset($payment)) {
             $group = Group::find($id);
             $payment = new Payment;
-            // $payment->students_id = Auth::user()->students->id;
+            $payment->students_id = Auth::user()->students->id;
             $payment->total = $group->price;
             $payment->group_id = $id;
-           $payment->save();
+            $payment->save();
         }
         return redirect()->route('paypal.checkout', $payment->id);
     }
 
 
-    public function index(){
-    return view('payment' , ["title" => "payment"]);
+    public function index()
+    {
+        return view('payment', ["title" => "payment"]);
     }
-
 }
