@@ -134,6 +134,7 @@ class CourseTeacherController extends Controller
                 'teachers.id as teacherId',
                 'courses.name as courseName',
                 'groups.description',
+                'groups.discount',
                 'groups.id'
             )
             ->limit(8)
@@ -160,12 +161,15 @@ class CourseTeacherController extends Controller
             ->join('groups', 'groups.course_teacher_id', '=', 'course_teachers.id')
             ->where('groups.discount', '>', 0)
             ->select(
-                'groups.id',
+                'groups.id as group_id',
                 'users.name as teacherName',
                 'teachers.id as teacherId',
                 'courses.name as courseName',
                 'groups.description',
-                'courses.id as course_id'
+                'groups.discount',
+                'groups.price',
+                'courses.id as course_id',
+
             )
             ->limit(8)
             ->get();
