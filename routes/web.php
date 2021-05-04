@@ -49,7 +49,7 @@ Route::get('/course-info/{id}', [GroupController::class, 'show'])->name("course-
 Route::get('/privacy&policy', function () {
     return view('privacy&policy', ["title" => "Privacy&policy"]);
 });
-Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile");
+Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile")->middleware('auth');;
 
 
 
@@ -74,7 +74,7 @@ Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebbokC
 
 
 Route::get('/courses/search', [CourseTeacherController::class, 'extinsiveSearch']);
-Route::get('courses/sale' , [CourseTeacherController::class , 'onSaleSearch'])->name('search.sale');
+Route::get('courses/sale', [CourseTeacherController::class, 'onSaleSearch'])->name('search.sale');
 //login with github
 Route::get('/sign-in/github', 'App\Http\Controllers\LoginController@github');
 
