@@ -18,9 +18,14 @@
             </div>
             <div class="vid justify-content-center">
 
-            <video controls id="myVideo">
+            <!-- <video controls id="myVideo">
                     <source src="{{url('storage/'.$data->file)}}"   type="video/mp4" style=" width: 900px; height:500px">
-                </video>
+                </video> -->
+
+                <iframe class="embed-responsive-item d-flex "
+                    src="{{url('storage/'.$data->file)}}"
+                    align="center" id="videothumbnail">
+                </iframe>
             </div>
             <a style="display: inline-block;" class ="btn btn-success" href="{{route('lecture-live')}}"> All Lectures</a>
 

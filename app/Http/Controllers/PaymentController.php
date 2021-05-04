@@ -40,7 +40,7 @@ class PaymentController extends Controller
                 "return_url" => route('paypal.success', $id)
             ]
             ];
- 
+
         $response = $this->client->execute($request);
 
         if($response->statusCode !== 201) {
@@ -57,11 +57,11 @@ class PaymentController extends Controller
             }
         }
     }
-    
+
     public function captureOrder($paypalOrderId)
     {
         $request = new OrdersCaptureRequest($paypalOrderId);
-        
+
         return $this->client->execute($request);
     }
 
@@ -83,7 +83,7 @@ class PaymentController extends Controller
 
     }
     public function cancelPage(){
-        
+
     }
     /**
      * Store a newly created resource in storage.
@@ -94,13 +94,13 @@ class PaymentController extends Controller
     public function store($id)
     {
         $payment = DB::table('payments')
-        ->where('students_id' , '=' , Auth::user()->students->id)
+        // ->where('students_id' , '=' , Auth::user()->students->id)
         ->where('group_id' , '=' , $id)
         ->first();
         if ( !isset($payment) ){
             $group = Group::find($id);
             $payment = new Payment;
-            $payment->students_id = Auth::user()->students->id;
+            // $payment->students_id = Auth::user()->students->id;
             $payment->total = $group->price;
             $payment->group_id = $id;
            $payment->save();
@@ -108,7 +108,7 @@ class PaymentController extends Controller
         return redirect()->route('paypal.checkout', $payment->id);
     }
 
-    
+
     public function index(){
     return view('payment' , ["title" => "payment"]);
     }
