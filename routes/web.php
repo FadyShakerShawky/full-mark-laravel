@@ -52,7 +52,7 @@ Route::get('/privacy&policy', function () {
 });
 Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile")->middleware('auth');
 Route::get('/student-profile/{id}', [StudentsController::class, 'show'])->name("student-profile");
-
+Route::post('/student/update', [StudentsController::class, 'update'])->name("student.update");
 
 
 Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class, 'searchByName'])->name('courses.search');
