@@ -72,7 +72,7 @@
                                     <p class="price">Price : <span class="spanPrice mr-5">{{$course->price }} LE</span></p>
                                     @endif
                                     <p class="card-text showDescription">{{$course->description}}</p>
-                                    <a href="{{route('course-info',$course->course_id)}}" class="btn btn-success btn-block">View course</a>
+                                    <a href="{{route('course-info',$course->group_id)}}" class="btn btn-success btn-block">View course</a>
                                 </div>
                             </div>
                         </div>

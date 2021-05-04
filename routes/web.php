@@ -55,12 +55,7 @@ Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->
 
 Route::get('/search-courses', [App\Http\Controllers\CourseTeacherController::class, 'searchByName'])->name('courses.search');
 
-// Route::get('/sign-in', function () {
-//     return view('sign-in' , ["title" => "Sign in"]);
-// });
-// Route::get('/sign-up', function () {
-//     return view('sign-up' , ["title" => "Sign up"]);
-// });
+
 
 
 Route::get('/payment', [PaymentController::class, 'index'])->name('payment')->middleware('auth');
