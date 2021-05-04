@@ -19,6 +19,7 @@ class VideoController extends Controller
     public function lectureLive($id)
     {
         $file = Video::all();
+        global $group;
         $group = Group::find($id);
 
         // $videoId = DB::table('group_videos')
@@ -80,13 +81,11 @@ class VideoController extends Controller
             $result = $request->file->move('storage/', $fileName);
             $data->file = $fileName;
         }
-
         $data->save();
-
-        // DB::table('group_videos')->insert([
-        //     'group_id' => Group::find('id'),
-        //     'video_id' => $request->id
-        // ]);
+        DB::table('group_videos')->insert([
+            'video_id' => $data->id,
+            'group_id' => $request->group,
+        ]);
 
         // DB::insert('insert into group_videos (group_id, video_id)
         //  values (?, ?)', [6, 6]);
