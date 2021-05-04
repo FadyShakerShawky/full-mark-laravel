@@ -19,7 +19,7 @@ let getCartData = function () {
                     });
                 } else {
                     document.getElementById("payment-table").innerHTML =
-                        "Sorry you dont have valid groups to apply for";
+                        "Sorry your shopping cart is empty";
                 }
             },
             error: (err) => {

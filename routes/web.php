@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\CogroupController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\StudentsController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CourseTeacherController;
 /*
@@ -49,7 +50,8 @@ Route::get('/course-info/{id}', [GroupController::class, 'show'])->name("course-
 Route::get('/privacy&policy', function () {
     return view('privacy&policy', ["title" => "Privacy&policy"]);
 });
-Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile")->middleware('auth');;
+Route::get('/teacher-profile/{id}', [TeacherProfileController::class, 'show'])->name("teacher-profile")->middleware('auth');
+Route::get('/student-profile/{id}', [StudentsController::class, 'show'])->name("student-profile");
 
 
 
