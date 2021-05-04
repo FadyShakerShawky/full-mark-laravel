@@ -128,6 +128,11 @@
                                 <input class="form-control" name="file" type="file" id="formFile">
                             </div>
 
+
+                            <div class="mb-3">
+                                <input class="form-control" name="group" type="hidden" id="group" value="{{$data->id}}">
+                            </div>
+
                             <button type="submit" class="btn btn-success">Upload</button>
                             <span>You can upload only videos in (mp4) and files in (pdf - docx).</span>
                         </form>

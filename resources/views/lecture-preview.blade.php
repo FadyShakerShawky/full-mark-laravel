@@ -21,14 +21,17 @@
             </div>
             <div class="vid justify-content-center">
 
-            {{-- <video controls id="myVideo">
-                <source src="{{url('storage/'.$data->file)}}"   type="video/mp4" style=" width: 900px; height:500px">
-            </video> --}}
-                <iframe style=" width: 900px; height:500px" class="embed-responsive-item d-flex"
+            <!-- <video controls id="myVideo">
+                    <source src="{{url('storage/'.$data->file)}}"   type="video/mp4" style=" width: 900px; height:500px">
+                </video> -->
+
+                <iframe class="embed-responsive-item d-flex "
                     src="{{url('storage/'.$data->file)}}"
                     align="center" id="videothumbnail">
                 </iframe>
-
+            {{-- <video controls id="myVideo">
+                <source src="{{url('storage/'.$data->file)}}"   type="video/mp4" style=" width: 900px; height:500px">
+            </video> --}}
             </div>
             {{-- <a style="display: inline-block;" class ="btn btn-success" href="{{route('lecture-live')}}"> All Lectures</a> --}}
             {{-- <a style="display: inline-block;" class ="btn btn-success" href="/lectures/download/{{$data->file}}"> Download</a> --}}
