@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Group;
 use Illuminate\Support\Facades\DB;
@@ -73,7 +74,14 @@ class PaymentController extends Controller
 
         if ($response->result->status == 'COMPLETED') {
             $payment->is_paid = 1;
+            $payment->status = "completed";
             $payment->save();
+
+            $teacher = Teacher::find($payment->group->courseTeacher->teacher->id);
+            $teacher->t_acc_reccivable += 5;
+            $teacher->t_net_income += 5;
+            $teacher->save();
+            dd($response);
             return redirect()->route('payment' , ['payment'=>"SUCCESS", 'id'=>$id]);
 
         }

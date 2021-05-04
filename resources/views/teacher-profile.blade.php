@@ -18,13 +18,16 @@
                         <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab"
                             aria-controls="schedule" aria-selected="false">Schedule</a>
                     </li>
-                    {{-- @if (Auth::user()->teachers->id === $data->id ) --}}
-                        <li class="nav-item">
-                            <a class="nav-link" id="group-tab" data-toggle="tab" href="#group" role="tab"
-                                aria-controls="group" aria-selected="false">New group</a>
-                        </li>
-                    {{-- @endif --}}
-
+                    @if (Auth::user())
+                        @if (Auth::user()->role === "teacher")
+                            @if (Auth::user()->teachers->id === $data->id )
+                                <li class="nav-item">
+                                    <a class="nav-link" id="group-tab" data-toggle="tab" href="#group" role="tab"
+                                        aria-controls="group" aria-selected="false">New group</a>
+                                </li>
+                            @endif
+                        @endif
+                    @endif
                 </ul>
                 <div class="tab-content container-fluid" id="myTabContent">
                     <div class="tab-pane col-md-12 fade show active" id="profile" role="tabpanel"
@@ -41,8 +44,6 @@
                                 <div id="logos-container" class="d-flex justify-content-around">
                                     <a href="{{ $data->t_link_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
                                     <a href="{{ $data->t_link_youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
-                                    <a href="{{route('allgroups', $data->id)}}" target="_blank"><i class="fas fa-users"></i></a>
-
                                 </div>
                             </aside>
                             <article class="row col-md-8 col-sm-12">
@@ -120,97 +121,101 @@
 
                         </table>
                     </div>
-                    {{-- @if (Auth::user()->teachers->id ===$data->id ) --}}
-                    <div class="tab-pane col-md-12 fade" id="group" role="tabpanel" aria-labelledby="group-tab">
-                        <div class="card">
-                            <div class="card-header">
-                                New group
-                            </div>
-                            <div class="card-body">
-                                <form action="{{route('group.store')}}" method="post">
-                                    @csrf
-                                    <div class="row justify-content-center ">
-                                    <h2 class="text-center">Create New Group</h2>
-
-                                        <div class="form-group col-10 " >
-                                            <label for="course">Course</label>
-                                            <select name="course_teacher" style="border: 1px solid #6ab04c" id="course" class="col-md-12 form-control">
-                                                @foreach ($data->courses as $course)
-                                                    <option value="{{ $course->id }}">{{$course->name}}</option>
-                                                @endforeach
-                                            </select>
+                    @if (Auth::user())
+                        @if (Auth::user()->role === "teacher")
+                            @if (Auth::user()->teachers->id === $data->id )
+                                <div class="tab-pane col-md-12 fade" id="group" role="tabpanel" aria-labelledby="group-tab">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            New group
                                         </div>
+                                        <div class="card-body">
+                                            <form action="{{route('group.store')}}" method="post">
+                                                @csrf
+                                                <div class="row justify-content-center ">
+                                                <h2 class="text-center">Create New Group</h2>
 
-                                        <div class="form-group col-10">
-                                            <label for="language">Language</label>
-                                            <input type="text" id="language" style="border: 1px solid #6ab04c" class="form-control" name="language" placeholder="language">
-                                        </div>
+                                                    <div class="form-group col-10 " >
+                                                        <label for="course">Course</label>
+                                                        <select name="course_teacher" style="border: 1px solid #6ab04c" id="course" class="col-md-12 form-control">
+                                                            @foreach ($data->courses as $course)
+                                                                <option value="{{ $course->id }}">{{$course->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="price">Price</label>
-                                            <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="price" placeholder="Price" min="10">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="language">Language</label>
+                                                        <input type="text" id="language" style="border: 1px solid #6ab04c" class="form-control" name="language" placeholder="language">
+                                                    </div>
 
-                                        <div class="form-group col-10 " >
-                                            <label for="description">Description</label>
-                                            <textarea class="col-md-12 form-control" name="description" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="price">Price</label>
+                                                        <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="price" placeholder="Price" min="10">
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="briefDescription">Brief description</label>
-                                            <textarea class="col-md-12 form-control" id="briefDescription" name="briefDescription" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
-                                        </div>
+                                                    <div class="form-group col-10 " >
+                                                        <label for="description">Description</label>
+                                                        <textarea class="col-md-12 form-control" name="description" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="whatLearn">What will the student learn</label>
-                                            <textarea class="col-md-12 form-control" id="whatLearn" name="whatLearn" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="briefDescription">Brief description</label>
+                                                        <textarea class="col-md-12 form-control" id="briefDescription" name="briefDescription" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="requirements">Requirements</label>
-                                            <textarea class="col-md-12 form-control" id="requirements" name="requirements" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="whatLearn">What will the student learn</label>
+                                                        <textarea class="col-md-12 form-control" id="whatLearn" name="whatLearn" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="max_no_student">Max No Student</label>
-                                            <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="max_no_student" placeholder="Max No Student" min="5">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="requirements">Requirements</label>
+                                                        <textarea class="col-md-12 form-control" id="requirements" name="requirements" placeholder="Write something.." style="border: 1px solid #6ab04c"></textarea>
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="start_date">Start Date</label>
-                                                <input class="form-control" style="border: 1px solid #6ab04c" type="date" name="start_date">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="max_no_student">Max No Student</label>
+                                                        <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="max_no_student" placeholder="Max No Student" min="5">
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="end_date">End Date</label>
-                                                <input class="form-control" style="border: 1px solid #6ab04c" type="date" name="end_date">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="start_date">Start Date</label>
+                                                            <input class="form-control" style="border: 1px solid #6ab04c" type="date" name="start_date">
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="start_time">Start Time</label>
-                                            <input class="form-control" style="border: 1px solid #6ab04c" type="time" name="start_time">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="end_date">End Date</label>
+                                                            <input class="form-control" style="border: 1px solid #6ab04c" type="date" name="end_date">
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="end_time">End Time</label>
-                                            <input class="form-control" style="border: 1px solid #6ab04c" type="time" name="end_time">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="start_time">Start Time</label>
+                                                        <input class="form-control" style="border: 1px solid #6ab04c" type="time" name="start_time">
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <label for="no_lec">Number of Lectures</label>
-                                            <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="no_lec" placeholder="Number of Lectures" min="0">
-                                        </div>
+                                                    <div class="form-group col-10">
+                                                        <label for="end_time">End Time</label>
+                                                        <input class="form-control" style="border: 1px solid #6ab04c" type="time" name="end_time">
+                                                    </div>
 
-                                        <div class="form-group col-10">
-                                            <button type="submit" class="btn btn-success">Create</button>
+                                                    <div class="form-group col-10">
+                                                        <label for="no_lec">Number of Lectures</label>
+                                                        <input type="number" style="border: 1px solid #6ab04c" class="form-control" name="no_lec" placeholder="Number of Lectures" min="0">
+                                                    </div>
+
+                                                    <div class="form-group col-10">
+                                                        <button type="submit" class="btn btn-success">Create</button>
+                                                    </div>
+                                                </div>
+
+                                            </form>
                                         </div>
                                     </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- @endif --}}
+                                </div>
+                            @endif
+                        @endif
+                    @endif
 
                 </div>
             </div>

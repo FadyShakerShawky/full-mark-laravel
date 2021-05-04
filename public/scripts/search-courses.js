@@ -49,10 +49,10 @@ function filterResults() {
                     "";
                 data.forEach((course) => {
                     if (course.discount > 0) {
-                        discount = `<p class="price">Price : <span class="spanPriceDis mr-3">$course->price  LE</span><span class="discount"> $course->price - ($course->price * $course->discount / 100) LE </span></p>
+                        discount = `<p class="price">Price : <span class="spanPriceDis mr-3">${course.price}  LE</span><span class="discount"> $course->price - ($course->price * $course->discount / 100) LE </span></p>
                                                     `;
                     } else {
-                        discount = `<p class="price">Price : <span class="spanPrice mr-5">$course->price  LE</span></p>
+                        discount = `<p class="price">Price : <span class="spanPrice mr-5">${course.price}  LE</span></p>
                                                     `;
                     }
                     document.getElementById(
