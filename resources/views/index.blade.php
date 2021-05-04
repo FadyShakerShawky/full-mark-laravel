@@ -112,62 +112,22 @@
         <div id="trending">
             <div class="container mt-5 mb-4">
                 <div class="row">
+                    @foreach($groups as $group)
                     <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card card-block shadow scale-up-center">
+                        <div class="card card-block shadow scale-up-center" style="height:24rem">
                             <img class="card-img-top" alt="KIDS_S" src="media/KIDS_S.jpeg"
                                 style="height: 180px; width: 100%; display: block" />
-                            <div class="card-block">
-                                <h4 class="card-title p-3">Arabic</h4>
-                                <p class="card-text text-center">
-                                    Enjoy your time with the most famous teachers all over the
-                                    Republic.
+                            <div class="card-block text-center">
+                                <h4 class="card-title text-center mt-2">{{$group->nameCourse}}</h4>
+                                <a href="{{route('teacher-profile',$group->teacherId)}}">{{$group->userName}}</a>
+                                <p class="card-text text-center p-4 showDescription">
+                                    {{$group->group_description}}
                                 </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
+                                <a href="{{route('course-info', $group->groupId)}}" class="btn btn-success m-3 d-block">enroll me</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card card-block shadow scale-up-center">
-                            <img class="card-img-top" alt="maths" src="media/Maths.jpeg"
-                                style="height: 180px; width: 100%; display: block" />
-                            <div class="card-block">
-                                <h4 class="card-title p-3">Math</h4>
-                                <p class="card-text text-center">
-                                    Enjoy your time with the most famous teachers all over the
-                                    Republic.
-                                </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card card-block shadow scale-up-center">
-                            <img class="card-img-top" alt="science" src="media/science.jpeg"
-                                style="height: 180px; width: 100%; display: block" />
-                            <div class="card-block">
-                                <h4 class="card-title p-3">Science</h4>
-                                <p class="card-text text-center">
-                                    Enjoy your time with the most famous teachers all over the
-                                    Republic.
-                                </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card card-block shadow scale-up-center">
-                            <img class="card-img-top" alt="computer" src="media/computer.jpeg"
-                                style="height: 180px; width: 100%; display: block" />
-                            <div class="card-block shadow scale-up-center">
-                                <h4 class="card-title p-3">Computer</h4>
-                                <p class="card-text text-center">
-                                    Enjoy your time with the most famous teachers all over the
-                                    Republic.
-                                </p>
-                                <a href="{{ url("course-info")}}" class="btn btn-success m-3 d-block">enroll me</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -203,6 +163,46 @@
                     @endforeach
                 </div>
             </div>
+        </div>
+
+
+        <div class="aboutUs text container-fluid">
+
+            <div class="head text-center">
+                About Full Mark
+            </div>
+            <div class="row">
+            <div class="iconContainer col-4">
+                <ul class="icons list-unstyled">
+                    <li class="icons my-3">
+                        <i class="icon fas fa-infinity"></i> Full lifetime access.
+                    </li>
+                    <li class="my-3">
+                        <i class="icon fas fa-mobile-alt"></i> Access on mobile and tablets.
+                    </li>
+                    <li class="my-3">
+                        <i class="icon fab fa-cc-paypal"></i> Secure payment.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-2">
+                <div class="vl"></div>
+            </div>
+            <div class="iconContainer col-6">
+                <ul class="icons list-unstyled">
+                    <li class="icons my-3">
+                        <i class="icon fas fa-star"></i> Choose your favorite teacher.
+                    </li>
+                    <li class="my-3">
+                        <i class="icon fas fa-gift"></i> Have Good offers on courses.
+                    </li>
+                    <li class="my-3">
+                        <i class="icon fas fa-download"></i> Ability to download recorded live lectures.
+                    </li>
+                </ul>
+            </div>
+        </div>
         </div>
         <!-- end of multi pages slider -->
     </main>

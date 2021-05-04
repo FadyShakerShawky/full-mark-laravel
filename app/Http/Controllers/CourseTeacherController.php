@@ -95,7 +95,7 @@ class CourseTeacherController extends Controller
             ->orWhere('teachers.description', 'like', '%' . $text . '%')
             ->orWhere('users.name', 'like', '%' . $text . '%')
             ->select(
-                'groups.id',
+                'groups.id as group_id',
                 'groups.price',
                 'groups.discount',
                 'users.name as teacherName',
@@ -152,7 +152,7 @@ class CourseTeacherController extends Controller
             ->join('users', 'users.id', '=', 'teachers.user_id')
             ->join('groups', 'groups.course_teacher_id', '=', 'course_teachers.id')
             ->where('groups.discount', '>', 0)
-            ->select('groups.id', 'groups.price', 'groups.discount', 'users.name as teacherName', 'teachers.id as teacherId', 'courses.name as courseName', 'groups.description', 'courses.id as course_id')
+            ->select('groups.id as group_id', 'groups.price', 'groups.discount', 'users.name as teacherName', 'teachers.id as teacherId', 'courses.name as courseName', 'groups.description', 'courses.id as course_id')
             ->limit(9)
             ->get();
         return view('search-courses', ['data' => $data, "course" => $courses, "maxvalue" => $maxValue, "minvalue" => $minValue]);
