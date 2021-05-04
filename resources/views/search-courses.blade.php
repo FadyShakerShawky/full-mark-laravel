@@ -60,14 +60,14 @@
                 </div>
                 <div class="card-body row" id="search-result-container">
                         @foreach ($data as $course)
-                        <div class="mx-auto flex-wrap" style="width: 25rem;">
+                        <div class="mx-auto flex-wrap" style="width: 25vw;">
                             <div class="card mx-2 my-4" style="height:31rem">
                                 <img src="{{asset('./media/science.jpeg')}}" class="card-img-top" alt="science">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $course->courseName }}</h4>
                                     <h5>By : <a href="{{ route('teacher-profile' ,$course->teacherId ) }}">{{$course->teacherName}}</a></h5>
                                     @if($course->discount > 0 )
-                                    <p class="price">Price : <span class="spanPriceDis mr-3">{{$course->price }} LE</span><span class="discount">{{ $course->discount}} LE </span></p>
+                                    <p class="price">Price : <span class="spanPriceDis mr-3">{{$course->price }} LE</span><span class="discount">{{ $course->price - ($course->price * $course->discount / 100)}} LE </span></p>
                                     @else
                                     <p class="price">Price : <span class="spanPrice mr-5">{{$course->price }} LE</span></p>
                                     @endif

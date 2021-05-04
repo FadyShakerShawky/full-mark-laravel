@@ -48,19 +48,28 @@ function filterResults() {
                 document.getElementById("search-result-container").innerHTML =
                     "";
                 data.forEach((course) => {
+                    if (course.discount > 0) {
+                        discount = `<p class="price">Price : <span class="spanPriceDis mr-3">$course->price  LE</span><span class="discount"> $course->price - ($course->price * $course->discount / 100) LE </span></p>
+                                                    `;
+                    } else {
+                        discount = `<p class="price">Price : <span class="spanPrice mr-5">$course->price  LE</span></p>
+                                                    `;
+                    }
                     document.getElementById(
                         "search-result-container"
-                    ).innerHTML += `<div class="mx-auto flex-wrap" style="width: 15rem">
-                                    <div class="card">
-                                        <img src="./media/science.jpeg" class="card-img-top" alt="science">
-                                        <div class="card-body">
-                                            <h4 class="card-title">${course.courseName}</h4>
-                                            <h5>By : <a href="teacher-profile/${course.teacherId}">${course.teacherName}</a></h5>
-                                            <p class="card-text">${course.description}</p>
-                                            <a href="course-info/${course.id}" class="btn btn-success">View course</a>
+                    ).innerHTML += `<div class="mx-auto flex-wrap" style="width: 25rem;">
+                                        <div class="card mx-2 my-4" style="height:31rem">
+                                            <img src="./media/science.jpeg" class="card-img-top" alt="science">
+                                            <div class="card-body">
+                                                <h4 class="card-title">${course.courseName}</h4>
+                                                <h5>By : <a href="teacher-profile/${course.teacherId}">${course.teacherName}</a></h5>
+                                                ${discount}
+                                                <p class="card-text showDescription">${course.description}</p>
+                                                <a href="course-info/${course.id}" class="btn btn-success btn-block">View course</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>`;
+                                `;
                 });
             }
         },

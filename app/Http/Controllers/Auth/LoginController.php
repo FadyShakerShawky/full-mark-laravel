@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Models\Student;
+
 // use Illuminate\Support\Facades\Auth;
 use Auth;
 class LoginController extends Controller
@@ -78,7 +80,14 @@ class LoginController extends Controller
             $user->email = $data->email;
             $user->provider_id = $data->id;
             $user->save();
+            $student = new Student();
+            $student->user_id = $user->id;
+            $student->government = "cairo";
+            $student->birthday = "2021-05-01";
+            $student->save();
         }
+        
+
         Auth::login($user);
     }
 }
