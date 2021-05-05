@@ -6,7 +6,7 @@
 @endsection
 
 @section('main-body')
-    <main>
+    <main style="min-height: 100vh">
         <div class="container-fluid">
             <div class="row justify-content-around">
                 <ul class="nav nav-tabs col-md-12 px-4 my-3" id="myTab" role="tablist">
@@ -18,7 +18,6 @@
                         <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab"
                             aria-controls="schedule" aria-selected="false">Schedule</a>
                     </li>
-
                     @if (Auth::user())
                         @if (Auth::user()->role === "teacher")
                             @if (Auth::user()->teachers->id === $data->id )
@@ -114,33 +113,44 @@
                                     <td>{{$group->et}}</td>
                                     <td>{{$group->p}}</td>
                                     <td>
-
                                         @can('isStudent')
                                             @foreach($payment as $payment)
-                                            @if($group->id === $payment->group_id)
-                                                @if($payment->is_paid === 1)
-                                                    <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
-                                                @else
+                                                @if (Auth::user()->students->id === $payment->students_id)
+                                                    @if($group->id === $payment->group_id)
+                                                        @if($payment->is_paid === 1)
+                                                            <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
+                                                            @else
+                                                            <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
+                                                                href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
+                                                        @endif
+                                                    @else
+                                                    <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
+                                                    href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
+                                                    @endif
+                                                    @else
                                                     <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
                                                         href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
                                                 @endif
-                                                @endif
+                                                {{-- @elseif(Auth::user()->students->id !== $payment->students_id) --}}
+                                                    {{-- @if($group->id !== $payment->group_id) --}}
+
+                                                    {{-- @endif --}}
+                                                {{-- @endif --}}
                                             @endforeach
                                         @endcan
+                                        {{-- @if($payment->is_paid === 1) --}}
+                                                    {{-- @if($group->id === $payment->group_id) --}}
+                                                        {{-- @if($group->id === $payment->group_id) --}}
+
+
+                                                                {{-- <h1>{{Auth::user()->students->id}}</h1> --}}
+
+
+
+
+
+
                                     </td>
-                                    {{-- @foreach($payment as $payment)
-                                        @if($payment->is_paid === 1)
-                                        <td>
-                                            <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
-                                        </td>
-                                        @else
-                                        <td>
-                                            <a class="btn btn-success" href="{{route('course-info', $group->id )}}">View</a>
-                                        </td>
-                                        @endif
-                                    @endforeach --}}
-
-
                                     @can('isTeacher')
                                     <td>
                                         <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>

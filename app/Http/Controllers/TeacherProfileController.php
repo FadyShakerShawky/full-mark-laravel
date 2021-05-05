@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Teacher;
 use App\Models\Payment;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -51,8 +52,9 @@ class TeacherProfileController extends Controller
             )
             ->get();
         $payment = new Payment;
+        $student = new Student;
         $payment = $payment->all();
         $teacher = Teacher::findOrFail($id);
-        return view('teacher-profile', ["data" => $teacher, 'groups' => $groups, "payment" => $payment]);
+        return view('teacher-profile', ["data" => $teacher, 'groups' => $groups, "payment" => $payment, "student" => $student]);
     }
 }

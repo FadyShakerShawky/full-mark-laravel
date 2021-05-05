@@ -167,42 +167,67 @@
 
 
         <div class="aboutUs text container-fluid" style="box-shadow: 1px 1px 50px grey">
-
-            <div class="head text-center">
-                About Full Mark
-            </div>
+                <div class="head text-center">
+                    About Full Mark
+                </div>
             <div class="row">
-            <div class="iconContainer col-4">
-                <ul class="icons list-unstyled">
-                    <li class="icons my-3">
-                        <i class="icon fas fa-infinity"></i> Full lifetime access.
-                    </li>
-                    <li class="my-3">
-                        <i class="icon fas fa-mobile-alt"></i> Access on mobile and tablets.
-                    </li>
-                    <li class="my-3">
-                        <i class="icon fab fa-cc-paypal"></i> Secure payment.
-                    </li>
-                </ul>
-            </div>
+                <div class="col-md-6 col-sm-6">
+                    <ul class="icons list-unstyled">
+                        <li class="icons my-3">
+                            <i class="icon fas fa-infinity pr-2"></i> <span class="features">Full lifetime access.</span>
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fas fa-mobile-alt pr-2"></i> <span class="features">Access on mobile and tablets.</span>
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fab fa-cc-paypal pr-2"></i> <span class="features">Secure payment.</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="col-2">
-                <div class="vl"></div>
+                <div class="col-md-6 col-sm-6">
+                    <ul class="icons list-unstyled">
+                        <li class="icons my-3">
+                            <i class="icon fas fa-star pr-2"></i> <span class="features">Choose your favorite teacher.</span>
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fas fa-gift pr-2"></i> <span class="features">Have Good offers on courses.</span>
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fas fa-download pr-2"></i> <span class="features">Ability to download recorded live lectures.</span>
+                        </li>
+                    </ul>
+                </div>
+                {{-- <div class="iconContainer col-4">
+                    <ul class="icons list-unstyled">
+                        <li class="icons my-3">
+                            <i class="icon fas fa-infinity"></i> Full lifetime access.
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fas fa-mobile-alt"></i> Access on mobile and tablets.
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fab fa-cc-paypal"></i> Secure payment.
+                        </li>
+                    </ul>
+                </div> --}}
+                {{-- <div class="col-2">
+                    <div class="vl"></div>
+                </div> --}}
+                {{-- <div class="iconContainer col-6">
+                    <ul class="icons list-unstyled">
+                        <li class="icons my-3">
+                            <i class="icon fas fa-star"></i> Choose your favorite teacher.
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fas fa-gift"></i> Have Good offers on courses.
+                        </li>
+                        <li class="my-3">
+                            <i class="icon fas fa-download"></i> Ability to download recorded live lectures.
+                        </li>
+                    </ul>
+                </div> --}}
             </div>
-            <div class="iconContainer col-6">
-                <ul class="icons list-unstyled">
-                    <li class="icons my-3">
-                        <i class="icon fas fa-star"></i> Choose your favorite teacher.
-                    </li>
-                    <li class="my-3">
-                        <i class="icon fas fa-gift"></i> Have Good offers on courses.
-                    </li>
-                    <li class="my-3">
-                        <i class="icon fas fa-download"></i> Ability to download recorded live lectures.
-                    </li>
-                </ul>
-            </div>
-        </div>
         </div>
         <!-- end of multi pages slider -->
     </main>
