@@ -177,9 +177,10 @@
                 <div class="head text-center">
                     About Full Mark
                 </div>
+                <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <ul class="icons list-unstyled">
+                    <ul class="icons list-unstyled pb-3">
                         <li class="icons my-3">
                             <i class="icon fas fa-infinity pr-2"></i> <span class="features">Full lifetime access.</span>
                         </li>
@@ -191,8 +192,9 @@
                         </li>
                     </ul>
                 </div>
+                <div class="col-md-1"></div>
 
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-5 col-sm-6 pb-3">
                     <ul class="icons list-unstyled">
                         <li class="icons my-3">
                             <i class="icon fas fa-star pr-2"></i> <span class="features">Choose your favorite teacher.</span>
@@ -201,7 +203,7 @@
                             <i class="icon fas fa-gift pr-2"></i> <span class="features">Have Good offers on courses.</span>
                         </li>
                         <li class="my-3">
-                            <i class="icon fas fa-download pr-2"></i> <span class="features">Ability to download recorded live lectures.</span>
+                            <i class="icon fas fa-download pr-2"></i> <span class="features">Ability to download live lectures.</span>
                         </li>
                     </ul>
                 </div>
@@ -235,6 +237,7 @@
                     </ul>
                 </div> --}}
             </div>
+        </div>
         </div>
         <!-- end of multi pages slider -->
     </main>
