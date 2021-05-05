@@ -166,7 +166,7 @@
         </div>
 
 
-        <div class="aboutUs text container-fluid">
+        <div class="aboutUs text container-fluid" style="box-shadow: 1px 1px 50px grey">
 
             <div class="head text-center">
                 About Full Mark

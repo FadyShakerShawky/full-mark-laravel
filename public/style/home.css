@@ -1,5 +1,12 @@
 /* start slider*/
-
+body {
+    background: linear-gradient(
+        to right bottom,
+        #3aeea325,
+        #da761925,
+        #6f992128
+    );
+}
 .lower-slider {
     display: flex;
     flex-wrap: wrap;
@@ -134,29 +141,28 @@ iframe {
     color: #f2f6f4;
 }
 
-.iconContainer{
+.iconContainer {
     padding-left: 2rem;
     color: #f2f6f4;
 }
 
 .icons {
     font-size: 2rem;
-
 }
 
-.icon{
+.icon {
     color: black;
-    padding-right: .8rem;
+    padding-right: 0.8rem;
     margin-bottom: 2rem;
 }
 
-.vl{
+.vl {
     /* border-left: 6px solid green;
   height: 500px;
   color: #f2f6f4; */
-  width:.5rem;
-  height: 12rem;
-  background: #f2f6f4;
-  margin-left: 16rem;
-  margin-top: 2rem;
+    width: 0.5rem;
+    height: 12rem;
+    background: #f2f6f4;
+    margin-left: 16rem;
+    margin-top: 2rem;
 }
