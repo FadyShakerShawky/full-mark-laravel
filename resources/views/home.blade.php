@@ -1,7 +1,7 @@
 @extends('layouts.general')
 
 @section('main-body')
-<div class="container" style="margin-top: 40vh">
+<div class="container" style="margin-top: 40vh;min-height: 100vh">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

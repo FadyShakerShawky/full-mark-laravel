@@ -62,7 +62,7 @@
                         @foreach ($data as $course)
                         <div class="mx-auto flex-wrap" style="width: 25vw;">
                             <div class="card mx-2 my-4" style="height:31rem">
-                                <img src="{{asset('./media/science.jpeg')}}" class="card-img-top" alt="science">
+                                <img src="{{asset('./media/' . $course->image)}}" class="card-img-top" alt="science">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $course->courseName }}</h4>
                                     <h5>By : <a href="{{ route('teacher-profile' ,$course->teacherId ) }}">{{$course->teacherName}}</a></h5>

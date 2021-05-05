@@ -32,8 +32,6 @@ Route::get('/', function () {
     return view('index', ["title" => "Home"]);
 })->name('index');
 
-Route::get('/', [FourmaxratingController::class, 'index1']);
-
 Route::get('/about-us', function () {
     return view('about-us', ["title" => "About us"]);
 })->name("about-us");

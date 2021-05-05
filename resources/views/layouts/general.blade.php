@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{url('/')}}">Home</a>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle nav-link header-btn"
                                     style="background: none; border: none" type="button" id="dropdownMenu2"
@@ -50,7 +50,7 @@
                                     <a class="dropdown-item" href="{{url('/search-courses')}}">High School</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('search.sale')}}">Offers</a>
                         </li>
@@ -80,19 +80,22 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="shoppingCartDropDown"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="position-relative">
-                                        <i class="fas fa-shopping-cart" id="cart-icon"></i>
-                                        <span class="position-absolute" id="cart-item-cunt"></span>
-                                    </span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shoppingCartDropDown">
-                                    <a class="dropdown-item" href="{{ route('payment') }}">
-                                        View shopping cart
-                                    </a>
-                                </div>
-                            </li>
+                                @if (Auth::User()->role === "student" )
+                                    <li class="nav-item dropdown">
+                                        <a id="shoppingCartDropDown"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <span class="position-relative">
+                                                <i class="fas fa-shopping-cart" id="cart-icon"></i>
+                                                <span class="position-absolute" id="cart-item-cunt"></span>
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="shoppingCartDropDown">
+                                            <a class="dropdown-item" href="{{ route('payment') }}">
+                                                View shopping cart
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endif
+                            
                             <li class="nav-item dropdown">
                                 <a id="userMenueDropDown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

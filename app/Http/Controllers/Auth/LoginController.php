@@ -82,8 +82,6 @@ class LoginController extends Controller
             $user->save();
             $student = new Student();
             $student->user_id = $user->id;
-            $student->government = "cairo";
-            $student->birthday = "2021-05-01";
             $student->save();
         }
         

@@ -153,9 +153,11 @@
 @endsection
 
 @elsecan('isTeacher')
+<main style="min-height: 80vh;margin-top: 25vh">
 <div class="mt-5">
-<h1 class="text-danger text-center mt-5">Sorry you are not authorized !!</h1>
+<h1 class="text-danger text-center mt-5">Sorry but only students can enroll into courses</h1>
 </div>
+</main>
 @endcan
 
 

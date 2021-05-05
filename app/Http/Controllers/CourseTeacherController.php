@@ -101,6 +101,7 @@ class CourseTeacherController extends Controller
                 'courses.name as courseName',
                 'groups.discount',
                 'groups.price',
+                'courses.image',
                 'groups.description',
                 'courses.id as course_id',
             )

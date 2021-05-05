@@ -80,13 +80,20 @@
                 <div class="col-md-7 col-sm-12">
                     <div class="cont ml-5 pt-2 my-4 text-light">
                         <h2 class="font-weight-bol h1">Full-Mark for your CHILDREN</h2>
-                        <p class="h3">
-                            get un limite access to 5,000 of Full-Mark top courses for your
+                        <p class="h4" style="color: rgb(168, 168, 168)">
+                            Get an unlimited access to Full-Mark top courses for your
                             children
                         </p>
-                        <button class="btn btn-info btn-lg">
-                            Get full-mark for bussiness
-                        </button>
+                        @if (Auth::User())
+                            <a href="{{route('courses.search')}}" class="btn btn-info btn-lg">
+                                Browse our courses
+                            </a>
+                        @else
+                            <a href="{{route('register')}}" class="btn btn-info btn-lg">
+                                Join full-mark now
+                            </a>
+                        @endif
+                        
                     </div>
                 </div>
                 <img src="./media/pexels-energepiccom-313690.jpg" class="img mx-auto col-md-4 col-sm-12 my-4"
