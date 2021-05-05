@@ -74,17 +74,7 @@
                         </div>
                     </div>
                     <div class="tab-pane col-md-12 fade" id="schedule" role="tabpanel" aria-labelledby="schedule-tab">
-                        <form method="GET" class="row justify-content-center">
-                            <select name="school" class="form-control col-md-3">
-                                <option>Primary school</option>
-                                <option>Secondary school</option>
-                                <option>High School school</option>
-                            </select>
-                            <select name="grade" class="form-control col-md-3">
-                                <option>Grade</option>
-                            </select>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        
                         <table class="table col-md-12 my-4" style="margin-top:25vh">
                             <thead class="thead-dark">
                                 <tr>
@@ -112,8 +102,19 @@
                                     <td>{{$group->no_lec}}</td>
                                     <td>{{$group->price}}</td>
                                     <td>
-                                        <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
-                                            href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
+                                        @if (Auth::user())
+                                            @if (Auth::user()->role === "teacher")
+                                                @if (Auth::user()->teachers->id === $data->id )
+                                                        <a class="btn btn-success" href="{{route('lecture-live', $group->id)}}">Go to course page</a>
+                                                    
+                                                @endif
+                                            @endif
+                                            @else
+                                            <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
+                                                href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
+                                        @endif
+
+                                        
                                     </td>
                                 </tr>
                                 @endforeach
