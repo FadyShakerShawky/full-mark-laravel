@@ -90,10 +90,9 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Course</th>
-                                    <th scope="col">Duration</th>
-                                    <th scope="col">Days of week</th>
-                                    <th scope="col">Start time</th>
-                                    <th scope="col">End time</th>
+                                    <th scope="col">Start date</th>
+                                    <th scope="col">End date</th>
+                                    <th scope="col">No of lectures</th>
                                     <th scope="col">Fees</th>
                                     <th></th>
                                     @can('isTeacher')
@@ -103,60 +102,21 @@
                             </thead>
                             <tbody>
                             <?php $index=1; ?>
-                            @foreach($groups as $group)
+                            @foreach($data->courseTeachers as $courseTeacher)
+                                @foreach ($courseTeacher->groups as $group)
                                 <tr>
                                     <th scope="row"><?php echo $index++; ?></th>
-                                    <td>{{$group->courseName}}</td>
-                                    <td>{{$group->sd}} / {{$group->ed}}</td>
-                                    <td>Sat , Mon , Wed</td>
-                                    <td>{{$group->st}}</td>
-                                    <td>{{$group->et}}</td>
-                                    <td>{{$group->p}}</td>
+                                    <td>{{$courseTeacher->course->name}}</td>
+                                    <td>{{$group->start_date}}</td>
+                                    <td>{{$group->end_date}}</td>
+                                    <td>{{$group->no_lec}}</td>
+                                    <td>{{$group->price}}</td>
                                     <td>
-                                        @can('isStudent')
-                                            @foreach($payment as $payment)
-                                                @if (Auth::user()->students->id === $payment->students_id)
-                                                    @if($group->id === $payment->group_id)
-                                                        @if($payment->is_paid === 1)
-                                                            <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
-                                                            @else
-                                                            <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
-                                                                href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
-                                                        @endif
-                                                    @else
-                                                    <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
-                                                    href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
-                                                    @endif
-                                                    @else
-                                                    <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
-                                                        href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
-                                                @endif
-                                                {{-- @elseif(Auth::user()->students->id !== $payment->students_id) --}}
-                                                    {{-- @if($group->id !== $payment->group_id) --}}
-
-                                                    {{-- @endif --}}
-                                                {{-- @endif --}}
-                                            @endforeach
-                                        @endcan
-                                        {{-- @if($payment->is_paid === 1) --}}
-                                                    {{-- @if($group->id === $payment->group_id) --}}
-                                                        {{-- @if($group->id === $payment->group_id) --}}
-
-
-                                                                {{-- <h1>{{Auth::user()->students->id}}</h1> --}}
-
-
-
-
-
-
+                                        <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
+                                            href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
                                     </td>
-                                    @can('isTeacher')
-                                    <td>
-                                        <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
-                                    </td>
-                                    @endcan
                                 </tr>
+                                @endforeach
                             @endforeach
                             </tbody>
 

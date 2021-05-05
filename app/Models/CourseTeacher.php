@@ -16,6 +16,10 @@ class CourseTeacher extends Model
     }
     public function teacher()
     {
-        return $this->belongsTo(teacher::class,"teacher_id", "id");
+        return $this->belongsTo(Teacher::class,"teacher_id", "id");
+    }
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
     }
 }
