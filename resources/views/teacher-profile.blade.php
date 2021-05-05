@@ -18,6 +18,7 @@
                         <a class="nav-link" id="schedule-tab" data-toggle="tab" href="#schedule" role="tab"
                             aria-controls="schedule" aria-selected="false">Schedule</a>
                     </li>
+
                     @if (Auth::user())
                         @if (Auth::user()->role === "teacher")
                             @if (Auth::user()->teachers->id === $data->id )
@@ -95,7 +96,10 @@
                                     <th scope="col">Start time</th>
                                     <th scope="col">End time</th>
                                     <th scope="col">Fees</th>
-                                    <th scope="col">Enroll now</th>
+                                    <th></th>
+                                    @can('isTeacher')
+                                    <th>View</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,11 +114,38 @@
                                     <td>{{$group->et}}</td>
                                     <td>{{$group->p}}</td>
                                     <td>
-                                        <button onclick="addCartHandler({{$group->id}})" class="btn btn-success" href="#" role="button">Enroll</button>
+
+                                        @can('isStudent')
+                                            @foreach($payment as $payment)
+                                                @if($payment->is_paid === 1)
+                                                @if($group->id === $payment->group_id)
+                                                    <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
+                                                @else
+                                                    <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
+                                                        href="{{route('course-info', $group->id)}}" role="button">Enroll</a>
+                                                @endif
+                                                @endif
+                                            @endforeach
+                                        @endcan
                                     </td>
+                                    {{-- @foreach($payment as $payment)
+                                        @if($payment->is_paid === 1)
+                                        <td>
+                                            <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
+                                        </td>
+                                        @else
+                                        <td>
+                                            <a class="btn btn-success" href="{{route('course-info', $group->id )}}">View</a>
+                                        </td>
+                                        @endif
+                                    @endforeach --}}
+
+
+                                    @can('isTeacher')
                                     <td>
-                                        <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">Upload Files</a>
+                                        <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
                                     </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                             </tbody>
