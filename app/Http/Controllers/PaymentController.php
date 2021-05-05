@@ -115,7 +115,7 @@ class PaymentController extends Controller
             $group = Group::find($id);
             $payment = new Payment;
             $payment->students_id = Auth::user()->students->id;
-            $payment->total = $group->price;
+            $payment->total = $group->price - ($group->price * $group->discount / 100);
             $payment->group_id = $id;
            $payment->save();
            return redirect()->route('paypal.checkout', $payment->id);

@@ -136,6 +136,7 @@ class CourseTeacherController extends Controller
                 'courses.name as courseName',
                 'groups.description',
                 'groups.discount',
+                'courses.image',
                 'groups.id'
             )
             ->limit(8)

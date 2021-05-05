@@ -76,7 +76,7 @@ class GroupController extends Controller
                     ->join('course_teachers' , 'groups.course_teacher_id' ,'=' ,"course_teachers.id")
                     ->join('courses' , 'course_teachers.course_id' ,'=' ,"courses.id")
                     ->where('groups.id' , '=' , $id)
-                    ->select("courses.name" , 'groups.price' , 'groups.id')
+                    ->select("courses.name" , 'groups.price' , 'groups.id' , 'groups.discount')
                     ->first();
         return $data;
     }

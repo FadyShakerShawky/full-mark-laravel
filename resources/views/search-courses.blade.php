@@ -60,6 +60,7 @@
                 </div>
                 <div class="card-body row" id="search-result-container">
                         @foreach ($data as $course)
+                        {{dd($course)}}
                         <div class="mx-auto flex-wrap" style="width: 25vw;">
                             <div class="card mx-2 my-4" style="height:31rem">
                                 <img src="{{asset('./media/' . $course->image)}}" class="card-img-top" alt="science">

@@ -41,8 +41,14 @@ function deleteShoppingCartItem(id) {
 let displayGroupData = function (group) {
     document.getElementById("payment-table").innerHTML += `<tr>
     <td>${group.name}</th>
-    <td class="text-center">${group.price}</th>
-    <td class="text-right"><a href="http://localhost:8000/payment/${group.id}" class="btn btn-success mx-2">Pay now</a><button onclick="deleteShoppingCartItem(${group.id})" class="btn btn-danger mr-5">Delete</button></td>
+    <td class="text-center">${
+        group.price - (group.price * group.discount) / 100
+    }</th>
+    <td class="text-right"><a href="http://localhost:8000/payment/${
+        group.id
+    }" class="btn btn-success mx-2">Pay now</a><button onclick="deleteShoppingCartItem(${
+        group.id
+    })" class="btn btn-danger mr-5">Delete</button></td>
 </tr>`;
 };
 

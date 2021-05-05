@@ -57,8 +57,8 @@
                 <span >
                 <i class="fas fa-chalkboard-teacher" style="font-size: 70px " id="fontaweson"></i>
                 <div class="lower-slider_2 mt-2 " id="lower-slider_2">
-                    <b>{{$counts}} online Courses</b> <br />
-                    Enjoy a variety of fresh topics
+                    <b>Fully equipped staff</b> <br />
+                    Up to date technologies
                 </div>
                 </span>
             </div>
@@ -67,8 +67,8 @@
                      <i class="fas fa-tablet-alt   " style="font-size: 70px " id="fontaweson"></i>
 
                         <div class="lower-slider_3  mt-2" id="lower-slider_3">
-                            <b>{{$counts}} online Courses</b> <br />
-                            Enjoy a variety of fresh topics
+                            <b>Cross plateforms</b> <br />
+                            Full mobile support
                         </div>
                 </span>
             </div>
@@ -120,20 +120,20 @@
             <div class="container mt-5 mb-4">
                 <div class="row">
                     @foreach($groups as $group)
-                    <div class="col-md-6 col-lg-3 col-sm-12">
-                        <div class="card card-block shadow scale-up-center" style="height:24rem">
-                            <img class="card-img-top" alt="KIDS_S" src="media/KIDS_S.jpeg"
-                                style="height: 180px; width: 100%; display: block" />
-                            <div class="card-block text-center">
-                                <h4 class="card-title text-center mt-2">{{$group->nameCourse}}</h4>
-                                <a href="{{route('teacher-profile',$group->teacherId)}}">{{$group->userName}}</a>
-                                <p class="card-text text-center p-4 showDescription">
-                                    {{$group->group_description}}
-                                </p>
-                                <a href="{{route('course-info', $group->groupId)}}" class="btn btn-success m-3 d-block">enroll me</a>
+                        <div class="col-md-6 col-lg-3 col-sm-12">
+                            <div class="card card-block shadow scale-up-center" style="height:24rem">
+                                <img class="card-img-top" alt="KIDS_S" src="media/KIDS_S.jpeg"
+                                    style="height: 180px; width: 100%; display: block" />
+                                <div class="card-block text-center">
+                                    <h4 class="card-title text-center mt-2">{{$group->nameCourse}}</h4>
+                                    <a href="{{route('teacher-profile',$group->teacherId)}}">{{$group->userName}}</a>
+                                    <p class="card-text text-center p-4 showDescription">
+                                        {{$group->group_description}}
+                                    </p>
+                                    <a href="{{route('course-info', $group->groupId)}}" class="btn btn-success m-3 d-block">enroll me</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -145,7 +145,7 @@
                     <div class="col-md-6 col-lg-3 col-sm-12">
                         <div class="card col bg-light shadow scale-up-center">
                             <div style="width: 100%; text-align: center">
-                                <img src="./media/TempProfile.jpg" class="card-img-top rounded-circle"
+                                <img src="./media/TempProfile.jpg" class="card-img-top rounded-circle mt-4"
                                     style="width: 50%" alt="Temp profile" />
                             </div>
                             <div class="card-body">
@@ -157,7 +157,7 @@
                                     <!-- <div class="flex-nowrap d-flex align-items-center"> -->
                                     <span id="teacher-rating" >
                                     @for( $i=1 ; $i <= $user->rating && $i <= 5 ; $i++)
-                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star golden"></i>
                                             @endfor
                                     </span>
                                     <!-- </div> -->
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
                 </div>
             </div>
         </div>

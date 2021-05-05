@@ -49,7 +49,11 @@ function filterResults() {
                     "";
                 data.forEach((course) => {
                     if (course.discount > 0) {
-                        discount = `<p class="price">Price : <span class="spanPriceDis mr-3">${course.price}  LE</span><span class="discount">` + (course.price - (course.price * course.discount / 100)) + `LE </span></p>`;
+                        discount =
+                            `<p class="price">Price : <span class="spanPriceDis mr-3">${course.price}  LE</span><span class="discount">` +
+                            (course.price -
+                                (course.price * course.discount) / 100) +
+                            `LE </span></p>`;
                     } else {
                         discount = `<p class="price">Price : <span class="spanPrice mr-5">${course.price}  LE</span></p>
                                                     `;
@@ -58,7 +62,7 @@ function filterResults() {
                         "search-result-container"
                     ).innerHTML += `<div class="mx-auto flex-wrap" style="width: 25rem;">
                                         <div class="card mx-2 my-4" style="height:31rem">
-                                            <img src="../media/science.jpeg" class="card-img-top" alt="science">
+                                            <img src="../media/${course.image}" class="card-img-top" alt="science">
                                             <div class="card-body">
                                                 <h4 class="card-title">${course.courseName}</h4>
                                                 <h5>By : <a href="teacher-profile/${course.teacherId}">${course.teacherName}</a></h5>
