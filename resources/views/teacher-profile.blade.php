@@ -117,8 +117,8 @@
 
                                         @can('isStudent')
                                             @foreach($payment as $payment)
+                                            @if($group->id === $payment->group_id)
                                                 @if($payment->is_paid === 1)
-                                                @if($group->id === $payment->group_id)
                                                     <a class="btn btn-success" href="{{route('lecture-live', $group->id )}}">View</a>
                                                 @else
                                                     <a onclick="addCartHandler({{$group->id}})" class="btn btn-success"
